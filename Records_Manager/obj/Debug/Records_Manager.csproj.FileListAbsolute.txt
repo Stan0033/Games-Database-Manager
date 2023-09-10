@@ -1,0 +1,24 @@
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\bin\Debug\Records_Manager.exe.config
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\bin\Debug\Records_Manager.exe
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\bin\Debug\Records_Manager.pdb
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.csproj.AssemblyReference.cache
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.csproj.SuggestedBindingRedirects.cache
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.Existing_Records.resources
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.Form1.resources
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.Properties.Resources.resources
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.csproj.GenerateResource.cache
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.csproj.CoreCompileInputs.cache
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.exe
+C:\Users\Stan\Documents\visual studio 2013\Projects\Records_Manager\Records_Manager\obj\Debug\Records_Manager.pdb
+H:\Projects\C#\Games-Database-Manager\Records_Manager\bin\Debug\Records_Manager.exe.config
+H:\Projects\C#\Games-Database-Manager\Records_Manager\bin\Debug\Records_Manager.exe
+H:\Projects\C#\Games-Database-Manager\Records_Manager\bin\Debug\Records_Manager.pdb
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.AssemblyReference.cache
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.SuggestedBindingRedirects.cache
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Existing_Records.resources
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Form1.resources
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Properties.Resources.resources
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.GenerateResource.cache
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.CoreCompileInputs.cache
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.exe
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.pdb
