@@ -52,12 +52,13 @@
             this.label_message.AutoSize = true;
             this.label_message.Location = new System.Drawing.Point(68, 31);
             this.label_message.Name = "label_message";
-            this.label_message.Size = new System.Drawing.Size(35, 13);
+            this.label_message.Size = new System.Drawing.Size(307, 13);
             this.label_message.TabIndex = 1;
-            this.label_message.Text = "label1";
+            this.label_message.Text = "11111111111111111111111111111111111111111111111111";
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Location = new System.Drawing.Point(324, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
