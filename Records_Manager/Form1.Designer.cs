@@ -151,7 +151,7 @@ namespace Records_Manager
             this.tabControl1.Location = new System.Drawing.Point(0, 215);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(460, 688);
+            this.tabControl1.Size = new System.Drawing.Size(460, 639);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage3
@@ -312,7 +312,7 @@ namespace Records_Manager
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(452, 650);
+            this.tabPage1.Size = new System.Drawing.Size(452, 601);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Search";
             // 
@@ -486,7 +486,7 @@ namespace Records_Manager
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(452, 650);
+            this.tabPage2.Size = new System.Drawing.Size(452, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             // 
@@ -498,9 +498,9 @@ namespace Records_Manager
             this.groupBox16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox16.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox16.Location = new System.Drawing.Point(3, 453);
+            this.groupBox16.Location = new System.Drawing.Point(3, 399);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(446, 194);
+            this.groupBox16.Size = new System.Drawing.Size(446, 199);
             this.groupBox16.TabIndex = 19;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Actions";
@@ -517,7 +517,7 @@ namespace Records_Manager
             "Get Sub-folder items"});
             this.add_action_options.Location = new System.Drawing.Point(3, 104);
             this.add_action_options.Name = "add_action_options";
-            this.add_action_options.Size = new System.Drawing.Size(440, 87);
+            this.add_action_options.Size = new System.Drawing.Size(440, 92);
             this.add_action_options.TabIndex = 2;
             // 
             // button7
@@ -554,7 +554,7 @@ namespace Records_Manager
             this.groupBox21.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox21.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox21.Location = new System.Drawing.Point(3, 407);
+            this.groupBox21.Location = new System.Drawing.Point(3, 353);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(446, 46);
             this.groupBox21.TabIndex = 18;
@@ -576,9 +576,9 @@ namespace Records_Manager
             this.groupBox15.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox15.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox15.Location = new System.Drawing.Point(3, 295);
+            this.groupBox15.Location = new System.Drawing.Point(3, 259);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(446, 112);
+            this.groupBox15.Size = new System.Drawing.Size(446, 94);
             this.groupBox15.TabIndex = 16;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Tags";
@@ -589,7 +589,7 @@ namespace Records_Manager
             this.add_tags.FormattingEnabled = true;
             this.add_tags.Location = new System.Drawing.Point(3, 22);
             this.add_tags.Name = "add_tags";
-            this.add_tags.Size = new System.Drawing.Size(440, 87);
+            this.add_tags.Size = new System.Drawing.Size(440, 69);
             this.add_tags.TabIndex = 0;
             // 
             // groupBox10
@@ -598,7 +598,7 @@ namespace Records_Manager
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox10.Location = new System.Drawing.Point(3, 249);
+            this.groupBox10.Location = new System.Drawing.Point(3, 213);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(446, 46);
             this.groupBox10.TabIndex = 15;
@@ -620,7 +620,7 @@ namespace Records_Manager
             this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox11.Location = new System.Drawing.Point(3, 203);
+            this.groupBox11.Location = new System.Drawing.Point(3, 167);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(446, 46);
             this.groupBox11.TabIndex = 14;
@@ -642,7 +642,7 @@ namespace Records_Manager
             this.groupBox12.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox12.Location = new System.Drawing.Point(3, 157);
+            this.groupBox12.Location = new System.Drawing.Point(3, 121);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(446, 46);
             this.groupBox12.TabIndex = 13;
@@ -664,7 +664,7 @@ namespace Records_Manager
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox13.Location = new System.Drawing.Point(3, 111);
+            this.groupBox13.Location = new System.Drawing.Point(3, 75);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(446, 46);
             this.groupBox13.TabIndex = 12;
@@ -688,7 +688,7 @@ namespace Records_Manager
             this.groupBox14.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox14.Location = new System.Drawing.Point(3, 3);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(446, 108);
+            this.groupBox14.Size = new System.Drawing.Size(446, 72);
             this.groupBox14.TabIndex = 11;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Title/s";
@@ -698,7 +698,7 @@ namespace Records_Manager
             this.add_Names.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_Names.Location = new System.Drawing.Point(3, 22);
             this.add_Names.Name = "add_Names";
-            this.add_Names.Size = new System.Drawing.Size(440, 83);
+            this.add_Names.Size = new System.Drawing.Size(440, 47);
             this.add_Names.TabIndex = 0;
             this.add_Names.Text = "";
             // 
@@ -716,7 +716,7 @@ namespace Records_Manager
             this.tabPage4.ForeColor = System.Drawing.Color.White;
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(452, 650);
+            this.tabPage4.Size = new System.Drawing.Size(452, 601);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Change";
             // 
@@ -729,7 +729,7 @@ namespace Records_Manager
             this.groupBox18.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox18.Location = new System.Drawing.Point(0, 454);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(452, 196);
+            this.groupBox18.Size = new System.Drawing.Size(452, 147);
             this.groupBox18.TabIndex = 21;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Actions";
@@ -741,7 +741,7 @@ namespace Records_Manager
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(3, 142);
+            this.button5.Location = new System.Drawing.Point(3, 93);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(446, 51);
             this.button5.TabIndex = 12;
@@ -944,7 +944,7 @@ namespace Records_Manager
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(460, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(822, 903);
+            this.listView1.Size = new System.Drawing.Size(822, 854);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -997,7 +997,7 @@ namespace Records_Manager
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 903);
+            this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
             // contextMenuStrip1
@@ -1008,7 +1008,7 @@ namespace Records_Manager
             this.selectInverseToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 116);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 94);
             // 
             // selectAllToolStripMenuItem
             // 
@@ -1038,7 +1038,7 @@ namespace Records_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1282, 903);
+            this.ClientSize = new System.Drawing.Size(1282, 854);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
