@@ -87,10 +87,12 @@ namespace Records_Manager
                     _ = new MessageForm($"Loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ", 1).ShowDialog();
                      
                     list_disks.Items.Clear();
+                     
                     foreach (var disk in records)
                     {
                         list_disks.Items.Add(disk.Key);
                     }
+                    SortListBoxItemsNumeric(list_disks);
                 }
             }
             else
@@ -99,7 +101,32 @@ namespace Records_Manager
                 _ = new MessageForm($"{fullsaveFilePath} was not found.", 2).ShowDialog();
             }
         }
+        public static void SortListBoxItemsNumeric(ListBox listBox)
+        {
+            // Create a list to store the items as integers
+            List<int> itemsList = new List<int>();
 
+            // Add the ListBox items to the list as integers
+            foreach (var item in listBox.Items)
+            {
+                if (int.TryParse(item.ToString(), out int numericValue))
+                {
+                    itemsList.Add(numericValue);
+                }
+            }
+
+            // Sort the items numerically
+            itemsList.Sort();
+
+            // Clear the ListBox
+            listBox.Items.Clear();
+
+            // Add the sorted items back to the ListBox as strings
+            foreach (var numericValue in itemsList)
+            {
+                listBox.Items.Add(numericValue.ToString());
+            }
+        }
         public static string RemoveFirstAndLastCharacter(string input)
         {
             if (string.IsNullOrEmpty(input) || input.Length < 3)
@@ -251,6 +278,7 @@ namespace Records_Manager
             {
                 list_disks.Items.Add(disk.Key);
             }
+            SortListBoxItemsNumeric(list_disks);
         }
         public bool recordExists(string name)
         {
@@ -474,6 +502,7 @@ namespace Records_Manager
             if (records.Count > 0)
             {
                 _ = new MessageForm($"Discarded the current database.", 1).ShowDialog();
+
             }
             else
             {
@@ -491,7 +520,7 @@ namespace Records_Manager
             UncheckAllCheckBoxes(change_tags);
             UncheckAllCheckBoxes(search_tags);
             records.Clear();
-
+            list_disks.Items.Clear();
         }
 
         private void DeleteDisk(object sender, EventArgs e)
@@ -516,7 +545,7 @@ namespace Records_Manager
             {
                 return;
             }
-             string search = search_name.Text.Trim();
+             string search = search_name.Text.Trim().ToLower();
             
              List<Record> results = new List<Record>();
             List<string> mustNOTcontain = search_mustnotcontain.Text.Trim() == string.Empty ? new List<string>() : search_mustnotcontain.Text.Split(',').ToList(); 
@@ -532,7 +561,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Title.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
 
                                 bool containsTags = RecordTagsArePresent(rec, checkedTags);
@@ -552,7 +581,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Title.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
                                 bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
 
@@ -574,7 +603,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Developer.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
 
                                 bool containsTags = RecordTagsArePresent(rec, checkedTags);
@@ -594,7 +623,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Developer.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
                                 bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
 
@@ -1026,7 +1055,7 @@ namespace Records_Manager
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string search = search_name.Text.Trim();
+            string search = search_name.Text.Trim().ToLower();
             List<Record> results = new List<Record>();
             List<string> mustNOTcontain = search_mustnotcontain.Text.Trim() == string.Empty ? new List<string>() : search_mustnotcontain.Text.Split(',').ToList();
             List<int> selectedDisks = GetSelectedDisks();
@@ -1041,7 +1070,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Title.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
 
                                 bool containsTags = RecordTagsArePresent(rec, checkedTags);
@@ -1061,7 +1090,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Title.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
                                 bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
 
@@ -1083,7 +1112,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Developer.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
 
                                 bool containsTags = RecordTagsArePresent(rec, checkedTags);
@@ -1103,7 +1132,7 @@ namespace Records_Manager
                         {
                             if (selectedDisks.Count == 0)//if no disks are selected
                             {
-                                bool containstext = search == string.Empty ? true : rec.Developer.Contains(search);
+                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
                                 bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
                                 bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
 
@@ -1331,6 +1360,11 @@ namespace Records_Manager
                 }
 
             }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            
         }
     }
     }

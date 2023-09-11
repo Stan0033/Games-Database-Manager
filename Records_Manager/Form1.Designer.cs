@@ -34,6 +34,7 @@ namespace Records_Manager
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button13 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -101,15 +102,14 @@ namespace Records_Manager
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox_Header = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectNoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectInverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAsTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button13 = new System.Windows.Forms.Button();
+            this.pictureBox_Header = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -138,9 +138,9 @@ namespace Records_Manager
             ((System.ComponentModel.ISupportInitialize)(this.change_disk)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -175,6 +175,20 @@ namespace Records_Manager
             this.tabPage3.Size = new System.Drawing.Size(452, 601);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Database";
+            // 
+            // button13
+            // 
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Location = new System.Drawing.Point(0, 444);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(452, 49);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "Change disk number";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.changeDiskNumber_Click);
             // 
             // button11
             // 
@@ -983,27 +997,6 @@ namespace Records_Manager
             this.columnHeader6.Text = "Tags";
             this.columnHeader6.Width = 328;
             // 
-            // pictureBox_Header
-            // 
-            this.pictureBox_Header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox_Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox_Header.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_Header.Name = "pictureBox_Header";
-            this.pictureBox_Header.Size = new System.Drawing.Size(460, 215);
-            this.pictureBox_Header.TabIndex = 3;
-            this.pictureBox_Header.TabStop = false;
-            this.pictureBox_Header.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Controls.Add(this.pictureBox_Header);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 854);
-            this.panel1.TabIndex = 4;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1056,19 +1049,26 @@ namespace Records_Manager
             this.copyAsTextToolStripMenuItem.Text = "Copy as Text";
             this.copyAsTextToolStripMenuItem.Click += new System.EventHandler(this.copyAsTextToolStripMenuItem_Click);
             // 
-            // button13
+            // pictureBox_Header
             // 
-            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button13.Location = new System.Drawing.Point(0, 444);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(452, 49);
-            this.button13.TabIndex = 9;
-            this.button13.Text = "Change disk number";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.changeDiskNumber_Click);
+            this.pictureBox_Header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox_Header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox_Header.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_Header.Name = "pictureBox_Header";
+            this.pictureBox_Header.Size = new System.Drawing.Size(460, 215);
+            this.pictureBox_Header.TabIndex = 3;
+            this.pictureBox_Header.TabStop = false;
+            this.pictureBox_Header.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.pictureBox_Header);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(460, 854);
+            this.panel1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -1124,9 +1124,9 @@ namespace Records_Manager
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

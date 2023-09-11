@@ -15,12 +15,12 @@ H:\Projects\C#\Games-Database-Manager\Records_Manager\bin\Debug\Records_Manager.
 H:\Projects\C#\Games-Database-Manager\Records_Manager\bin\Debug\Records_Manager.pdb
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.AssemblyReference.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.SuggestedBindingRedirects.cache
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.changeValue.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Existing_Records.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Form1.resources
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.MessageForm.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Properties.Resources.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.GenerateResource.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.CoreCompileInputs.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.exe
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.pdb
-H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.MessageForm.resources
-H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.changeValue.resources
