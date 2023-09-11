@@ -1059,6 +1059,7 @@ namespace Records_Manager
             this.pictureBox_Header.TabIndex = 3;
             this.pictureBox_Header.TabStop = false;
             this.pictureBox_Header.Visible = false;
+            this.pictureBox_Header.DoubleClick += new System.EventHandler(this.pictureBox_Header_DoubleClick);
             // 
             // panel1
             // 

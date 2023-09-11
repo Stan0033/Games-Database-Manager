@@ -878,6 +878,7 @@ namespace Records_Manager
 
             if (listView1.SelectedItems.Count > 0)
             {
+                pictureBox_Header.Visible = false;
                 // Assuming you want to retrieve subitems of the first selected item
                 ListViewItem selectedItem = listView1.SelectedItems[0];
 
@@ -971,7 +972,7 @@ namespace Records_Manager
 
             if (newName == string.Empty) {   _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
             int newDisk = (int)change_disk.Value;
-            if (newDisk == 0) { _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
+            if (newDisk == 0) { _ = new MessageForm($"New disk cannot be 0", 2).ShowDialog(); return; }
             string series = change_series.Text.Trim();
             string developer = change_dev.Text.Trim();
             string publisher = change_pub.Text.Trim();
@@ -995,8 +996,10 @@ namespace Records_Manager
                             Record newRecord = new Record(newName, newDisk, series, developer, publisher, newTags, url);
                             if (currentDisk != newDisk)
                             {
+                                if (!records.ContainsKey(newDisk)) { records.Add(newDisk, new List<Record>()); }
                                 records[newDisk].Add(newRecord);
                                 records[currentDisk].RemoveAt(i);
+                                if (records[currentDisk].Count == 0) { records.Remove(newDisk); }
                             }
                             else
                             {
@@ -1293,6 +1296,7 @@ namespace Records_Manager
             if (listView1.Items.Count > 0)
             {
                 listView1.Items.Clear();
+                pictureBox_Header.Visible = false;
                 _ = new MessageForm("Copied to the clipboard", 1);
             }
         }
@@ -1365,6 +1369,11 @@ namespace Records_Manager
         private void button14_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBox_Header_DoubleClick(object sender, EventArgs e)
+        {
+            pictureBox_Header.Visible = false;
         }
     }
     }
