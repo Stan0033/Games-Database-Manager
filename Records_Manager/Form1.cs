@@ -1258,5 +1258,79 @@ namespace Records_Manager
                 item.Selected = !item.Selected;
             }
         }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count > 0)
+            {
+                listView1.Items.Clear();
+                _ = new MessageForm("Copied to the clipboard", 1);
+            }
+        }
+
+        private void copyAsTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopySelectedItemsToClipboard(listView1);
+        }
+        public static void CopySelectedItemsToClipboard(ListView listView)
+        {
+            // Get selected items from the ListView
+            var selectedItems = listView.SelectedItems.Cast<ListViewItem>();
+
+            // Create a list to store the formatted strings
+            List<string> formattedStrings = new List<string>();
+
+            // Process selected items and format them
+            foreach (var item in selectedItems)
+            {
+                // Get the subitems (assuming there are at least two columns)
+                string[] subitems = item.SubItems.Cast<ListViewItem.ListViewSubItem>().Select(subitem => subitem.Text).ToArray();
+
+                // Join subitems with "|"
+                string formattedString = string.Join("|", subitems);
+
+                // Add the formatted string to the list
+                formattedStrings.Add(formattedString);
+            }
+
+            // Join formatted strings with newlines
+            string result = string.Join(Environment.NewLine, formattedStrings);
+
+            // Copy the result to the clipboard
+            Clipboard.SetText(result);
+
+            Console.WriteLine("Selected items copied to clipboard:");
+            Console.WriteLine(result);
+        }
+
+        private void changeDiskNumber_Click(object sender, EventArgs e)
+        {
+            if (list_disks.SelectedItems.Count == 1) 
+            {
+                int SelectedDisk = int.Parse(list_disks.Items[list_disks.SelectedIndex].ToString());
+                int newDisk = 0;
+                 using (var v = new changeValue())
+                {
+                    if (v.ShowDialog() == DialogResult.OK)
+                    {
+                        newDisk = (int)v.numericUpDown1.Value;
+                    }
+                    if (records.ContainsKey(newDisk))
+                    {
+                        records[newDisk].AddRange(records[SelectedDisk]);
+                        records.Remove(SelectedDisk);
+                    }
+                    else
+                    {
+                        records.Add(newDisk, records[SelectedDisk]);
+                        records.Remove(SelectedDisk);
+                    }
+                    RefreshDatabase(null,null);
+                    ChangeSavedChangesStatus(false);
+                    listView1.Items.Clear();
+                }
+
+            }
+        }
     }
     }

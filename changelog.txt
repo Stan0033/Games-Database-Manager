@@ -10,3 +10,5 @@
 - now when you load the database, the list of disks will be filled initially, instead of you having to refresh it
 - when you click X to close the app, if there are unsaved changes, you will be asked what to do
 - now the messages play sounds
+1.2 - 11/09/23
+- added some more buttons

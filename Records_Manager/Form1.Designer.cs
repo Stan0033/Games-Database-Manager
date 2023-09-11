@@ -107,6 +107,9 @@ namespace Records_Manager
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectNoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectInverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAsTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -157,6 +160,7 @@ namespace Records_Manager
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage3.Controls.Add(this.button13);
             this.tabPage3.Controls.Add(this.button11);
             this.tabPage3.Controls.Add(this.button10);
             this.tabPage3.Controls.Add(this.button9);
@@ -168,7 +172,7 @@ namespace Records_Manager
             this.tabPage3.ForeColor = System.Drawing.Color.White;
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(452, 650);
+            this.tabPage3.Size = new System.Drawing.Size(452, 601);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Database";
             // 
@@ -179,7 +183,7 @@ namespace Records_Manager
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button11.ForeColor = System.Drawing.Color.Red;
-            this.button11.Location = new System.Drawing.Point(0, 574);
+            this.button11.Location = new System.Drawing.Point(0, 525);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(452, 38);
             this.button11.TabIndex = 8;
@@ -260,7 +264,7 @@ namespace Records_Manager
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(0, 612);
+            this.button3.Location = new System.Drawing.Point(0, 563);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(452, 38);
@@ -1005,10 +1009,12 @@ namespace Records_Manager
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectAllToolStripMenuItem,
             this.selectNoneToolStripMenuItem,
-            this.selectInverseToolStripMenuItem});
+            this.selectInverseToolStripMenuItem,
+            this.clearToolStripMenuItem,
+            this.copyAsTextToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 94);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 154);
             // 
             // selectAllToolStripMenuItem
             // 
@@ -1033,6 +1039,36 @@ namespace Records_Manager
             this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
             this.selectInverseToolStripMenuItem.Text = "Select Inverse";
             this.selectInverseToolStripMenuItem.Click += new System.EventHandler(this.selectInverseToolStripMenuItem_Click);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // copyAsTextToolStripMenuItem
+            // 
+            this.copyAsTextToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.copyAsTextToolStripMenuItem.Name = "copyAsTextToolStripMenuItem";
+            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.copyAsTextToolStripMenuItem.Text = "Copy as Text";
+            this.copyAsTextToolStripMenuItem.Click += new System.EventHandler(this.copyAsTextToolStripMenuItem_Click);
+            // 
+            // button13
+            // 
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Location = new System.Drawing.Point(0, 444);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(452, 49);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "Change disk number";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.changeDiskNumber_Click);
             // 
             // Form1
             // 
@@ -1174,6 +1210,9 @@ namespace Records_Manager
         private ToolStripMenuItem selectAllToolStripMenuItem;
         private ToolStripMenuItem selectNoneToolStripMenuItem;
         private ToolStripMenuItem selectInverseToolStripMenuItem;
+        private ToolStripMenuItem clearToolStripMenuItem;
+        private ToolStripMenuItem copyAsTextToolStripMenuItem;
+        private Button button13;
     }
 }
 
