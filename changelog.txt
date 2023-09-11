@@ -19,3 +19,6 @@
 - now when changing the disk of an existing record, if the disk doesnt exist, it will be created
 - the preview will be hidden when refreshing the list of results
 - double clicking on the preview will also hide it
+1.5 - 11/09/23
+- fixed delete disk - it will delete teh selected disk instead of the first disk
+- if you select multiple items in the result list, the fields of the change tab will be empty instead of filled

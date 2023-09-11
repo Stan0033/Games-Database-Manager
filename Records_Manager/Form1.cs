@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 
 namespace Records_Manager
@@ -527,7 +520,7 @@ namespace Records_Manager
         {
             if (list_disks.SelectedItems.Count == 1)
             {
-                int disk = int.Parse(list_disks.Items[0].ToString());
+                int disk = int.Parse(list_disks.SelectedItems[0].ToString());
                 records.Remove(disk);
                 RefreshDatabase(null, null);
                 ChangeSavedChangesStatus(false);
@@ -876,7 +869,7 @@ namespace Records_Manager
         {
             // when you click on a name you should have the data entered in fields
 
-            if (listView1.SelectedItems.Count > 0)
+            if (listView1.SelectedItems.Count == 1)
             {
                 pictureBox_Header.Visible = false;
                 // Assuming you want to retrieve subitems of the first selected item
@@ -934,6 +927,14 @@ namespace Records_Manager
                         }
                     }
                 }
+            }
+            if (listView1.SelectedItems.Count > 1)
+            {
+                change_name.Text = string.Empty;
+                change_disk.Value = 0;
+                change_series.Text = string.Empty;
+                change_dev.Text = string.Empty;
+                change_pub.Text = string.Empty;
             }
         }
         private void PopulateCheckedListBox(string inputString)
