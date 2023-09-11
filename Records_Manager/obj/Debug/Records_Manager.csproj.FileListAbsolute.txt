@@ -22,3 +22,4 @@ H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.CoreCompileInputs.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.exe
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.pdb
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.MessageForm.resources

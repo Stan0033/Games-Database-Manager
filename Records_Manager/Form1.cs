@@ -53,28 +53,24 @@ namespace Records_Manager
                 Text = "Games Database Manager [unsaved]*";
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void LoadDatabase(object sender, EventArgs e)
         {
-            if (SavedChanges == false) { MessageBox.Show("You have unsaved changes."); return; }
+            if (SavedChanges == false) { _ = new MessageForm("You have unsaved changes.",2).ShowDialog();   return; }
             records.Clear();
             string fullsaveFilePath = Path.Combine(Environment.CurrentDirectory, saveFileName);
             int allLoadedRecords = 0;
             if (File.Exists(fullsaveFilePath)) // fill the database if it was found
             {
-                if (SavedChanges == false) { MessageBox.Show("Unsaved changes."); return; }
+                if (SavedChanges == false) { _ = new MessageForm("You have unsaved changes.", 2).ShowDialog(); return; }
                 int currentDisk = 0;
                 string[] file = File.ReadAllLines(fullsaveFilePath);
                 foreach (string line in file)
                 {
                     if (line.Trim().Length == 0) { continue; }
                    
-                      //  try
-                       // {
+                         try
+                         {
                             string edited = RemoveFirstAndLastCharacter(line);
                             string[] parts = edited.Split('|');
                                  currentDisk = int.Parse(parts[1]);
@@ -82,19 +78,25 @@ namespace Records_Manager
                            if (!records.ContainsKey(currentDisk)) { records.Add(currentDisk, new List<Record>()); }
                             records[currentDisk].Add(r);
                             allLoadedRecords++;
-                      //  }
-                       //catch { MessageBox.Show("Error parsing the database file. Might be corrupted."); return; }
+                         }
+                       catch { _ = new MessageForm("Error parsing the database file. Might be corrupted.", 2).ShowDialog();     return; }
                      
                 }
                 if (allLoadedRecords > 0)
                 {
-                    MessageBox.Show($"loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ");
-                    
+                    _ = new MessageForm($"Loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ", 1).ShowDialog();
+                     
+                    list_disks.Items.Clear();
+                    foreach (var disk in records)
+                    {
+                        list_disks.Items.Add(disk.Key);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show($"{fullsaveFilePath} was not found.");
+                 
+                _ = new MessageForm($"{fullsaveFilePath} was not found.", 2).ShowDialog();
             }
         }
 
@@ -133,7 +135,7 @@ namespace Records_Manager
             bool excludeHidden = add_action_options.GetItemChecked(2);
             bool excludeExtensions = add_action_options.GetItemChecked(3);
             bool BrowseSubFolders = add_action_options.GetItemChecked(4);
-            if (!getFiles && !getFolders) { MessageBox.Show("Get Files and/or Get Folders must be checked"); return; }
+            if (!getFiles && !getFolders) {  _ = new MessageForm("'Get Files' and/or 'Get Folders' must be checked", 2).ShowDialog(); return; }
             string targetFolder = string.Empty;
 
             using (var folderDialog = new FolderBrowserDialog())
@@ -281,8 +283,14 @@ namespace Records_Manager
         private void AddRecords_Click(object sender, EventArgs e)
         {
             List<string> ExistingRecords = new List<string>();
-            if (add_Disk.Value == 0) { MessageBox.Show("Disk 0 is not allowed"); return; }
-            List<string> listOfTitles = add_Names.Text.Split('\n').Select(x => x.Trim()).ToList();
+            if (add_Disk.Value == 0) { _ = new MessageForm("Disk 0 is not allowed", 2).ShowDialog(); ; return; }
+            List<string> listOfTitles = add_Names.Text
+     .Split('\n')
+     .Select(x => x.Trim())
+     .Where(x => !string.IsNullOrEmpty(x))
+     .ToList();
+            if (listOfTitles.Count==0) { _ = new MessageForm("At least one title must be present in the list of titles", 2).ShowDialog(); return; }
+
             int addedTitles = 0;
             int maxTitles = listOfTitles.Count;
             listOfTitles = RemoveDuplicates(listOfTitles);
@@ -291,8 +299,8 @@ namespace Records_Manager
             string ser = add_Series.Text.Trim();
             int disk = (int)add_Disk.Value;
             string url = add_url.Text.Trim();
-            if (listOfTitles.Count == 0) { MessageBox.Show("No title/s are entered"); return; }
-            if (!IsAtLeastOneCheckBoxChecked()) { MessageBox.Show("At least one tag must be checked"); return; }
+            if (listOfTitles.Count == 0) {  _ = new MessageForm("No title/s are entered", 2).ShowDialog();  return; }
+            if (!IsAtLeastOneCheckBoxChecked()) {  _ = new MessageForm("At least one tag must be checked", 2).ShowDialog(); return; }
             List<string> checkedItems = add_tags.CheckedItems.Cast<string>().ToList();
             if (listOfTitles.Count > 0)
             {
@@ -318,7 +326,7 @@ namespace Records_Manager
             add_Disk.Value = 0;
             UncheckAllCheckBoxes(add_tags);
 
-            MessageBox.Show($"Added {addedTitles}/{maxTitles} titles.");
+              _ = new MessageForm($"Added {addedTitles}/{maxTitles} titles.", 1).ShowDialog();
 
             if (addedTitles > 0)
             {
@@ -435,11 +443,11 @@ namespace Records_Manager
 
         private void SaveAllChanges(object sender, EventArgs e)
         {
-            if (records.Count == 0) { MessageBox.Show("Nothing to save"); return; }
-            if (SavedChanges) { MessageBox.Show("Nothing to save"); return; }
+            if (records.Count == 0) { _ = new MessageForm("Nothing to save", 2).ShowDialog(); return; }
+            if (SavedChanges) { _ = new MessageForm("Nothing to save", 2).ShowDialog(); return; }
             else
             {
-
+               
 
                 ChangeSavedChangesStatus(true);
                 string fullSavePath = Path.Combine(Environment.CurrentDirectory, saveFileName);
@@ -456,12 +464,22 @@ namespace Records_Manager
                     }
                 }
                 File.WriteAllText(fullSavePath, data);
-                MessageBox.Show($"Saved the database with {countRecords} records.");
+                _ = new MessageForm($"Saved the database with {records.Count} disk/s and {countRecords} record/s.", 1).ShowDialog();
+                
             }
         }
 
         private void DiscardDatabase(object sender, EventArgs e)
         {
+            if (records.Count > 0)
+            {
+                _ = new MessageForm($"Discarded the current database.", 1).ShowDialog();
+            }
+            else
+            {
+                _ = new MessageForm($"An empty database cannot be discarded", 2).ShowDialog();
+                return;
+            }
             ChangeSavedChangesStatus(true);
             listView1.Items.Clear();
             change_dev.Text = string.Empty;
@@ -478,12 +496,17 @@ namespace Records_Manager
 
         private void DeleteDisk(object sender, EventArgs e)
         {
-            if (list_disks.Items.Count == 1)
+            if (list_disks.SelectedItems.Count == 1)
             {
                 int disk = int.Parse(list_disks.Items[0].ToString());
                 records.Remove(disk);
                 RefreshDatabase(null, null);
                 ChangeSavedChangesStatus(false);
+                _ = new MessageForm($"Deleted disk {disk} from the database", 2).ShowDialog();
+            }
+            else
+            {
+                _ = new MessageForm($"Must select a disk first", 2).ShowDialog();
             }
         }
 
@@ -914,18 +937,19 @@ namespace Records_Manager
 
         private void changeRecord_Click(object sender, EventArgs e)
         {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
             string newName = change_name.Text.Trim();
 
-            if (newName == string.Empty) { MessageBox.Show("Title cannot be empty"); return; }
+            if (newName == string.Empty) {   _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
             int newDisk = (int)change_disk.Value;
-            if (newDisk == 0) { MessageBox.Show("Disk cannot be 0."); return; }
+            if (newDisk == 0) { _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
             string series = change_series.Text.Trim();
             string developer = change_dev.Text.Trim();
             string publisher = change_pub.Text.Trim();
             string url = change_url.Text.Trim();
 
             List<string> newTags = GetCheckedItemsFromCheckedListBox(change_tags);
-
+            if (newTags.Count == 0) { _ = new MessageForm($"At least one tag must be checked", 2).ShowDialog(); return; }
 
             if (listView1.SelectedItems.Count > 0)
             {
@@ -953,7 +977,8 @@ namespace Records_Manager
 
                         }
                     }
-                    MessageBox.Show("Changes made.");
+                    
+                    _ = new MessageForm($"Changes made", 1).ShowDialog();
                     listView1.Items.Clear();
                     ChangeSavedChangesStatus(false);
                 }
@@ -965,19 +990,28 @@ namespace Records_Manager
             int clearedItems = 0;
             if (listView1.SelectedItems.Count > 0)
             {
+              
                 foreach (int index in listView1.SelectedIndices)
                 {
-                    string currrentName = listView1.Items[index].ToString();
-                    int currentDisk = int.Parse(listView1.Items[index].SubItems[0].ToString());
-                    int pos = records[currentDisk].FindIndex(x=> x.Title == currrentName);
-                    records[currentDisk].RemoveAt(pos);
+                    string currrentName = listView1.Items[index].SubItems[0].Text;
+                   int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+                   for (int i=0; i < records[currentDisk].Count; i++)
+                    {
+                        if (records[currentDisk][i].Title == currrentName) { records[currentDisk].RemoveAt(i);break; }
+                    }
+                    
                     clearedItems++;
                 }
+                
+            }
+            else
+            {
+                _ = new MessageForm($"Must select at least one record from the list first", 2).ShowDialog(); return;
             }
             listView1.Items.Clear();
             RemoveEmptyDrives();
-            MessageBox.Show($"Removed {clearedItems} items from the database.") ;
-            ChangeSavedChangesStatus(false);
+            _ = new MessageForm($"Removed {clearedItems} items from the database.", 1).ShowDialog();
+             ChangeSavedChangesStatus(false);
         }
         public void RemoveEmptyDrives()
         {
@@ -1176,6 +1210,53 @@ namespace Records_Manager
 
         }
 
-       
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (SavedChanges == false)
+            {
+                DialogResult result = MessageBox.Show("Do you want to save your changes before exiting?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                if (result == DialogResult.Yes)
+                {
+                    SaveAllChanges(null,null);
+                }
+                else if (result == DialogResult.No)
+                {
+                    // Discard changes and allow the form to close.
+                }
+                else
+                {
+                    // Cancel the form closing operation.
+                    e.Cancel = true;
+                }
+            }
+
+
+
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Selected = true;
+            }
+        }
+
+        private void selectNoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Selected = false;
+            }
+        }
+
+        private void selectInverseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Selected = !item.Selected;
+            }
+        }
     }
-}
+    }

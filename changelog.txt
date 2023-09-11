@@ -1,0 +1,12 @@
+1.0 - 10/09/23:
+- initial release
+1.1 - 11/09/23
+- buttons are bigger
+- error window is now custom
+- more error messages and checks
+- when you click a record, his tags will now be checked in the checkboxlist
+- fixed the functionality of the button "Delete record"
+- added  context menu for selecting when you right-click on the list of records
+- now when you load the database, the list of disks will be filled initially, instead of you having to refresh it
+- when you click X to close the app, if there are unsaved changes, you will be asked what to do
+- now the messages play sounds

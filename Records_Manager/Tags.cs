@@ -8,7 +8,18 @@ namespace Records_Manager
 {
     public   class Tags
     {
-       public List<string> Data { get => tags; }
+       public List<string> Data
+        {
+            get
+            {
+                for (int i = 0; i < tags.Count; i++)
+                {
+                    tags[i] = tags[i].Replace("\n", "").Trim();
+                }
+                return tags;
+            }
+        }
+
         public List<string> tags = @"(Camera) First Person
 (Camera) Second Person
 (Camera) Side View

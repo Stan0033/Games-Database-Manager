@@ -30,6 +30,7 @@ namespace Records_Manager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -102,6 +103,10 @@ namespace Records_Manager
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectNoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectInverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -132,6 +137,7 @@ namespace Records_Manager
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -173,9 +179,9 @@ namespace Records_Manager
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button11.ForeColor = System.Drawing.Color.Red;
-            this.button11.Location = new System.Drawing.Point(0, 621);
+            this.button11.Location = new System.Drawing.Point(0, 574);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(452, 29);
+            this.button11.Size = new System.Drawing.Size(452, 38);
             this.button11.TabIndex = 8;
             this.button11.Text = "Delete Disk";
             this.button11.UseVisualStyleBackColor = true;
@@ -186,10 +192,10 @@ namespace Records_Manager
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(0, 344);
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(0, 395);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(452, 29);
+            this.button10.Size = new System.Drawing.Size(452, 49);
             this.button10.TabIndex = 7;
             this.button10.Text = "Refresh List";
             this.button10.UseVisualStyleBackColor = true;
@@ -200,10 +206,10 @@ namespace Records_Manager
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.Dock = System.Windows.Forms.DockStyle.Top;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(0, 315);
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(0, 346);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(452, 29);
+            this.button9.Size = new System.Drawing.Size(452, 49);
             this.button9.TabIndex = 6;
             this.button9.Text = "View All";
             this.button9.UseVisualStyleBackColor = true;
@@ -214,10 +220,10 @@ namespace Records_Manager
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(0, 286);
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(0, 297);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(452, 29);
+            this.button8.Size = new System.Drawing.Size(452, 49);
             this.button8.TabIndex = 5;
             this.button8.Text = "View";
             this.button8.UseVisualStyleBackColor = true;
@@ -228,7 +234,7 @@ namespace Records_Manager
             this.groupBox9.Controls.Add(this.list_disks);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox9.Location = new System.Drawing.Point(0, 87);
+            this.groupBox9.Location = new System.Drawing.Point(0, 98);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(452, 199);
             this.groupBox9.TabIndex = 4;
@@ -250,16 +256,16 @@ namespace Records_Manager
             // button3
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(0, 58);
+            this.button3.Location = new System.Drawing.Point(0, 612);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(452, 29);
+            this.button3.Size = new System.Drawing.Size(452, 38);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Discard";
+            this.button3.Text = "Discard Database";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.DiscardDatabase);
             // 
@@ -268,11 +274,11 @@ namespace Records_Manager
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(0, 29);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(0, 49);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(452, 29);
+            this.button2.Size = new System.Drawing.Size(452, 49);
             this.button2.TabIndex = 1;
             this.button2.Text = "Save All Changes";
             this.button2.UseVisualStyleBackColor = true;
@@ -283,11 +289,11 @@ namespace Records_Manager
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(452, 29);
+            this.button1.Size = new System.Drawing.Size(452, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "Load";
             this.button1.UseVisualStyleBackColor = true;
@@ -315,10 +321,10 @@ namespace Records_Manager
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.Dock = System.Windows.Forms.DockStyle.Top;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button12.Location = new System.Drawing.Point(3, 439);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(446, 29);
+            this.button12.Size = new System.Drawing.Size(446, 40);
             this.button12.TabIndex = 18;
             this.button12.Text = "Search";
             this.button12.UseVisualStyleBackColor = true;
@@ -509,9 +515,9 @@ namespace Records_Manager
             "Exclude Hidden",
             "Exclude Extensions",
             "Get Sub-folder items"});
-            this.add_action_options.Location = new System.Drawing.Point(3, 78);
+            this.add_action_options.Location = new System.Drawing.Point(3, 104);
             this.add_action_options.Name = "add_action_options";
-            this.add_action_options.Size = new System.Drawing.Size(440, 113);
+            this.add_action_options.Size = new System.Drawing.Size(440, 87);
             this.add_action_options.TabIndex = 2;
             // 
             // button7
@@ -519,10 +525,10 @@ namespace Records_Manager
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Dock = System.Windows.Forms.DockStyle.Top;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(3, 50);
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(3, 63);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(440, 28);
+            this.button7.Size = new System.Drawing.Size(440, 41);
             this.button7.TabIndex = 1;
             this.button7.Text = "Add";
             this.button7.UseVisualStyleBackColor = true;
@@ -533,10 +539,10 @@ namespace Records_Manager
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.Dock = System.Windows.Forms.DockStyle.Top;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.Location = new System.Drawing.Point(3, 22);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(440, 28);
+            this.button6.Size = new System.Drawing.Size(440, 41);
             this.button6.TabIndex = 0;
             this.button6.Text = "Get from Folder";
             this.button6.UseVisualStyleBackColor = true;
@@ -733,11 +739,11 @@ namespace Records_Manager
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(3, 164);
+            this.button5.Location = new System.Drawing.Point(3, 142);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(446, 29);
+            this.button5.Size = new System.Drawing.Size(446, 51);
             this.button5.TabIndex = 12;
             this.button5.Text = "Delete Record";
             this.button5.UseVisualStyleBackColor = true;
@@ -748,10 +754,10 @@ namespace Records_Manager
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.Location = new System.Drawing.Point(3, 27);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(446, 29);
+            this.button4.Size = new System.Drawing.Size(446, 48);
             this.button4.TabIndex = 11;
             this.button4.Text = "Change";
             this.button4.UseVisualStyleBackColor = true;
@@ -930,6 +936,7 @@ namespace Records_Manager
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listView1.ForeColor = System.Drawing.Color.White;
@@ -993,6 +1000,40 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 903);
             this.panel1.TabIndex = 4;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectAllToolStripMenuItem,
+            this.selectNoneToolStripMenuItem,
+            this.selectInverseToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 116);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            // 
+            // selectNoneToolStripMenuItem
+            // 
+            this.selectNoneToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectNoneToolStripMenuItem.Name = "selectNoneToolStripMenuItem";
+            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectNoneToolStripMenuItem.Text = "Select None";
+            this.selectNoneToolStripMenuItem.Click += new System.EventHandler(this.selectNoneToolStripMenuItem_Click);
+            // 
+            // selectInverseToolStripMenuItem
+            // 
+            this.selectInverseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectInverseToolStripMenuItem.Name = "selectInverseToolStripMenuItem";
+            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectInverseToolStripMenuItem.Text = "Select Inverse";
+            this.selectInverseToolStripMenuItem.Click += new System.EventHandler(this.selectInverseToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1004,6 +1045,7 @@ namespace Records_Manager
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Games Database Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -1048,6 +1090,7 @@ namespace Records_Manager
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1127,6 +1170,10 @@ namespace Records_Manager
         private Panel panel1;
         private NumericUpDown change_disk;
         private Button button12;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem selectAllToolStripMenuItem;
+        private ToolStripMenuItem selectNoneToolStripMenuItem;
+        private ToolStripMenuItem selectInverseToolStripMenuItem;
     }
 }
 
