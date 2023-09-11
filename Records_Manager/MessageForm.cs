@@ -23,7 +23,11 @@ namespace Records_Manager
             SoundPlayer exclamationPlayer = new SoundPlayer(exclamationSoundFilePath);
             //1=info
             //2=warning
-            label_message.Text = BreakFilePathIntoLines(message,45);
+            label_message.Text =  message;
+            if (message.Length > 45)
+            {
+                Width = 158 + message.Length * 5;
+            }
             info.Visible = type == 1? true : false;
             warning.Visible = type == 2? true : false;
             if (type == 1) { asteriskPlayer.Play(); }
@@ -37,38 +41,6 @@ namespace Records_Manager
         {
 
         }
-        public static string BreakFilePathIntoLines(string input, int maxCharactersPerLine)
-        {
-            if (string.IsNullOrEmpty(input) || maxCharactersPerLine <= 0)
-            {
-                return input;
-            }
-
-            var lines = new List<string>();
-
-            string[] pathParts = input.Split(new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries);
-
-            string currentLine = string.Empty;
-
-            foreach (var part in pathParts)
-            {
-                if ((currentLine + part).Length <= maxCharactersPerLine)
-                {
-                    currentLine += (currentLine == string.Empty) ? part : Path.DirectorySeparatorChar + part;
-                }
-                else
-                {
-                    lines.Add(currentLine);
-                    currentLine = part;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(currentLine))
-            {
-                lines.Add(currentLine);
-            }
-
-            return string.Join(Environment.NewLine, lines);
-        }
+         
     }
 }
