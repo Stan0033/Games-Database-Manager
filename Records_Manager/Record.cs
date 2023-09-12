@@ -17,6 +17,7 @@ namespace Records_Manager
         public string Publisher { get; set; }
         public List<string> Tags { get; set; }
         public string ImageURL { get; set; }
+        
 
         // Constructor
         public Record(string name,int disk, string series, string developer, string publisher, List<string> tags, string url)
@@ -43,6 +44,8 @@ namespace Records_Manager
             create.SubItems.Add(Publisher);
             create.SubItems.Add(string.Join(",", Tags));
             create.SubItems.Add(ImageURL);
+            
+            
             return create;
         }
         public string ToString()
@@ -59,7 +62,7 @@ namespace Records_Manager
 
             return $"[{Title}|{Disk}|{Series}|{Developer}|{Publisher}|{tagsJoined}|{ImageURL}]";
         }
-
+        
 
     }
    

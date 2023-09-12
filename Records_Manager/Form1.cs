@@ -14,15 +14,52 @@ namespace Records_Manager
     {
         Dictionary<int, List<Record>> records = new Dictionary<int, List<Record>>();
         bool SavedChanges;
-        int CurrentlySelectedDiskInListView;
+        int CurrentlySelectedDiskInListView = 0;
+        bool SelectedAllDisks = false;
         const string saveFileName = "database.grecs";
+        public Search lastSearch;
+
         public Form1()
         {
             InitializeComponent();
             SavedChanges = true;
-            CurrentlySelectedDiskInListView = -1;
+            CurrentlySelectedDiskInListView = 0;
+            lastSearch = null;
         }
+        public void RefreshResultsDynamically()
+        {
+            if (lastSearch== null)
+            {
+                if (SelectedAllDisks == false)
+                {
+                    if (CurrentlySelectedDiskInListView == 0) { return; }
+                    listView1.Items.Clear();
+                    foreach (Record r in records[CurrentlySelectedDiskInListView])
+                    {
+                        listView1.Items.Add(new ListViewItem(new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
 
+                    }
+                }
+                else
+                {
+                    listView1.Items.Clear();
+
+                    foreach (var record in records)
+                    {
+                        foreach (Record r in record.Value)
+                        {
+                            listView1.Items.Add(new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                SearchInRecords(lastSearch);
+            }
+          
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             List<string> tags = new Tags().Data;
@@ -49,7 +86,7 @@ namespace Records_Manager
 
         private void LoadDatabase(object sender, EventArgs e)
         {
-            if (SavedChanges == false) { _ = new MessageForm("You have unsaved changes.",2).ShowDialog();   return; }
+            if (SavedChanges == false) { _ = new MessageForm("You have unsaved changes.", 2).ShowDialog(); return; }
             records.Clear();
             string fullsaveFilePath = Path.Combine(Environment.CurrentDirectory, saveFileName);
             int allLoadedRecords = 0;
@@ -61,26 +98,26 @@ namespace Records_Manager
                 foreach (string line in file)
                 {
                     if (line.Trim().Length == 0) { continue; }
-                   
-                         try
-                         {
-                            string edited = RemoveFirstAndLastCharacter(line);
-                            string[] parts = edited.Split('|');
-                                 currentDisk = int.Parse(parts[1]);
-                            Record r = new Record(parts[0], int.Parse(parts[1]), parts[2],parts[3], parts[4], parts[5].Split(',').ToList(), parts[6]);
-                           if (!records.ContainsKey(currentDisk)) { records.Add(currentDisk, new List<Record>()); }
-                            records[currentDisk].Add(r);
-                            allLoadedRecords++;
-                         }
-                       catch { _ = new MessageForm("Error parsing the database file. Might be corrupted.", 2).ShowDialog();     return; }
-                     
+
+                    try
+                    {
+                        string edited = RemoveFirstAndLastCharacter(line);
+                        string[] parts = edited.Split('|');
+                        currentDisk = int.Parse(parts[1]);
+                        Record r = new Record(parts[0], int.Parse(parts[1]), parts[2], parts[3], parts[4], parts[5].Split(',').ToList(), parts[6]);
+                        if (!records.ContainsKey(currentDisk)) { records.Add(currentDisk, new List<Record>()); }
+                        records[currentDisk].Add(r);
+                        allLoadedRecords++;
+                    }
+                    catch { _ = new MessageForm("Error parsing the database file. Might be corrupted.", 2).ShowDialog(); return; }
+
                 }
                 if (allLoadedRecords > 0)
                 {
                     _ = new MessageForm($"Loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ", 1).ShowDialog();
-                     
+
                     list_disks.Items.Clear();
-                     
+
                     foreach (var disk in records)
                     {
                         list_disks.Items.Add(disk.Key);
@@ -90,7 +127,7 @@ namespace Records_Manager
             }
             else
             {
-                 
+
                 _ = new MessageForm($"{fullsaveFilePath} was not found.", 2).ShowDialog();
             }
         }
@@ -155,7 +192,7 @@ namespace Records_Manager
             bool excludeHidden = add_action_options.GetItemChecked(2);
             bool excludeExtensions = add_action_options.GetItemChecked(3);
             bool BrowseSubFolders = add_action_options.GetItemChecked(4);
-            if (!getFiles && !getFolders) {  _ = new MessageForm("'Get Files' and/or 'Get Folders' must be checked", 2).ShowDialog(); return; }
+            if (!getFiles && !getFolders) { _ = new MessageForm("'Get Files' and/or 'Get Folders' must be checked", 2).ShowDialog(); return; }
             string targetFolder = string.Empty;
 
             using (var folderDialog = new FolderBrowserDialog())
@@ -169,8 +206,8 @@ namespace Records_Manager
                     string[] files = Directory.GetFiles(targetFolder);
                     List<string> localContent = new List<string>();
 
-                    
-                    if (BrowseSubFolders) 
+
+                    if (BrowseSubFolders)
                     {
                         foreach (string folder in folders)
                         {
@@ -183,7 +220,7 @@ namespace Records_Manager
                         FoundContents.AddRange(localContent);
                     }
 
-                    
+
                 }
 
                 // Display the found contents in your add_Names control
@@ -310,7 +347,7 @@ namespace Records_Manager
      .Select(x => x.Trim())
      .Where(x => !string.IsNullOrEmpty(x))
      .ToList();
-            if (listOfTitles.Count==0) { _ = new MessageForm("At least one title must be present in the list of titles", 2).ShowDialog(); return; }
+            if (listOfTitles.Count == 0) { _ = new MessageForm("At least one title must be present in the list of titles", 2).ShowDialog(); return; }
 
             int addedTitles = 0;
             int maxTitles = listOfTitles.Count;
@@ -320,8 +357,8 @@ namespace Records_Manager
             string ser = add_Series.Text.Trim();
             int disk = (int)add_Disk.Value;
             string url = add_url.Text.Trim();
-            if (listOfTitles.Count == 0) {  _ = new MessageForm("No title/s are entered", 2).ShowDialog();  return; }
-            if (!IsAtLeastOneCheckBoxChecked()) {  _ = new MessageForm("At least one tag must be checked", 2).ShowDialog(); return; }
+            if (listOfTitles.Count == 0) { _ = new MessageForm("No title/s are entered", 2).ShowDialog(); return; }
+            if (!IsAtLeastOneCheckBoxChecked()) { _ = new MessageForm("At least one tag must be checked", 2).ShowDialog(); return; }
             List<string> checkedItems = add_tags.CheckedItems.Cast<string>().ToList();
             if (listOfTitles.Count > 0)
             {
@@ -347,7 +384,7 @@ namespace Records_Manager
             add_Disk.Value = 0;
             UncheckAllCheckBoxes(add_tags);
 
-              _ = new MessageForm($"Added {addedTitles}/{maxTitles} titles.", 1).ShowDialog();
+            _ = new MessageForm($"Added {addedTitles}/{maxTitles} titles.", 1).ShowDialog();
 
             if (addedTitles > 0)
             {
@@ -374,14 +411,18 @@ namespace Records_Manager
         {
             if (list_disks.SelectedItems.Count > 0)
             {
+                lastSearch = null;
                 listView1.Items.Clear();
                 int selected = int.Parse(list_disks.SelectedItems[0].ToString());
                 CurrentlySelectedDiskInListView = selected;
+                SelectedAllDisks = false;
                 foreach (Record r in records[selected])
                 {
                     listView1.Items.Add(new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
 
                 }
+
+
             }
         }
 
@@ -389,6 +430,7 @@ namespace Records_Manager
         {
             if (list_disks.SelectedItems.Count > 0)
             {
+                lastSearch = null;
                 listView1.Items.Clear();
                 int selected = int.Parse(list_disks.SelectedItems[0].ToString());
                 CurrentlySelectedDiskInListView = selected;
@@ -397,6 +439,7 @@ namespace Records_Manager
                     listView1.Items.Add(new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
 
                 }
+                SelectedAllDisks = false;
             }
         }
 
@@ -404,6 +447,7 @@ namespace Records_Manager
         {
             if (records.Count > 0)
             {
+                lastSearch = null;
                 listView1.Items.Clear();
 
                 foreach (var record in records)
@@ -414,6 +458,7 @@ namespace Records_Manager
 
                     }
                 }
+                SelectedAllDisks = true;
             }
         }
         public void RefreshListView()
@@ -468,7 +513,7 @@ namespace Records_Manager
             if (SavedChanges) { _ = new MessageForm("Nothing to save", 2).ShowDialog(); return; }
             else
             {
-               
+
 
                 ChangeSavedChangesStatus(true);
                 string fullSavePath = Path.Combine(Environment.CurrentDirectory, saveFileName);
@@ -477,7 +522,7 @@ namespace Records_Manager
                 int countRecords = 0;
                 foreach (var disk in records)
                 {
-                     
+
                     foreach (Record rec in disk.Value)
                     {
                         data += rec.ToString() + "\n";
@@ -486,7 +531,7 @@ namespace Records_Manager
                 }
                 File.WriteAllText(fullSavePath, data);
                 _ = new MessageForm($"Saved the database with {records.Count} disk/s and {countRecords} record/s.", 1).ShowDialog();
-                
+
             }
         }
 
@@ -534,193 +579,14 @@ namespace Records_Manager
 
         private void SearchRecords_Enter(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                return;
+                lastSearch = null;
+                lastSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags);
+
+                SearchInRecords(lastSearch);
             }
-             string search = search_name.Text.Trim().ToLower();
-            
-             List<Record> results = new List<Record>();
-            List<string> mustNOTcontain = search_mustnotcontain.Text.Trim() == string.Empty ? new List<string>() : search_mustnotcontain.Text.Split(',').ToList(); 
-            List<int> selectedDisks = GetSelectedDisks();
-            List<string> checkedTags = GetCheckedCheckboxNames(search_tags);
-            if (search_byName.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
 
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_byDev.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_byPublisher.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Publisher.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Publisher, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Publisher.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Publisher, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_bySeries.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Series.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Series, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Series.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Series, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            for (int i=0; i < checkedTags.Count; i++) { checkedTags[i] = checkedTags[i].Trim(); }
-           
-         
-               
-           
-             
-
-            DisplayResults(results);
-         
         }
         public List<string> GetCheckedCheckboxNames(CheckedListBox listCheckBox1)
         {
@@ -748,20 +614,20 @@ namespace Records_Manager
             {
                 foreach (string tag in checkedTags)
                 {
-                    if ( record.Tags.Contains(tag)) { continue;  }
+                    if (record.Tags.Contains(tag)) { continue; }
                     else
                     {
                         containsAll = false; break;
                     }
                 }
-                
+
             }
             return containsAll;
 
         }
         bool StringContainsNOTstring(string input, List<string> strings)
         {
-            if (strings.Count == 0) { return true;}
+            if (strings.Count == 0) { return true; }
             bool containsNOT = true;
             foreach (string stringtoNOTbePresent in strings)
             {
@@ -774,7 +640,7 @@ namespace Records_Manager
 
         private void DisplayResults(List<Record> results)
         {
-            
+
 
             listView1.Items.Clear();
 
@@ -783,28 +649,39 @@ namespace Records_Manager
                 foreach (Record result in results)
                 {
                     ListViewItem temp = result.getRow();
-                   listView1.Items.Add(temp);
+                    listView1.Items.Add(temp);
                 }
             }
         }
-        
-        private List<int> GetSelectedDisks()
+
+        private List<int> GetSelectedDisks(string diskData)
         {
-            
-            string[] textlistdisks = search_indisks.Text.Split(',');
             List<int> Disks = new List<int>();
-            if (search_indisks.Text.Trim().Length == 0) { return Disks; }
+
+            if (diskData.Trim().Length == 0) //if none are selected, return a list of all available
+            {
+                foreach (int number in records.Keys) { Disks.Add(number); }
+                return Disks;
+            }
+            //-------------------------------------------------------------
+            string[] textlistdisks = search_indisks.Text.Split(',');
+
+
             foreach (string disk in textlistdisks)
             {
                 string raw = disk.Trim();
-                Disks.Add(int.Parse(raw));
+                if (int.TryParse(raw, out int result))
+                {
+                    Disks.Add(result);
+                }
+
             }
             return Disks;
         }
 
-       
 
-        
+
+
 
         public bool StringContainsAllItems(string WhichString, List<string> listofItemsToCheck)
         {
@@ -854,7 +731,7 @@ namespace Records_Manager
             int checkedCount = change_tags.CheckedItems.Count;
             int totalCount = change_tags.Items.Count;
 
-            groupBox17.Text = $"Tags {checkedCount}/{totalCount}";
+            change_groupBox_tags.Text = $"Tags {checkedCount}/{totalCount}";
         }
 
         private void checkedListBox3_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -862,9 +739,23 @@ namespace Records_Manager
             int checkedCount = change_tags.CheckedItems.Count;
             int totalCount = change_tags.Items.Count;
 
-            groupBox17.Text = $"Tags {checkedCount}/{totalCount}";
+            change_groupBox_tags.Text = $"Tags {checkedCount}/{totalCount}";
         }
+        private void setTagsGroupBoxCount(CheckedListBox checkedListBox, GroupBox whichGroupBox)
+        {
+            int checkedCount = 0;
+            int maxCount = checkedListBox.Items.Count;
 
+            for (int i = 0; i < maxCount; i++)
+            {
+                if (checkedListBox.GetItemChecked(i))
+                {
+                    checkedCount++;
+                }
+            }
+
+            whichGroupBox.Text=$"Tags: {checkedCount}/{maxCount}";
+        }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // when you click on a name you should have the data entered in fields
@@ -876,26 +767,27 @@ namespace Records_Manager
                 ListViewItem selectedItem = listView1.SelectedItems[0];
 
                 // Create an array to store the subitem texts
-                string[] subitemArray = new string[selectedItem.SubItems.Count];
+                string[] SelectedRecordItemsData = new string[selectedItem.SubItems.Count];
 
                 // Iterate through the subitems and store their text in the array
                 for (int i = 0; i < selectedItem.SubItems.Count; i++)
                 {
-                    subitemArray[i] = selectedItem.SubItems[i].Text;
+                    SelectedRecordItemsData[i] = selectedItem.SubItems[i].Text;
                 }
 
                 // Now, subitemArray contains the text of all subitems in the clicked row.
-                change_name.Text = subitemArray[0];
-                change_disk.Value = int.Parse(subitemArray[1]);
-                change_series.Text = subitemArray[2];
-                change_dev.Text = subitemArray[3];
-                change_pub.Text = subitemArray[4];
+                change_name.Text = SelectedRecordItemsData[0];
+                change_disk.Value = int.Parse(SelectedRecordItemsData[1]);
+                change_series.Text = SelectedRecordItemsData[2];
+                change_dev.Text = SelectedRecordItemsData[3];
+                change_pub.Text = SelectedRecordItemsData[4];
                 // now the tags
-                PopulateCheckedListBox(subitemArray[5]);
+                PopulateChangeTagsCheckedListBox(SelectedRecordItemsData[5]);
+                setTagsGroupBoxCount(change_tags, change_groupBox_tags);
                 // now the image
-                foreach (var item in records[int.Parse(subitemArray[1])])
+                foreach (var item in records[int.Parse(SelectedRecordItemsData[1])])
                 {
-                    if (item.Title == subitemArray[0])
+                    if (item.Title == SelectedRecordItemsData[0])
                     {
                         change_url.Text = item.ImageURL;
 
@@ -937,22 +829,29 @@ namespace Records_Manager
                 change_pub.Text = string.Empty;
             }
         }
-        private void PopulateCheckedListBox(string inputString)
+        private void PopulateChangeTagsCheckedListBox(string inputString)
         {
             // Split the input string into individual items using the comma as a separator
             string[] items = inputString.Split(',');
 
-            // Iterate through the items and check the corresponding checkboxes in checkedListBox1
+            // Uncheck all checkboxes in change_tags
+            for (int i = 0; i < change_tags.Items.Count; i++)
+            {
+                change_tags.SetItemChecked(i, false);
+            }
+
+            // Iterate through the items and check the corresponding checkboxes in change_tags
             foreach (string item in items)
             {
                 int index = change_tags.FindStringExact(item); // Find the index of the item
                 if (index != ListBox.NoMatches)
                 {
-                    // If the item is found in checkedListBox1, check it
+                    // If the item is found in change_tags, check it
                     change_tags.SetItemChecked(index, true);
                 }
             }
         }
+
 
         private bool IsAtLeastOneCheckBoxChecked()
         {
@@ -965,13 +864,22 @@ namespace Records_Manager
             // If no checked items were found, return false
             return false;
         }
-
+        public void ClearChangeFields()
+        {
+            change_dev.Text = string.Empty;
+            change_pub.Text = string.Empty;
+            change_disk.Value = 0;
+            change_series.Text = string.Empty;
+            change_url.Text = string.Empty;
+            change_name.Text = string.Empty;
+            UncheckAllCheckBoxes(change_tags);
+        }
         private void changeRecord_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
             string newName = change_name.Text.Trim();
 
-            if (newName == string.Empty) {   _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
+            if (newName == string.Empty) { _ = new MessageForm($"Title cannot be empty", 2).ShowDialog(); return; }
             int newDisk = (int)change_disk.Value;
             if (newDisk == 0) { _ = new MessageForm($"New disk cannot be 0", 2).ShowDialog(); return; }
             string series = change_series.Text.Trim();
@@ -987,7 +895,7 @@ namespace Records_Manager
                 foreach (int index in listView1.SelectedIndices)
                 {
                     string currrentName = listView1.Items[index].SubItems[0].Text;
-                    
+
                     int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
 
                     for (int i = 0; i < records[currentDisk].Count; i++)
@@ -1010,10 +918,12 @@ namespace Records_Manager
 
                         }
                     }
-                    
+
                     _ = new MessageForm($"Changes made", 1).ShowDialog();
-                    listView1.Items.Clear();
+
                     ChangeSavedChangesStatus(false);
+                    RefreshResultsDynamically();
+                    ClearChangeFields();
                 }
             }
         }
@@ -1023,19 +933,19 @@ namespace Records_Manager
             int clearedItems = 0;
             if (listView1.SelectedItems.Count > 0)
             {
-              
+
                 foreach (int index in listView1.SelectedIndices)
                 {
                     string currrentName = listView1.Items[index].SubItems[0].Text;
-                   int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
-                   for (int i=0; i < records[currentDisk].Count; i++)
+                    int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+                    for (int i = 0; i < records[currentDisk].Count; i++)
                     {
-                        if (records[currentDisk][i].Title == currrentName) { records[currentDisk].RemoveAt(i);break; }
+                        if (records[currentDisk][i].Title == currrentName) { records[currentDisk].RemoveAt(i); break; }
                     }
-                    
+
                     clearedItems++;
                 }
-                
+
             }
             else
             {
@@ -1044,7 +954,7 @@ namespace Records_Manager
             listView1.Items.Clear();
             RemoveEmptyDrives();
             _ = new MessageForm($"Removed {clearedItems} items from the database.", 1).ShowDialog();
-             ChangeSavedChangesStatus(false);
+            ChangeSavedChangesStatus(false);
         }
         public void RemoveEmptyDrives()
         {
@@ -1055,192 +965,56 @@ namespace Records_Manager
                     records.Remove(item.Key);
                 }
             }
-    }
+        }
+        public void SearchInRecords(Search searchData)
+        {
+            // get the searched name - if empty, it can be with any name, as long as there are other requirements
+            string search = searchData.Title;
+             // prepare the list of results, for filling
+            List<Record> results = new List<Record>();
+            // the list of words that should not be containe in the string
+            List<string> MustNotContain_List = searchData.ExcludedContents.Trim() == string.Empty ? new List<string>() : searchData.ExcludedContents.Split(',').ToList();
+            // get the selected disks if any
+            List<int> selectedDisks = GetSelectedDisks(searchData.InDisks);
+           // get the cheked tags
+            List<string> checkedTags = GetCheckedCheckboxNames(searchData.Tags);
+            //---------------------------------------------------------------------
+            foreach (int disk_index in selectedDisks)
+            {
+                foreach (Record record in records[disk_index])
+                {
+                    string searched_field = string.Empty;
+                    if (searchData.Search_ByTitle)
+                    {
+                        searched_field = record.Title;
+                    }
+                    if (searchData.Search_ByDev)
+                    {
+                        searched_field = record.Developer;
+                    }
+                    if (searchData.Search_ByPub)
+                    {
 
+                        searched_field = record.Publisher;
+                    }
+                    if (searchData.Search_BySeries)
+                    {
+                        searched_field = record.Series;
+                    }
+                    searched_field = searched_field.ToLower();
+                    bool Contains_Name = search == string.Empty ? true : searched_field.Contains(search);
+                    bool ContainsNOT = MustNotContain_List.Count == 0 ? true : StringContainsNOTstring(searched_field, MustNotContain_List);
+                    bool ContainsTags = checkedTags.Count == 0 ? true : RecordTagsArePresent(record, checkedTags);
+                    if (Contains_Name && ContainsNOT && ContainsTags) { results.Add(record); }
+                }
+            }
+             DisplayResults(results);
+        }
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string search = search_name.Text.Trim().ToLower();
-            List<Record> results = new List<Record>();
-            List<string> mustNOTcontain = search_mustnotcontain.Text.Trim() == string.Empty ? new List<string>() : search_mustnotcontain.Text.Split(',').ToList();
-            List<int> selectedDisks = GetSelectedDisks();
-            List<string> checkedTags = GetCheckedCheckboxNames(search_tags);
-            if (search_byName.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Title.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Title, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_byDev.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Developer.ToLower().Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Developer, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_byPublisher.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Publisher.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Publisher, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Publisher.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Publisher, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            if (search_bySeries.Checked)
-            {
-                if (selectedDisks.Count == 0) // if no disks are selected
-                {
-                    foreach (var disk in records)
-                    {
-                        foreach (Record rec in disk.Value)
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Series.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Series, mustNOTcontain);
-
-                                bool containsTags = RecordTagsArePresent(rec, checkedTags);
-
-                                if (containstext && containsNotTexts && containsTags) {; results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-                else // if there are disks
-                {
-                    foreach (int selectedDisk in selectedDisks)
-                    {
-                        if (!records.ContainsKey(selectedDisk)) { continue; }
-                        foreach (Record rec in records[selectedDisk])
-                        {
-                            if (selectedDisks.Count == 0)//if no disks are selected
-                            {
-                                bool containstext = search == string.Empty ? true : rec.Series.Contains(search);
-                                bool containsNotTexts = StringContainsNOTstring(rec.Series, mustNOTcontain);
-                                bool containsTags = RecordTagsArePresent(rec, GetCheckedCheckboxNames(search_tags));
-
-
-                                if (containstext && containsNotTexts && containsTags) { results.Add(rec); }
-                            }
-
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i < checkedTags.Count; i++) { checkedTags[i] = checkedTags[i].Trim(); }
-
-
-
-
-
-
-            DisplayResults(results);
-
+            lastSearch = null;
+            lastSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags);
+            SearchInRecords(lastSearch);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -1251,7 +1025,7 @@ namespace Records_Manager
 
                 if (result == DialogResult.Yes)
                 {
-                    SaveAllChanges(null,null);
+                    SaveAllChanges(null, null);
                 }
                 else if (result == DialogResult.No)
                 {
@@ -1339,11 +1113,11 @@ namespace Records_Manager
 
         private void changeDiskNumber_Click(object sender, EventArgs e)
         {
-            if (list_disks.SelectedItems.Count == 1) 
+            if (list_disks.SelectedItems.Count == 1)
             {
                 int SelectedDisk = int.Parse(list_disks.Items[list_disks.SelectedIndex].ToString());
                 int newDisk = 0;
-                 using (var v = new changeValue())
+                using (var v = new changeValue())
                 {
                     if (v.ShowDialog() == DialogResult.OK)
                     {
@@ -1359,7 +1133,7 @@ namespace Records_Manager
                         records.Add(newDisk, records[SelectedDisk]);
                         records.Remove(SelectedDisk);
                     }
-                    RefreshDatabase(null,null);
+                    RefreshDatabase(null, null);
                     ChangeSavedChangesStatus(false);
                     listView1.Items.Clear();
                 }
@@ -1369,12 +1143,295 @@ namespace Records_Manager
 
         private void button14_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void pictureBox_Header_DoubleClick(object sender, EventArgs e)
         {
             pictureBox_Header.Visible = false;
         }
+
+        private void changeSeriesOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            string ser = change_series.Text.Trim();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "series";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Series = ser;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void changeDiskOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+
+            int disk = (int)change_disk.Value;
+            if (disk == 0) { _ = new MessageForm($"Disk is not allowed to be 0.", 2).ShowDialog(); return; }
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "disk";
+            List<string> RecordsToRemove = new List<string>();
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Disk = disk;
+                        if (!records.ContainsKey(disk)) { records.Add(disk, new List<Record>()); }
+                        records[disk].Add(records[currentDisk][i]);
+                        RecordsToRemove.Add(records[currentDisk][i].Title);
+                        records[currentDisk].RemoveAt(i);
+                        updateCount++;
+                    }
+
+                }
+                while (RecordsToRemove.Count > 0)
+                {
+                    for (int i = 0; i < records[currentDisk].Count; i++)
+                    {
+                        if (records[currentDisk][i].Title == RecordsToRemove[0]) ;
+                        records[currentDisk].RemoveAt(i);
+                        RecordsToRemove.RemoveAt(0);
+                        break;
+                    }
+                }
+            }
+
+
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void changeDeveloperOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            string dev = change_dev.Text.Trim();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "developer";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Developer = dev;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void changePublisherOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            string publisher = change_pub.Text.Trim();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "publisher";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Publisher = publisher;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void changeTagsOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            List<string> checkedItems = change_tags.CheckedItems.Cast<string>().ToList();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "tags";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Tags = checkedItems;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void changeImageOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            string url = change_url.Text.Trim();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "image url";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].ImageURL = url;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) { _ = new MessageForm($"No record is selected from the list.", 2).ShowDialog(); return; }
+
+            string title = change_name.Text.Trim();
+            int allSelected = listView1.SelectedItems.Count;
+            int updateCount = 0;
+            string updateWhat = "title";
+
+
+            foreach (int index in listView1.SelectedIndices)
+            {
+                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                for (int i = 0; i < records[currentDisk].Count; i++)
+                {
+                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                    {
+
+                        records[currentDisk][i].Title = title;
+
+                        updateCount++;
+                    }
+
+                }
+            }
+
+            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
+
+            RefreshResultsDynamically();
+            ClearChangeFields();
+            ChangeSavedChangesStatus(false);
+        }
+
+        private void search_tags_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setTagsGroupBoxCount(search_tags, groupBox_tags_search);
+        }
+
+        private void add_tags_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setTagsGroupBoxCount(add_tags, groupBox_tags_add);
+        }
     }
-    }
+}
+

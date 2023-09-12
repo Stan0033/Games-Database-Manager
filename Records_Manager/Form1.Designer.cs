@@ -46,7 +46,7 @@ namespace Records_Manager
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button12 = new System.Windows.Forms.Button();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.groupBox_tags_search = new System.Windows.Forms.GroupBox();
             this.search_tags = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.search_indisks = new System.Windows.Forms.TextBox();
@@ -65,7 +65,7 @@ namespace Records_Manager
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.add_url = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox_tags_add = new System.Windows.Forms.GroupBox();
             this.add_tags = new System.Windows.Forms.CheckedListBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.add_Publisher = new System.Windows.Forms.TextBox();
@@ -81,9 +81,23 @@ namespace Records_Manager
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.menu_change = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeSeriesOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeDiskOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeDeveloperOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.changePublisherOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeTagsOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.changeImageOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.change_url = new System.Windows.Forms.TextBox();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.change_groupBox_tags = new System.Windows.Forms.GroupBox();
             this.change_tags = new System.Windows.Forms.CheckedListBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.change_pub = new System.Windows.Forms.TextBox();
@@ -114,14 +128,14 @@ namespace Records_Manager
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox20.SuspendLayout();
+            this.groupBox_tags_search.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.groupBox15.SuspendLayout();
+            this.groupBox_tags_add.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -130,8 +144,9 @@ namespace Records_Manager
             this.groupBox14.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox18.SuspendLayout();
+            this.menu_change.SuspendLayout();
             this.groupBox22.SuspendLayout();
-            this.groupBox17.SuspendLayout();
+            this.change_groupBox_tags.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -313,7 +328,7 @@ namespace Records_Manager
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(452, 49);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Load";
+            this.button1.Text = "Load Database";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.LoadDatabase);
             // 
@@ -321,7 +336,7 @@ namespace Records_Manager
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage1.Controls.Add(this.button12);
-            this.tabPage1.Controls.Add(this.groupBox20);
+            this.tabPage1.Controls.Add(this.groupBox_tags_search);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox19);
@@ -348,19 +363,19 @@ namespace Records_Manager
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // groupBox20
+            // groupBox_tags_search
             // 
-            this.groupBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox20.Controls.Add(this.search_tags);
-            this.groupBox20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox20.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox20.Location = new System.Drawing.Point(3, 261);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(446, 178);
-            this.groupBox20.TabIndex = 17;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Tags";
+            this.groupBox_tags_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox_tags_search.Controls.Add(this.search_tags);
+            this.groupBox_tags_search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_tags_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_tags_search.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox_tags_search.Location = new System.Drawing.Point(3, 261);
+            this.groupBox_tags_search.Name = "groupBox_tags_search";
+            this.groupBox_tags_search.Size = new System.Drawing.Size(446, 178);
+            this.groupBox_tags_search.TabIndex = 17;
+            this.groupBox_tags_search.TabStop = false;
+            this.groupBox_tags_search.Text = "Tags";
             // 
             // search_tags
             // 
@@ -370,6 +385,7 @@ namespace Records_Manager
             this.search_tags.Name = "search_tags";
             this.search_tags.Size = new System.Drawing.Size(440, 153);
             this.search_tags.TabIndex = 0;
+            this.search_tags.SelectedIndexChanged += new System.EventHandler(this.search_tags_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -494,7 +510,7 @@ namespace Records_Manager
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage2.Controls.Add(this.groupBox16);
             this.tabPage2.Controls.Add(this.groupBox21);
-            this.tabPage2.Controls.Add(this.groupBox15);
+            this.tabPage2.Controls.Add(this.groupBox_tags_add);
             this.tabPage2.Controls.Add(this.groupBox10);
             this.tabPage2.Controls.Add(this.groupBox11);
             this.tabPage2.Controls.Add(this.groupBox12);
@@ -588,18 +604,18 @@ namespace Records_Manager
             this.add_url.Size = new System.Drawing.Size(440, 26);
             this.add_url.TabIndex = 1;
             // 
-            // groupBox15
+            // groupBox_tags_add
             // 
-            this.groupBox15.Controls.Add(this.add_tags);
-            this.groupBox15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox15.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox15.Location = new System.Drawing.Point(3, 259);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(446, 94);
-            this.groupBox15.TabIndex = 16;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Tags";
+            this.groupBox_tags_add.Controls.Add(this.add_tags);
+            this.groupBox_tags_add.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_tags_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox_tags_add.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox_tags_add.Location = new System.Drawing.Point(3, 259);
+            this.groupBox_tags_add.Name = "groupBox_tags_add";
+            this.groupBox_tags_add.Size = new System.Drawing.Size(446, 94);
+            this.groupBox_tags_add.TabIndex = 16;
+            this.groupBox_tags_add.TabStop = false;
+            this.groupBox_tags_add.Text = "Tags";
             // 
             // add_tags
             // 
@@ -609,6 +625,7 @@ namespace Records_Manager
             this.add_tags.Name = "add_tags";
             this.add_tags.Size = new System.Drawing.Size(440, 69);
             this.add_tags.TabIndex = 0;
+            this.add_tags.SelectedIndexChanged += new System.EventHandler(this.add_tags_SelectedIndexChanged);
             // 
             // groupBox10
             // 
@@ -725,7 +742,7 @@ namespace Records_Manager
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage4.Controls.Add(this.groupBox18);
             this.tabPage4.Controls.Add(this.groupBox22);
-            this.tabPage4.Controls.Add(this.groupBox17);
+            this.tabPage4.Controls.Add(this.change_groupBox_tags);
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Controls.Add(this.groupBox7);
             this.tabPage4.Controls.Add(this.groupBox6);
@@ -745,9 +762,9 @@ namespace Records_Manager
             this.groupBox18.Controls.Add(this.button4);
             this.groupBox18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox18.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox18.Location = new System.Drawing.Point(0, 454);
+            this.groupBox18.Location = new System.Drawing.Point(0, 386);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(452, 147);
+            this.groupBox18.Size = new System.Drawing.Size(452, 215);
             this.groupBox18.TabIndex = 21;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Actions";
@@ -759,7 +776,7 @@ namespace Records_Manager
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(3, 93);
+            this.button5.Location = new System.Drawing.Point(3, 161);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(446, 51);
             this.button5.TabIndex = 12;
@@ -769,6 +786,7 @@ namespace Records_Manager
             // 
             // button4
             // 
+            this.button4.ContextMenuStrip = this.menu_change;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -781,13 +799,119 @@ namespace Records_Manager
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.changeRecord_Click);
             // 
+            // menu_change
+            // 
+            this.menu_change.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripSeparator6,
+            this.changeSeriesOnlyToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.changeDiskOnlyToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.changeDeveloperOnlyToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.changePublisherOnlyToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.changeTagsOnlyToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.changeImageOnlyToolStripMenuItem});
+            this.menu_change.Name = "menu_change";
+            this.menu_change.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menu_change.Size = new System.Drawing.Size(294, 278);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(293, 34);
+            this.toolStripMenuItem1.Text = "Change name only";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changeSeriesOnlyToolStripMenuItem
+            // 
+            this.changeSeriesOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeSeriesOnlyToolStripMenuItem.Name = "changeSeriesOnlyToolStripMenuItem";
+            this.changeSeriesOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeSeriesOnlyToolStripMenuItem.Text = "Change series only";
+            this.changeSeriesOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeSeriesOnlyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changeDiskOnlyToolStripMenuItem
+            // 
+            this.changeDiskOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeDiskOnlyToolStripMenuItem.Name = "changeDiskOnlyToolStripMenuItem";
+            this.changeDiskOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeDiskOnlyToolStripMenuItem.Text = "Change disk only";
+            this.changeDiskOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeDiskOnlyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changeDeveloperOnlyToolStripMenuItem
+            // 
+            this.changeDeveloperOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeDeveloperOnlyToolStripMenuItem.Name = "changeDeveloperOnlyToolStripMenuItem";
+            this.changeDeveloperOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeDeveloperOnlyToolStripMenuItem.Text = "Change developer only";
+            this.changeDeveloperOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeDeveloperOnlyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changePublisherOnlyToolStripMenuItem
+            // 
+            this.changePublisherOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changePublisherOnlyToolStripMenuItem.Name = "changePublisherOnlyToolStripMenuItem";
+            this.changePublisherOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changePublisherOnlyToolStripMenuItem.Text = "Change publisher only";
+            this.changePublisherOnlyToolStripMenuItem.Click += new System.EventHandler(this.changePublisherOnlyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changeTagsOnlyToolStripMenuItem
+            // 
+            this.changeTagsOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeTagsOnlyToolStripMenuItem.Name = "changeTagsOnlyToolStripMenuItem";
+            this.changeTagsOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeTagsOnlyToolStripMenuItem.Text = "Change tags only";
+            this.changeTagsOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeTagsOnlyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(290, 6);
+            // 
+            // changeImageOnlyToolStripMenuItem
+            // 
+            this.changeImageOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeImageOnlyToolStripMenuItem.Name = "changeImageOnlyToolStripMenuItem";
+            this.changeImageOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeImageOnlyToolStripMenuItem.Text = "Change image only";
+            this.changeImageOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeImageOnlyToolStripMenuItem_Click);
+            // 
             // groupBox22
             // 
             this.groupBox22.Controls.Add(this.change_url);
             this.groupBox22.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox22.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox22.Location = new System.Drawing.Point(0, 408);
+            this.groupBox22.Location = new System.Drawing.Point(0, 340);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(452, 46);
             this.groupBox22.TabIndex = 20;
@@ -803,19 +927,19 @@ namespace Records_Manager
             this.change_url.Size = new System.Drawing.Size(446, 26);
             this.change_url.TabIndex = 1;
             // 
-            // groupBox17
+            // change_groupBox_tags
             // 
-            this.groupBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox17.Controls.Add(this.change_tags);
-            this.groupBox17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox17.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox17.Location = new System.Drawing.Point(0, 230);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(452, 178);
-            this.groupBox17.TabIndex = 18;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Tags";
+            this.change_groupBox_tags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.change_groupBox_tags.Controls.Add(this.change_tags);
+            this.change_groupBox_tags.Dock = System.Windows.Forms.DockStyle.Top;
+            this.change_groupBox_tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.change_groupBox_tags.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.change_groupBox_tags.Location = new System.Drawing.Point(0, 230);
+            this.change_groupBox_tags.Name = "change_groupBox_tags";
+            this.change_groupBox_tags.Size = new System.Drawing.Size(452, 110);
+            this.change_groupBox_tags.TabIndex = 18;
+            this.change_groupBox_tags.TabStop = false;
+            this.change_groupBox_tags.Text = "Tags";
             // 
             // change_tags
             // 
@@ -823,7 +947,7 @@ namespace Records_Manager
             this.change_tags.FormattingEnabled = true;
             this.change_tags.Location = new System.Drawing.Point(3, 22);
             this.change_tags.Name = "change_tags";
-            this.change_tags.Size = new System.Drawing.Size(446, 153);
+            this.change_tags.Size = new System.Drawing.Size(446, 85);
             this.change_tags.TabIndex = 0;
             this.change_tags.Click += new System.EventHandler(this.checkedListBox3_Click);
             this.change_tags.SelectedIndexChanged += new System.EventHandler(this.checkedListBox3_SelectedIndexChanged);
@@ -906,6 +1030,7 @@ namespace Records_Manager
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox5.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox5.Location = new System.Drawing.Point(0, 46);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(452, 46);
             this.groupBox5.TabIndex = 7;
@@ -917,6 +1042,7 @@ namespace Records_Manager
             this.change_series.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_series.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_series.Location = new System.Drawing.Point(3, 22);
+            this.change_series.Margin = new System.Windows.Forms.Padding(0);
             this.change_series.Name = "change_series";
             this.change_series.Size = new System.Drawing.Size(446, 26);
             this.change_series.TabIndex = 1;
@@ -1007,45 +1133,45 @@ namespace Records_Manager
             this.copyAsTextToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 154);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 174);
             // 
             // selectAllToolStripMenuItem
             // 
-            this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // selectNoneToolStripMenuItem
             // 
-            this.selectNoneToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectNoneToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectNoneToolStripMenuItem.Name = "selectNoneToolStripMenuItem";
-            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.selectNoneToolStripMenuItem.Text = "Select None";
             this.selectNoneToolStripMenuItem.Click += new System.EventHandler(this.selectNoneToolStripMenuItem_Click);
             // 
             // selectInverseToolStripMenuItem
             // 
-            this.selectInverseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectInverseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectInverseToolStripMenuItem.Name = "selectInverseToolStripMenuItem";
-            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.selectInverseToolStripMenuItem.Text = "Select Inverse";
             this.selectInverseToolStripMenuItem.Click += new System.EventHandler(this.selectInverseToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
-            this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // copyAsTextToolStripMenuItem
             // 
-            this.copyAsTextToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.copyAsTextToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.copyAsTextToolStripMenuItem.Name = "copyAsTextToolStripMenuItem";
-            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(194, 30);
+            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
             this.copyAsTextToolStripMenuItem.Text = "Copy as Text";
             this.copyAsTextToolStripMenuItem.Click += new System.EventHandler(this.copyAsTextToolStripMenuItem_Click);
             // 
@@ -1089,7 +1215,7 @@ namespace Records_Manager
             this.groupBox9.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
+            this.groupBox_tags_search.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1100,7 +1226,7 @@ namespace Records_Manager
             this.groupBox16.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
+            this.groupBox_tags_add.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -1112,9 +1238,10 @@ namespace Records_Manager
             this.groupBox14.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
+            this.menu_change.ResumeLayout(false);
             this.groupBox22.ResumeLayout(false);
             this.groupBox22.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
+            this.change_groupBox_tags.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1171,7 +1298,7 @@ namespace Records_Manager
         private TextBox change_series;
         private GroupBox groupBox4;
         private TextBox change_name;
-        private GroupBox groupBox15;
+        private GroupBox groupBox_tags_add;
         private CheckedListBox add_tags;
         private GroupBox groupBox10;
         private TextBox add_Publisher;
@@ -1182,7 +1309,7 @@ namespace Records_Manager
         private TextBox add_Series;
         private GroupBox groupBox14;
         private RichTextBox add_Names;
-        private GroupBox groupBox17;
+        private GroupBox change_groupBox_tags;
         private CheckedListBox change_tags;
         private Button button10;
         private Button button9;
@@ -1190,7 +1317,7 @@ namespace Records_Manager
         private GroupBox groupBox19;
         private Button button11;
         private NumericUpDown add_Disk;
-        private GroupBox groupBox20;
+        private GroupBox groupBox_tags_search;
         private CheckedListBox search_tags;
         private GroupBox groupBox16;
         private CheckedListBox add_action_options;
@@ -1214,6 +1341,20 @@ namespace Records_Manager
         private ToolStripMenuItem clearToolStripMenuItem;
         private ToolStripMenuItem copyAsTextToolStripMenuItem;
         private Button button13;
+        private ContextMenuStrip menu_change;
+        private ToolStripMenuItem changeSeriesOnlyToolStripMenuItem;
+        private ToolStripMenuItem changeDiskOnlyToolStripMenuItem;
+        private ToolStripMenuItem changeDeveloperOnlyToolStripMenuItem;
+        private ToolStripMenuItem changePublisherOnlyToolStripMenuItem;
+        private ToolStripMenuItem changeTagsOnlyToolStripMenuItem;
+        private ToolStripMenuItem changeImageOnlyToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }
 
