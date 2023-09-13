@@ -29,7 +29,7 @@ namespace Records_Manager
         }
         public void RefreshLastSearch()
         {
-            if (lastSearch== null)
+            if (lastSearch == null)
             {
                 if (SelectedAllDisks == false)
                 {
@@ -53,9 +53,9 @@ namespace Records_Manager
                         foreach (Record r in record.Value)
                         {
                             ListViewItem item = new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
-                            if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                            if (r.ImageURL.Length > 3) { item.ForeColor = Color.Gold; }
                             listView1.Items.Add(item);
-                             
+
                         }
                     }
                 }
@@ -64,7 +64,7 @@ namespace Records_Manager
             {
                 SearchInRecords(lastSearch);
             }
-          
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -121,7 +121,7 @@ namespace Records_Manager
                 if (allLoadedRecords > 0)
                 {
                     _ = new MessageForm($"Loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ", 1).ShowDialog();
-                   
+
 
 
 
@@ -356,6 +356,31 @@ namespace Records_Manager
 
             return result;
         }
+        public bool CheckForDulicatingRecords(List<string> list)
+        {
+            if (list.Count == 1) { return false; }
+            //first lowrcase them to compare easier
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = list[i].ToLower();
+
+            }
+            bool thereAreDuplicates = false;
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = 0; j < list.Count; i++)
+                {
+                    if (i == j) { continue; }
+                    if (list[i] == list[j])
+                    thereAreDuplicates = true;
+                    break;
+                }
+                if (thereAreDuplicates) { break; }
+            }
+
+
+            return thereAreDuplicates;
+        }
         private void AddRecords_Click(object sender, EventArgs e)
         {
             List<string> ExistingRecords = new List<string>();
@@ -365,6 +390,11 @@ namespace Records_Manager
      .Select(x => x.Trim())
      .Where(x => !string.IsNullOrEmpty(x))
      .ToList();
+            bool DuplicatingRecords = CheckForDulicatingRecords(listOfTitles);
+            if (DuplicatingRecords)
+            {
+                _ = new MessageForm("There are duplicating lines in the input field 'Title/s'.\nAdding process was cancelled.", 2).ShowDialog(); return;
+            }
             if (listOfTitles.Count == 0) { _ = new MessageForm("At least one title must be present in the list of titles", 2).ShowDialog(); return; }
 
             int addedTitles = 0;
@@ -1498,7 +1528,10 @@ namespace Records_Manager
             {
                 SaveAllChanges(null, null);
             }
-
+            if (e.Alt && e.KeyCode == Keys.A)
+            {
+                AddRecords_Click(null, null);
+            }
 
         }
 

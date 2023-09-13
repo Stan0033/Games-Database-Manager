@@ -49,3 +49,8 @@
 - Fixed the detection of repetitions by making them compare when lowercased
 - the tab add renamed to add new
 - added icons to all buttons, and their colors are different
+1.10  - 13/09/23
+- the fields that have to be filled now have asterisk in their name to indicate that
+- when you click the button "add", now if there are duplicating llines, you will be notified and the adding will not continue
+- new hotkey: alt+A will add a title
+- added tooltips for the buttons who have hotkeys

@@ -50,6 +50,11 @@ namespace Records_Manager
             this.search_tags = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.search_indisks = new System.Windows.Forms.TextBox();
+            this.menu_textb = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.search_mustnotcontain = new System.Windows.Forms.TextBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
@@ -125,17 +130,14 @@ namespace Records_Manager
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.menu_textb = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox_tags_search.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.menu_textb.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -162,7 +164,6 @@ namespace Records_Manager
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
-            this.menu_textb.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -334,6 +335,7 @@ namespace Records_Manager
             this.button2.Size = new System.Drawing.Size(452, 49);
             this.button2.TabIndex = 1;
             this.button2.Text = "Save All Changes";
+            this.toolTip1.SetToolTip(this.button2, "Alt+S");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.SaveAllChanges);
             // 
@@ -435,6 +437,49 @@ namespace Records_Manager
             this.search_indisks.Name = "search_indisks";
             this.search_indisks.Size = new System.Drawing.Size(440, 26);
             this.search_indisks.TabIndex = 0;
+            // 
+            // menu_textb
+            // 
+            this.menu_textb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6});
+            this.menu_textb.Name = "contextMenuStrip1";
+            this.menu_textb.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menu_textb.Size = new System.Drawing.Size(213, 140);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem3.Text = "Copy Field";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem4.Text = "Paste Append";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem5.Text = "Paste Prepend";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem6.Text = "Clear + Paste";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // groupBox2
             // 
@@ -597,6 +642,7 @@ namespace Records_Manager
             this.button7.Size = new System.Drawing.Size(440, 41);
             this.button7.TabIndex = 1;
             this.button7.Text = "Add";
+            this.toolTip1.SetToolTip(this.button7, "Alt+A");
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.AddRecords_Click);
             // 
@@ -651,7 +697,7 @@ namespace Records_Manager
             this.groupBox_tags_add.Size = new System.Drawing.Size(446, 94);
             this.groupBox_tags_add.TabIndex = 16;
             this.groupBox_tags_add.TabStop = false;
-            this.groupBox_tags_add.Text = "Tags";
+            this.groupBox_tags_add.Text = "Tags*";
             // 
             // add_tags
             // 
@@ -720,7 +766,7 @@ namespace Records_Manager
             this.groupBox12.Size = new System.Drawing.Size(446, 46);
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Disk";
+            this.groupBox12.Text = "Disk*";
             // 
             // add_Disk
             // 
@@ -765,7 +811,7 @@ namespace Records_Manager
             this.groupBox14.Size = new System.Drawing.Size(446, 72);
             this.groupBox14.TabIndex = 11;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Title/s";
+            this.groupBox14.Text = "Title/s*";
             // 
             // add_Names
             // 
@@ -823,6 +869,7 @@ namespace Records_Manager
             this.button5.Size = new System.Drawing.Size(446, 51);
             this.button5.TabIndex = 12;
             this.button5.Text = "Delete Record";
+            this.toolTip1.SetToolTip(this.button5, "Alt+D");
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.DeleteRecord_Click);
             // 
@@ -1255,49 +1302,6 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
-            // menu_textb
-            // 
-            this.menu_textb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.menu_textb.Name = "contextMenuStrip1";
-            this.menu_textb.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_textb.Size = new System.Drawing.Size(213, 140);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(212, 34);
-            this.toolStripMenuItem3.Text = "Copy Field";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(212, 34);
-            this.toolStripMenuItem4.Text = "Paste Append";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(212, 34);
-            this.toolStripMenuItem5.Text = "Paste Prepend";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(212, 34);
-            this.toolStripMenuItem6.Text = "Clear + Paste";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1309,7 +1313,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.9";
+            this.Text = "Games Database Manager v1.10";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1321,6 +1325,7 @@ namespace Records_Manager
             this.groupBox_tags_search.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menu_textb.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox19.ResumeLayout(false);
@@ -1358,7 +1363,6 @@ namespace Records_Manager
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.menu_textb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1465,6 +1469,7 @@ namespace Records_Manager
         private ToolStripMenuItem toolStripMenuItem4;
         private ToolStripMenuItem toolStripMenuItem5;
         private ToolStripMenuItem toolStripMenuItem6;
+        private ToolTip toolTip1;
     }
 }
 
