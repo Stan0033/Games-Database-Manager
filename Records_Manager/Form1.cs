@@ -18,22 +18,24 @@ namespace Records_Manager
         bool SelectedAllDisks = false;
         const string saveFileName = "database.grecs";
         public Search lastSearch;
-        
+        string appName;
         public Form1()
         {
             InitializeComponent();
             SavedChanges = true;
             CurrentlySelectedDiskInListView = 0;
             lastSearch = null;
+            appName = Text;
         }
-        public void RefreshResultsDynamically()
+        public void RefreshLastSearch()
         {
             if (lastSearch== null)
             {
                 if (SelectedAllDisks == false)
                 {
-                    if (CurrentlySelectedDiskInListView == 0) { return; }
+                    if (CurrentlySelectedDiskInListView <= 0) { return; }
                     listView1.Items.Clear();
+                    if (!records.ContainsKey(CurrentlySelectedDiskInListView)) { return; }
                     foreach (Record r in records[CurrentlySelectedDiskInListView])
                     {
                         ListViewItem item = new ListViewItem((new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
@@ -79,12 +81,12 @@ namespace Records_Manager
             if (saved)
             {
                 SavedChanges = true;
-                Text = "Games Database Manager [saved]";
+                Text = $"{appName} [saved]";
             }
             else
             {
                 SavedChanges = false;
-                Text = "Games Database Manager [unsaved]*";
+                Text = $"{appName} [unsaved]*";
             }
         }
 
@@ -131,6 +133,7 @@ namespace Records_Manager
                     }
                     SortListBoxItemsNumeric(list_disks);
                     RefreshDisksGRoupBoxName();
+                    ChangeSavedChangesStatus(true);
                 }
             }
             else
@@ -316,7 +319,7 @@ namespace Records_Manager
                 return false;
             }
         }
-        private void RefreshDatabase(object sender, EventArgs e)
+        private void RefreshDatabase_ListOfDisks(object sender, EventArgs e)
         {
             list_disks.Items.Clear();
             foreach (var disk in records)
@@ -375,6 +378,7 @@ namespace Records_Manager
             if (listOfTitles.Count == 0) { _ = new MessageForm("No title/s are entered", 2).ShowDialog(); return; }
             if (!IsAtLeastOneCheckBoxChecked()) { _ = new MessageForm("At least one tag must be checked", 2).ShowDialog(); return; }
             List<string> checkedItems = add_tags.CheckedItems.Cast<string>().ToList();
+            bool hasNewDisks = false;
             if (listOfTitles.Count > 0)
             {
                 foreach (string name in listOfTitles)
@@ -385,13 +389,14 @@ namespace Records_Manager
                     }
 
                     Record n = new Record(name, disk, ser, dev, pub, checkedItems, url);
-                    if (records.ContainsKey(disk) == false) { records.Add(disk, new List<Record> { n }); addedTitles++; }
+                    if (records.ContainsKey(disk) == false) { records.Add(disk, new List<Record> { n }); addedTitles++; hasNewDisks = true; }
                     else
                     {
                         records[disk].Add(n); addedTitles++;
                     }
                 }
             }
+            if (hasNewDisks) { RefreshDatabase_ListOfDisks(null,null); }
             add_Names.Text = string.Empty;
             add_Developer.Text = string.Empty;
             add_Publisher.Text = string.Empty;
@@ -582,9 +587,10 @@ namespace Records_Manager
             {
                 int disk = int.Parse(list_disks.SelectedItems[0].ToString());
                 records.Remove(disk);
-                RefreshDatabase(null, null);
+                RefreshDatabase_ListOfDisks(null, null);
                 ChangeSavedChangesStatus(false);
                 _ = new MessageForm($"Deleted disk {disk} from the database", 2).ShowDialog();
+                RefreshLastSearch();
             }
             else
             {
@@ -937,13 +943,13 @@ namespace Records_Manager
                     _ = new MessageForm($"Changes made", 1).ShowDialog();
 
                     ChangeSavedChangesStatus(false);
-                    RefreshResultsDynamically();
+                    RefreshLastSearch();
                     ClearChangeFields();
                 }
             }
         }
 
-        private void removeRecord_Click(object sender, EventArgs e)
+        private void DeleteRecord_Click(object sender, EventArgs e)
         {
             int clearedItems = 0;
             if (listView1.SelectedItems.Count > 0)
@@ -961,6 +967,7 @@ namespace Records_Manager
                     clearedItems++;
                 }
                 RefreshDisksGRoupBoxName();
+                RefreshLastSearch();
             }
             else
             {
@@ -1149,7 +1156,7 @@ namespace Records_Manager
                             records.Add(newDisk, records[SelectedDisk]);
                             records.Remove(SelectedDisk);
                         }
-                        RefreshDatabase(null, null);
+                        RefreshDatabase_ListOfDisks(null, null);
                         ChangeSavedChangesStatus(false);
                         listView1.Items.Clear();
                     }
@@ -1199,7 +1206,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1252,7 +1259,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1288,7 +1295,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1325,7 +1332,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1362,7 +1369,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1399,7 +1406,7 @@ namespace Records_Manager
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1435,7 +1442,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s with the new {updateWhat}.", 1).ShowDialog();
 
-            RefreshResultsDynamically();
+            RefreshLastSearch();
             ClearChangeFields();
             ChangeSavedChangesStatus(false);
         }
@@ -1477,6 +1484,10 @@ namespace Records_Manager
                 // Your code to handle the key combination goes here
                 // For example, display a message box:
                 tabControl1.SelectedIndex = 3;
+            }
+            if (e.Alt && e.KeyCode == Keys.D)
+            {
+                DeleteRecord_Click(null,null);
             }
         }
     }

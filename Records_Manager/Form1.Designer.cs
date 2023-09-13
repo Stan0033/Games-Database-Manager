@@ -232,7 +232,7 @@ namespace Records_Manager
             this.button10.TabIndex = 7;
             this.button10.Text = "Refresh List";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.RefreshDatabase);
+            this.button10.Click += new System.EventHandler(this.RefreshDatabase_ListOfDisks);
             // 
             // button9
             // 
@@ -782,7 +782,7 @@ namespace Records_Manager
             this.button5.TabIndex = 12;
             this.button5.Text = "Delete Record";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.removeRecord_Click);
+            this.button5.Click += new System.EventHandler(this.DeleteRecord_Click);
             // 
             // button4
             // 
@@ -1208,7 +1208,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager";
+            this.Text = "Games Database Manager v1.8";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

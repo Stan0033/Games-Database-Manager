@@ -36,3 +36,9 @@
 - results that have a preview imahe (header) will now be golden in the list
 - now when searching, and a disk inside the list of disks doesnt exist, it will not throw an exception
 - cancelling the window for changing disk number doe nothing now
+1.8 - 13/09/23
+- Deleting a record and deleting a disk will now also refresh the list, as it should have been
+- hotkeys: alt+D now also deletes the selected record/s
+- adding a record to disk that did not exist before, will now also refresh the list of disks
+- The title of the app's windows will now contain its version
+- when loading the dabase, in the title of the app, it will also say it's saved
