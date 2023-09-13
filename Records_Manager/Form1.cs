@@ -1164,6 +1164,10 @@ namespace Records_Manager
                 }
 
             }
+            else
+            {
+                _ = new MessageForm("A disk must be selected first", 2).ShowDialog();
+            }
         }
 
         private void button14_Click(object sender, EventArgs e)
