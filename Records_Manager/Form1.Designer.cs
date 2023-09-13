@@ -577,6 +577,7 @@ namespace Records_Manager
             this.search_name.Name = "search_name";
             this.search_name.Size = new System.Drawing.Size(446, 26);
             this.search_name.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.search_name, "Enter");
             this.search_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchRecords_Enter);
             // 
             // tabPage2
