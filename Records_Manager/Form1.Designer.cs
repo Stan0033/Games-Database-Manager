@@ -1192,7 +1192,7 @@ namespace Records_Manager
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Text = "Title";
             this.columnHeader1.Width = 190;
             // 
             // columnHeader2

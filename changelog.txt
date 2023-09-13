@@ -54,3 +54,4 @@
 - when you click the button "add", now if there are duplicating llines, you will be notified and the adding will not continue
 - new hotkey: alt+A will add a title
 - added tooltips for the buttons who have hotkeys
+- In the result list, name renamed to title
