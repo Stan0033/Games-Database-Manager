@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace Records_Manager
         public ListViewItem getRow()
         {
             ListViewItem create = new ListViewItem();
+            if (ImageURL.Length > 3) { create.ForeColor = Color.Gold; }
             Series = Series == string.Empty ? " " : Series;
             Developer = Developer == string.Empty ? " " : Developer;
             Publisher = Publisher == string.Empty ? " " : Publisher;

@@ -21,5 +21,10 @@ namespace Records_Manager
         {
             DialogResult= DialogResult.OK;
         }
+
+        private void cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult= DialogResult.Cancel;
+        }
     }
 }

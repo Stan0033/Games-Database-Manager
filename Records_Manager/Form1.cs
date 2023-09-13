@@ -18,7 +18,7 @@ namespace Records_Manager
         bool SelectedAllDisks = false;
         const string saveFileName = "database.grecs";
         public Search lastSearch;
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -36,7 +36,9 @@ namespace Records_Manager
                     listView1.Items.Clear();
                     foreach (Record r in records[CurrentlySelectedDiskInListView])
                     {
-                        listView1.Items.Add(new ListViewItem(new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                        ListViewItem item = new ListViewItem((new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                        if (r.ImageURL.Length > 3) { item.ForeColor = Color.Gold; }
+                        listView1.Items.Add(item);
 
                     }
                 }
@@ -48,8 +50,10 @@ namespace Records_Manager
                     {
                         foreach (Record r in record.Value)
                         {
-                            listView1.Items.Add(new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
-
+                            ListViewItem item = new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
+                            if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                            listView1.Items.Add(item);
+                             
                         }
                     }
                 }
@@ -115,6 +119,9 @@ namespace Records_Manager
                 if (allLoadedRecords > 0)
                 {
                     _ = new MessageForm($"Loaded the database, with {records.Count} disk/s and {allLoadedRecords} record/s ", 1).ShowDialog();
+                   
+
+
 
                     list_disks.Items.Clear();
 
@@ -123,6 +130,7 @@ namespace Records_Manager
                         list_disks.Items.Add(disk.Key);
                     }
                     SortListBoxItemsNumeric(list_disks);
+                    RefreshDisksGRoupBoxName();
                 }
             }
             else
@@ -130,6 +138,13 @@ namespace Records_Manager
 
                 _ = new MessageForm($"{fullsaveFilePath} was not found.", 2).ShowDialog();
             }
+        }
+        public void RefreshDisksGRoupBoxName()
+        {
+            int recordsCount = records.Count;
+            int recordsSubCount = 0;
+            foreach (var disk in records) { recordsSubCount += disk.Value.Count; }
+            groupBox_disks.Text = $"Disks: {recordsCount}, Records: {recordsSubCount}";
         }
         public static void SortListBoxItemsNumeric(ListBox listBox)
         {
@@ -386,6 +401,7 @@ namespace Records_Manager
 
             _ = new MessageForm($"Added {addedTitles}/{maxTitles} titles.", 1).ShowDialog();
 
+            RefreshDisksGRoupBoxName();
             if (addedTitles > 0)
             {
                 ChangeSavedChangesStatus(false);
@@ -409,24 +425,9 @@ namespace Records_Manager
         }
         private void list_disks_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (list_disks.SelectedItems.Count > 0)
-            {
-                lastSearch = null;
-                listView1.Items.Clear();
-                int selected = int.Parse(list_disks.SelectedItems[0].ToString());
-                CurrentlySelectedDiskInListView = selected;
-                SelectedAllDisks = false;
-                foreach (Record r in records[selected])
-                {
-                    listView1.Items.Add(new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
-
-                }
-
-
-            }
+            ViewDisk();
         }
-
-        private void ViewDisk(object sender, EventArgs e)
+        public void ViewDisk()
         {
             if (list_disks.SelectedItems.Count > 0)
             {
@@ -434,13 +435,21 @@ namespace Records_Manager
                 listView1.Items.Clear();
                 int selected = int.Parse(list_disks.SelectedItems[0].ToString());
                 CurrentlySelectedDiskInListView = selected;
+                SelectedAllDisks = false;
                 foreach (Record r in records[selected])
                 {
-                    listView1.Items.Add(new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                    ListViewItem item = (new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                    if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                    listView1.Items.Add(item);
 
                 }
-                SelectedAllDisks = false;
+
+
             }
+        }
+        private void ViewDisk(object sender, EventArgs e)
+        {
+            ViewDisk();
         }
 
         private void ViewDisks(object sender, EventArgs e)
@@ -454,7 +463,9 @@ namespace Records_Manager
                 {
                     foreach (Record r in record.Value)
                     {
-                        listView1.Items.Add(new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                        ListViewItem item = new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
+                        if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                        listView1.Items.Add(item);
 
                     }
                 }
@@ -471,7 +482,9 @@ namespace Records_Manager
                 {
                     foreach (Record r in record.Value)
                     {
-                        listView1.Items.Add(new ListViewItem(new[] { r.Title, record.Value.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                        ListViewItem item = new ListViewItem(new[] { r.Title, record.Value.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
+                        if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                        listView1.Items.Add(item);
 
                     }
                 }
@@ -480,7 +493,9 @@ namespace Records_Manager
             {
                 foreach (Record r in records[CurrentlySelectedDiskInListView])
                 {
-                    listView1.Items.Add(new ListViewItem(new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
+                    ListViewItem item = new ListViewItem(new[] { r.Title, CurrentlySelectedDiskInListView.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
+                    if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
+                    listView1.Items.Add(item);
 
                 }
             }
@@ -945,7 +960,7 @@ namespace Records_Manager
 
                     clearedItems++;
                 }
-
+                RefreshDisksGRoupBoxName();
             }
             else
             {
@@ -981,6 +996,7 @@ namespace Records_Manager
             //---------------------------------------------------------------------
             foreach (int disk_index in selectedDisks)
             {
+               if (!records.ContainsKey(disk_index)) { continue; }
                 foreach (Record record in records[disk_index])
                 {
                     string searched_field = string.Empty;
@@ -1122,20 +1138,21 @@ namespace Records_Manager
                     if (v.ShowDialog() == DialogResult.OK)
                     {
                         newDisk = (int)v.numericUpDown1.Value;
+
+                        if (records.ContainsKey(newDisk))
+                        {
+                            records[newDisk].AddRange(records[SelectedDisk]);
+                            records.Remove(SelectedDisk);
+                        }
+                        else
+                        {
+                            records.Add(newDisk, records[SelectedDisk]);
+                            records.Remove(SelectedDisk);
+                        }
+                        RefreshDatabase(null, null);
+                        ChangeSavedChangesStatus(false);
+                        listView1.Items.Clear();
                     }
-                    if (records.ContainsKey(newDisk))
-                    {
-                        records[newDisk].AddRange(records[SelectedDisk]);
-                        records.Remove(SelectedDisk);
-                    }
-                    else
-                    {
-                        records.Add(newDisk, records[SelectedDisk]);
-                        records.Remove(SelectedDisk);
-                    }
-                    RefreshDatabase(null, null);
-                    ChangeSavedChangesStatus(false);
-                    listView1.Items.Clear();
                 }
 
             }
@@ -1431,6 +1448,36 @@ namespace Records_Manager
         private void add_tags_SelectedIndexChanged(object sender, EventArgs e)
         {
             setTagsGroupBoxCount(add_tags, groupBox_tags_add);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // here the hotkeys
+            // Check for the key combination
+            if (e.Alt && e.KeyCode == Keys.D1)
+            {
+                // Your code to handle the key combination goes here
+                // For example, display a message box:
+               tabControl1.SelectedIndex= 0;
+            }
+            if (e.Alt && e.KeyCode == Keys.D2)
+            {
+                // Your code to handle the key combination goes here
+                // For example, display a message box:
+                tabControl1.SelectedIndex = 1;
+            }
+            if (e.Alt && e.KeyCode == Keys.D3)
+            {
+                // Your code to handle the key combination goes here
+                // For example, display a message box:
+                tabControl1.SelectedIndex = 2;
+            }
+            if (e.Alt && e.KeyCode == Keys.D4)
+            {
+                // Your code to handle the key combination goes here
+                // For example, display a message box:
+                tabControl1.SelectedIndex = 3;
+            }
         }
     }
 }

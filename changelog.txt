@@ -30,4 +30,9 @@
 - When you select a record in the result list, the count for selected tags will also be written in teh name of the groupbox
 - increased the size of the buttons of the context menu of the results list
 - Load renamed to load database
-
+1.7 - 13/09/23
+- The groupbox of the disks shows their count and the total number of records now
+- added hotkeys: alt + 1 or 2 or 3 or 4 will change the tab
+- results that have a preview imahe (header) will now be golden in the list
+- now when searching, and a disk inside the list of disks doesnt exist, it will not throw an exception
+- cancelling the window for changing disk number doe nothing now

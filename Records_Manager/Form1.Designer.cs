@@ -39,7 +39,7 @@ namespace Records_Manager
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBox_disks = new System.Windows.Forms.GroupBox();
             this.list_disks = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -126,7 +126,7 @@ namespace Records_Manager
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.groupBox_disks.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox_tags_search.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -180,7 +180,7 @@ namespace Records_Manager
             this.tabPage3.Controls.Add(this.button10);
             this.tabPage3.Controls.Add(this.button9);
             this.tabPage3.Controls.Add(this.button8);
-            this.tabPage3.Controls.Add(this.groupBox9);
+            this.tabPage3.Controls.Add(this.groupBox_disks);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.button1);
@@ -262,17 +262,17 @@ namespace Records_Manager
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.ViewDisk);
             // 
-            // groupBox9
+            // groupBox_disks
             // 
-            this.groupBox9.Controls.Add(this.list_disks);
-            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox9.Location = new System.Drawing.Point(0, 98);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(452, 199);
-            this.groupBox9.TabIndex = 4;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Disks";
+            this.groupBox_disks.Controls.Add(this.list_disks);
+            this.groupBox_disks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_disks.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox_disks.Location = new System.Drawing.Point(0, 98);
+            this.groupBox_disks.Name = "groupBox_disks";
+            this.groupBox_disks.Size = new System.Drawing.Size(452, 199);
+            this.groupBox_disks.TabIndex = 4;
+            this.groupBox_disks.TabStop = false;
+            this.groupBox_disks.Text = "Disks";
             // 
             // list_disks
             // 
@@ -1205,14 +1205,16 @@ namespace Records_Manager
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Games Database Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
+            this.groupBox_disks.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox_tags_search.ResumeLayout(false);
@@ -1286,7 +1288,7 @@ namespace Records_Manager
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
-        private GroupBox groupBox9;
+        private GroupBox groupBox_disks;
         private ListBox list_disks;
         private TabPage tabPage4;
         private GroupBox groupBox8;
