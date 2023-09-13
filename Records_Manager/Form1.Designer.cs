@@ -122,8 +122,14 @@ namespace Records_Manager
             this.selectInverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAsTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.menu_textb = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -156,6 +162,7 @@ namespace Records_Manager
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
+            this.menu_textb.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -212,6 +219,8 @@ namespace Records_Manager
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button11.ForeColor = System.Drawing.Color.Red;
+            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.Location = new System.Drawing.Point(0, 525);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(452, 38);
@@ -226,6 +235,8 @@ namespace Records_Manager
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.Location = new System.Drawing.Point(0, 395);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(452, 49);
@@ -240,6 +251,8 @@ namespace Records_Manager
             this.button9.Dock = System.Windows.Forms.DockStyle.Top;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.Location = new System.Drawing.Point(0, 346);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(452, 49);
@@ -254,6 +267,8 @@ namespace Records_Manager
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.Location = new System.Drawing.Point(0, 297);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(452, 49);
@@ -272,7 +287,7 @@ namespace Records_Manager
             this.groupBox_disks.Size = new System.Drawing.Size(452, 199);
             this.groupBox_disks.TabIndex = 4;
             this.groupBox_disks.TabStop = false;
-            this.groupBox_disks.Text = "Disks";
+            this.groupBox_disks.Text = "Disks: 0, records: - 0";
             // 
             // list_disks
             // 
@@ -293,6 +308,8 @@ namespace Records_Manager
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.Red;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(0, 563);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
@@ -308,6 +325,9 @@ namespace Records_Manager
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.Cyan;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(0, 49);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
@@ -323,6 +343,9 @@ namespace Records_Manager
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(10);
             this.button1.Name = "button1";
@@ -355,6 +378,9 @@ namespace Records_Manager
             this.button12.Dock = System.Windows.Forms.DockStyle.Top;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.Location = new System.Drawing.Point(3, 439);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(446, 40);
@@ -402,6 +428,7 @@ namespace Records_Manager
             // 
             // search_indisks
             // 
+            this.search_indisks.ContextMenuStrip = this.menu_textb;
             this.search_indisks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.search_indisks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_indisks.Location = new System.Drawing.Point(3, 27);
@@ -425,6 +452,7 @@ namespace Records_Manager
             // 
             // search_mustnotcontain
             // 
+            this.search_mustnotcontain.ContextMenuStrip = this.menu_textb;
             this.search_mustnotcontain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.search_mustnotcontain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_mustnotcontain.Location = new System.Drawing.Point(3, 22);
@@ -497,6 +525,7 @@ namespace Records_Manager
             // 
             // search_name
             // 
+            this.search_name.ContextMenuStrip = this.menu_textb;
             this.search_name.Dock = System.Windows.Forms.DockStyle.Top;
             this.search_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_name.Location = new System.Drawing.Point(3, 3);
@@ -522,7 +551,7 @@ namespace Records_Manager
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(452, 601);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Add";
+            this.tabPage2.Text = "Add New";
             // 
             // groupBox16
             // 
@@ -560,6 +589,9 @@ namespace Records_Manager
             this.button7.Dock = System.Windows.Forms.DockStyle.Top;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Location = new System.Drawing.Point(3, 63);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(440, 41);
@@ -574,6 +606,9 @@ namespace Records_Manager
             this.button6.Dock = System.Windows.Forms.DockStyle.Top;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.Location = new System.Drawing.Point(3, 22);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(440, 41);
@@ -597,6 +632,7 @@ namespace Records_Manager
             // 
             // add_url
             // 
+            this.add_url.ContextMenuStrip = this.menu_textb;
             this.add_url.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_url.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.add_url.Location = new System.Drawing.Point(3, 22);
@@ -642,6 +678,7 @@ namespace Records_Manager
             // 
             // add_Publisher
             // 
+            this.add_Publisher.ContextMenuStrip = this.menu_textb;
             this.add_Publisher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_Publisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.add_Publisher.Location = new System.Drawing.Point(3, 22);
@@ -664,6 +701,7 @@ namespace Records_Manager
             // 
             // add_Developer
             // 
+            this.add_Developer.ContextMenuStrip = this.menu_textb;
             this.add_Developer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_Developer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.add_Developer.Location = new System.Drawing.Point(3, 22);
@@ -708,6 +746,7 @@ namespace Records_Manager
             // 
             // add_Series
             // 
+            this.add_Series.ContextMenuStrip = this.menu_textb;
             this.add_Series.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_Series.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.add_Series.Location = new System.Drawing.Point(3, 22);
@@ -730,6 +769,7 @@ namespace Records_Manager
             // 
             // add_Names
             // 
+            this.add_Names.ContextMenuStrip = this.menu_textb;
             this.add_Names.Dock = System.Windows.Forms.DockStyle.Fill;
             this.add_Names.Location = new System.Drawing.Point(3, 22);
             this.add_Names.Name = "add_Names";
@@ -776,6 +816,8 @@ namespace Records_Manager
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.Red;
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(3, 161);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(446, 51);
@@ -791,6 +833,8 @@ namespace Records_Manager
             this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(3, 27);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(446, 48);
@@ -920,6 +964,7 @@ namespace Records_Manager
             // 
             // change_url
             // 
+            this.change_url.ContextMenuStrip = this.menu_textb;
             this.change_url.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_url.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_url.Location = new System.Drawing.Point(3, 22);
@@ -969,6 +1014,7 @@ namespace Records_Manager
             // 
             // change_pub
             // 
+            this.change_pub.ContextMenuStrip = this.menu_textb;
             this.change_pub.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_pub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_pub.Location = new System.Drawing.Point(3, 22);
@@ -992,6 +1038,7 @@ namespace Records_Manager
             // 
             // change_dev
             // 
+            this.change_dev.ContextMenuStrip = this.menu_textb;
             this.change_dev.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_dev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_dev.Location = new System.Drawing.Point(3, 22);
@@ -1039,6 +1086,7 @@ namespace Records_Manager
             // 
             // change_series
             // 
+            this.change_series.ContextMenuStrip = this.menu_textb;
             this.change_series.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_series.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_series.Location = new System.Drawing.Point(3, 22);
@@ -1063,6 +1111,7 @@ namespace Records_Manager
             // 
             // change_name
             // 
+            this.change_name.ContextMenuStrip = this.menu_textb;
             this.change_name.Dock = System.Windows.Forms.DockStyle.Fill;
             this.change_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.change_name.Location = new System.Drawing.Point(3, 22);
@@ -1130,16 +1179,17 @@ namespace Records_Manager
             this.selectNoneToolStripMenuItem,
             this.selectInverseToolStripMenuItem,
             this.clearToolStripMenuItem,
-            this.copyAsTextToolStripMenuItem});
+            this.copyAsTextToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 174);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(287, 208);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
@@ -1147,7 +1197,7 @@ namespace Records_Manager
             // 
             this.selectNoneToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectNoneToolStripMenuItem.Name = "selectNoneToolStripMenuItem";
-            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.selectNoneToolStripMenuItem.Text = "Select None";
             this.selectNoneToolStripMenuItem.Click += new System.EventHandler(this.selectNoneToolStripMenuItem_Click);
             // 
@@ -1155,7 +1205,7 @@ namespace Records_Manager
             // 
             this.selectInverseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectInverseToolStripMenuItem.Name = "selectInverseToolStripMenuItem";
-            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.selectInverseToolStripMenuItem.Text = "Select Inverse";
             this.selectInverseToolStripMenuItem.Click += new System.EventHandler(this.selectInverseToolStripMenuItem_Click);
             // 
@@ -1163,7 +1213,7 @@ namespace Records_Manager
             // 
             this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -1171,9 +1221,17 @@ namespace Records_Manager
             // 
             this.copyAsTextToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.copyAsTextToolStripMenuItem.Name = "copyAsTextToolStripMenuItem";
-            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
-            this.copyAsTextToolStripMenuItem.Text = "Copy as Text";
+            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.copyAsTextToolStripMenuItem.Text = "Copy Record/s As Text";
             this.copyAsTextToolStripMenuItem.Click += new System.EventHandler(this.copyAsTextToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(286, 34);
+            this.toolStripMenuItem2.Text = "Copy Title/s as Text";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // pictureBox_Header
             // 
@@ -1197,6 +1255,49 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
+            // menu_textb
+            // 
+            this.menu_textb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6});
+            this.menu_textb.Name = "contextMenuStrip1";
+            this.menu_textb.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menu_textb.Size = new System.Drawing.Size(213, 140);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem3.Text = "Copy Field";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem4.Text = "Paste Append";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem5.Text = "Paste Prepend";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(212, 34);
+            this.toolStripMenuItem6.Text = "Clear + Paste";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1208,7 +1309,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.8";
+            this.Text = "Games Database Manager v1.9";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1257,6 +1358,7 @@ namespace Records_Manager
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.menu_textb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1357,6 +1459,12 @@ namespace Records_Manager
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ContextMenuStrip menu_textb;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem toolStripMenuItem6;
     }
 }
 

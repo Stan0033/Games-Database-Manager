@@ -42,3 +42,10 @@
 - adding a record to disk that did not exist before, will now also refresh the list of disks
 - The title of the app's windows will now contain its version
 - when loading the dabase, in the title of the app, it will also say it's saved
+1.9  - 13/09/23
+- hotkey: ctrl+s now saves the changes, like when you click the button
+- to the right-click menu of the results list, added "copy title/s"
+- added context menus for all textboxes
+- Fixed the detection of repetitions by making them compare when lowercased
+- the tab add renamed to add new
+- added icons to all buttons, and their colors are different

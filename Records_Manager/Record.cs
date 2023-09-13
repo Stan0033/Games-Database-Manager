@@ -18,10 +18,15 @@ namespace Records_Manager
         public string Publisher { get; set; }
         public List<string> Tags { get; set; }
         public string ImageURL { get; set; }
+        public int ReleaseYear { get; set; }
+        public string Platform { get; set; }
+        public string Link_Steam { get; set; }
+        public string Link_Wiki { get; set; }
+        public double SizeOnDisk { get; set; }
         
 
         // Constructor
-        public Record(string name,int disk, string series, string developer, string publisher, List<string> tags, string url)
+        public Record(string name,int disk, string series, string developer, string publisher, List<string> tags, string url, double sizeOnDisk= 0,string platform = "", string link_steam="", string link_wiki="",int releaseYear=0  )
         {
             Title = name;
             Disk = disk;
@@ -30,6 +35,11 @@ namespace Records_Manager
             Publisher = publisher;
             Tags = tags;
             ImageURL= url;
+            ReleaseYear = releaseYear;
+            Platform = platform;
+            Link_Steam = link_steam;
+            Link_Wiki = link_wiki;
+            SizeOnDisk = sizeOnDisk;
         }
         public ListViewItem getRow()
         {

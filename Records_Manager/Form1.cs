@@ -335,7 +335,7 @@ namespace Records_Manager
             {
                 foreach (var record in disk.Value)
                 {
-                    if (record.Title == name) { exists = true; break; }
+                    if (record.Title.ToLower() == name.ToLower()) { exists = true; break; }
                 }
             }
             return exists;
@@ -967,7 +967,7 @@ namespace Records_Manager
                     clearedItems++;
                 }
                 RefreshDisksGRoupBoxName();
-                RefreshLastSearch();
+               
             }
             else
             {
@@ -977,6 +977,7 @@ namespace Records_Manager
             RemoveEmptyDrives();
             _ = new MessageForm($"Removed {clearedItems} items from the database.", 1).ShowDialog();
             ChangeSavedChangesStatus(false);
+            RefreshLastSearch();
         }
         public void RemoveEmptyDrives()
         {
@@ -1488,6 +1489,78 @@ namespace Records_Manager
             if (e.Alt && e.KeyCode == Keys.D)
             {
                 DeleteRecord_Click(null,null);
+            }
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                SaveAllChanges(null, null);
+            }
+
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            List<string> data = new List<string>();
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                data.Add(item.SubItems[0].Text);
+            }
+            if (data.Count > 0)
+            {
+                Clipboard.SetText(string.Join("\n", data));
+            }
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveControl is TextBox)
+            {
+                TextBox focusedTextBox = (TextBox)this.ActiveControl;
+                // Now, you have a reference to the focused TextBox.
+
+                // You can access its properties or handle events, for example:
+                string text = Clipboard.GetText();
+                // Do something with the text...
+                focusedTextBox.Text = text + focusedTextBox.Text;
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveControl is TextBox)
+            {
+                TextBox focusedTextBox = (TextBox)this.ActiveControl;
+                // Now, you have a reference to the focused TextBox.
+
+                // You can access its properties or handle events, for example:
+                string text =  focusedTextBox.Text;
+                 
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                    Clipboard.SetText(text);
+                }
+                
+                
+            }
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveControl is TextBox)
+            {
+                TextBox focusedTextBox = (TextBox)this.ActiveControl;
+                string text = Clipboard.GetText();
+                focusedTextBox.Text = focusedTextBox.Text + text;
+            }
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveControl is TextBox)
+            {
+                TextBox focusedTextBox = (TextBox)this.ActiveControl;
+                string text = Clipboard.GetText();
+                focusedTextBox.Text = text;
             }
         }
     }
