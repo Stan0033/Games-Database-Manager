@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -1607,6 +1608,37 @@ namespace Records_Manager
                 focusedTextBox.Text = text;
             }
         }
+
+        private void searchNameInGoogleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                string term = listView1.SelectedItems[0].SubItems[0].Text;
+                if (!string.IsNullOrEmpty(term))
+                {
+                    OpenDefaultBrowserWithGoogleSearch(term);
+                }
+            }
+        }
+        private void OpenDefaultBrowserWithGoogleSearch(string searchTerm)
+        {
+            try
+            {
+                // Encode the search term to make it URL-safe
+                string encodedSearchTerm = Uri.EscapeDataString(searchTerm);
+
+                // Construct the Google search URL
+                string googleSearchUrl = $"https://www.google.com/search?q={encodedSearchTerm}";
+
+                // Start the default web browser with the Google search URL
+                Process.Start(googleSearchUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
     }
+
 }
 

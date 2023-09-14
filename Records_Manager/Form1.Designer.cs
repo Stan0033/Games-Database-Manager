@@ -131,6 +131,7 @@ namespace Records_Manager
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.searchNameInGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -1238,16 +1239,17 @@ namespace Records_Manager
             this.selectInverseToolStripMenuItem,
             this.clearToolStripMenuItem,
             this.copyAsTextToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.searchNameInGoogleToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(287, 208);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(301, 242);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
@@ -1255,7 +1257,7 @@ namespace Records_Manager
             // 
             this.selectNoneToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectNoneToolStripMenuItem.Name = "selectNoneToolStripMenuItem";
-            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.selectNoneToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
             this.selectNoneToolStripMenuItem.Text = "Select None";
             this.selectNoneToolStripMenuItem.Click += new System.EventHandler(this.selectNoneToolStripMenuItem_Click);
             // 
@@ -1263,7 +1265,7 @@ namespace Records_Manager
             // 
             this.selectInverseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.selectInverseToolStripMenuItem.Name = "selectInverseToolStripMenuItem";
-            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.selectInverseToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
             this.selectInverseToolStripMenuItem.Text = "Select Inverse";
             this.selectInverseToolStripMenuItem.Click += new System.EventHandler(this.selectInverseToolStripMenuItem_Click);
             // 
@@ -1271,7 +1273,7 @@ namespace Records_Manager
             // 
             this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -1279,7 +1281,7 @@ namespace Records_Manager
             // 
             this.copyAsTextToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.copyAsTextToolStripMenuItem.Name = "copyAsTextToolStripMenuItem";
-            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.copyAsTextToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
             this.copyAsTextToolStripMenuItem.Text = "Copy Record/s As Text";
             this.copyAsTextToolStripMenuItem.Click += new System.EventHandler(this.copyAsTextToolStripMenuItem_Click);
             // 
@@ -1287,7 +1289,7 @@ namespace Records_Manager
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(286, 34);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(300, 34);
             this.toolStripMenuItem2.Text = "Copy Title/s as Text";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -1313,6 +1315,14 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
+            // searchNameInGoogleToolStripMenuItem
+            // 
+            this.searchNameInGoogleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.searchNameInGoogleToolStripMenuItem.Name = "searchNameInGoogleToolStripMenuItem";
+            this.searchNameInGoogleToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
+            this.searchNameInGoogleToolStripMenuItem.Text = "Search Name In Google";
+            this.searchNameInGoogleToolStripMenuItem.Click += new System.EventHandler(this.searchNameInGoogleToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1324,7 +1334,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.11";
+            this.Text = "Games Database Manager v1.12";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1481,6 +1491,7 @@ namespace Records_Manager
         private ToolStripMenuItem toolStripMenuItem5;
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolTip toolTip1;
+        private ToolStripMenuItem searchNameInGoogleToolStripMenuItem;
     }
 }
 
