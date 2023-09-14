@@ -55,6 +55,7 @@
             // 
             // cancel
             // 
+            this.cancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancel.Dock = System.Windows.Forms.DockStyle.Left;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -68,6 +69,7 @@
             // 
             // ok
             // 
+            this.ok.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ok.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ok.Location = new System.Drawing.Point(75, 29);

@@ -55,3 +55,8 @@
 - new hotkey: alt+A will add a title
 - added tooltips for the buttons who have hotkeys
 - In the result list, name renamed to title
+1.11   - 14/09/23
+- Discard database also changes the text of the groupbox now
+- all other forms now also have hand as cursor for their buttons. The radiobuttons too
+- "change disk number" now also has an icon
+- refresh list,delete disk and change disk number also refreshes the text in the groupbox of disks

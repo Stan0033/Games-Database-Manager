@@ -198,6 +198,7 @@ namespace Records_Manager
             this.tabPage3.Size = new System.Drawing.Size(452, 601);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Database";
+            this.toolTip1.SetToolTip(this.tabPage3, "Alt+1");
             // 
             // button13
             // 
@@ -205,6 +206,8 @@ namespace Records_Manager
             this.button13.Dock = System.Windows.Forms.DockStyle.Top;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.Location = new System.Drawing.Point(0, 444);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(452, 49);
@@ -373,6 +376,7 @@ namespace Records_Manager
             this.tabPage1.Size = new System.Drawing.Size(452, 601);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Search";
+            this.toolTip1.SetToolTip(this.tabPage1, "Alt+2");
             // 
             // button12
             // 
@@ -383,7 +387,7 @@ namespace Records_Manager
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(3, 439);
+            this.button12.Location = new System.Drawing.Point(3, 548);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(446, 40);
             this.button12.TabIndex = 18;
@@ -400,7 +404,7 @@ namespace Records_Manager
             this.groupBox_tags_search.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox_tags_search.Location = new System.Drawing.Point(3, 261);
             this.groupBox_tags_search.Name = "groupBox_tags_search";
-            this.groupBox_tags_search.Size = new System.Drawing.Size(446, 178);
+            this.groupBox_tags_search.Size = new System.Drawing.Size(446, 287);
             this.groupBox_tags_search.TabIndex = 17;
             this.groupBox_tags_search.TabStop = false;
             this.groupBox_tags_search.Text = "Tags";
@@ -411,7 +415,7 @@ namespace Records_Manager
             this.search_tags.FormattingEnabled = true;
             this.search_tags.Location = new System.Drawing.Point(3, 22);
             this.search_tags.Name = "search_tags";
-            this.search_tags.Size = new System.Drawing.Size(440, 153);
+            this.search_tags.Size = new System.Drawing.Size(440, 262);
             this.search_tags.TabIndex = 0;
             this.search_tags.SelectedIndexChanged += new System.EventHandler(this.search_tags_SelectedIndexChanged);
             // 
@@ -525,6 +529,7 @@ namespace Records_Manager
             // search_byPublisher
             // 
             this.search_byPublisher.AutoSize = true;
+            this.search_byPublisher.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_byPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byPublisher.Location = new System.Drawing.Point(6, 78);
             this.search_byPublisher.Name = "search_byPublisher";
@@ -537,6 +542,7 @@ namespace Records_Manager
             // 
             this.search_byName.AutoSize = true;
             this.search_byName.Checked = true;
+            this.search_byName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_byName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byName.Location = new System.Drawing.Point(6, 18);
             this.search_byName.Name = "search_byName";
@@ -549,6 +555,7 @@ namespace Records_Manager
             // search_byDev
             // 
             this.search_byDev.AutoSize = true;
+            this.search_byDev.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_byDev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byDev.Location = new System.Drawing.Point(6, 48);
             this.search_byDev.Name = "search_byDev";
@@ -560,6 +567,7 @@ namespace Records_Manager
             // search_bySeries
             // 
             this.search_bySeries.AutoSize = true;
+            this.search_bySeries.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_bySeries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_bySeries.Location = new System.Drawing.Point(6, 108);
             this.search_bySeries.Name = "search_bySeries";
@@ -598,6 +606,7 @@ namespace Records_Manager
             this.tabPage2.Size = new System.Drawing.Size(452, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add New";
+            this.toolTip1.SetToolTip(this.tabPage2, "Alt+3");
             // 
             // groupBox16
             // 
@@ -841,6 +850,7 @@ namespace Records_Manager
             this.tabPage4.Size = new System.Drawing.Size(452, 601);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Change";
+            this.toolTip1.SetToolTip(this.tabPage4, "Alt+4");
             // 
             // groupBox18
             // 
@@ -1314,7 +1324,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.10";
+            this.Text = "Games Database Manager v1.11";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

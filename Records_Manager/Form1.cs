@@ -146,6 +146,7 @@ namespace Records_Manager
         {
             int recordsCount = records.Count;
             int recordsSubCount = 0;
+            
             foreach (var disk in records) { recordsSubCount += disk.Value.Count; }
             groupBox_disks.Text = $"Disks: {recordsCount}, Records: {recordsSubCount}";
         }
@@ -327,6 +328,7 @@ namespace Records_Manager
                 list_disks.Items.Add(disk.Key);
             }
             SortListBoxItemsNumeric(list_disks);
+            RefreshDisksGRoupBoxName();
         }
         public bool recordExists(string name)
         {
@@ -609,6 +611,7 @@ namespace Records_Manager
             UncheckAllCheckBoxes(search_tags);
             records.Clear();
             list_disks.Items.Clear();
+            RefreshDisksGRoupBoxName();
         }
 
         private void DeleteDisk(object sender, EventArgs e)
@@ -621,11 +624,13 @@ namespace Records_Manager
                 ChangeSavedChangesStatus(false);
                 _ = new MessageForm($"Deleted disk {disk} from the database", 2).ShowDialog();
                 RefreshLastSearch();
+                RefreshDisksGRoupBoxName();
             }
             else
             {
                 _ = new MessageForm($"Must select a disk first", 2).ShowDialog();
             }
+
         }
 
         private void SearchRecords_Enter(object sender, KeyEventArgs e)
@@ -1189,7 +1194,9 @@ namespace Records_Manager
                         }
                         RefreshDatabase_ListOfDisks(null, null);
                         ChangeSavedChangesStatus(false);
+
                         listView1.Items.Clear();
+                        RefreshDisksGRoupBoxName();
                     }
                 }
 
