@@ -121,7 +121,7 @@
   <data name="button13.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAwNJREFUWEe9101sTGEUxvEbEh8LsRCR2JBIsLIgREJYTPTO1AKJ+FpIlEZYUBb9
+        DwAACw8BkvkDpQAAAwNJREFUWEe9101sTGEUxvEbEh8LsRCR2JBIsLIgREJYTPTO1AKJ+FpIlEZYUBb9
         0Jm2CwQhdGPBRroiPlY2EiI2SFhggYVIsEF0Q6u0Y67/07nv9JieVkXbxS93eu573ufk3rkznShJkmHi
         /K/F6EWCrym9fopp0Jp/4uWIW6QhDwV6NMRUDAsZjZcjbpGGDnjhQQZRXCgNCxqJlyNukYbqAb6jaP7O
         xAXWFfqjuBX5vw/i5YhbpMEOoNsxDx+HaqVM3JZE2aMvo7jpS6TX1Efl5YhbpMEOcB1z8L5Sa0sycXN3
@@ -248,13 +248,10 @@
         r9p+uGWBHeAQePT8BMeV75eD+hu4mZdg2AewnWehE6n2HZRqTiX6BcfXIPLhxtglAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 17</value>
-  </metadata>
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAABApJREFUWEftlf9vE2Ucx2v4AxSjRhOMwUhCBsyEZptzM8DYdyAQTPxJoyaGxF8k
+        vAAADrwBlbxySQAABApJREFUWEftlf9vE2Ucx2v4AxSjRhOMwUhCBsyEZptzM8DYdyAQTPxJoyaGxF8k
         2yJj61ZnS7UM6AaaGJCeMYRoDHFjYQ6MARlzRGbdWOfG+n1td3dt962lvbu2694+xwLZ3XU626T84g+v
         tM87zb1f/fR5nqoAPFbShrkkbZhL0oa5RBGUdQjra9oFY+VJ/vyezsWz+fXu8y++/6d53cG75oavnWaB
         C1JuL6PA5mEohmEp8IREiEpFaarrpptSG5KHS9ugqmgIqZ5tCiv6FEHZF4Kp+gSPqpM89p5exLY6Fza8
@@ -274,6 +271,9 @@
         myrS+s+UGoIb5X2SxeMgbZhL0oa5JG2YO6D6G8StOgcg87NnAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>415, 17</value>
+  </metadata>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -324,9 +324,6 @@
   </data>
   <metadata name="menu_textb.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>299, 17</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 17</value>
   </metadata>
   <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -420,7 +417,7 @@
     <value>144, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>155</value>
+    <value>59</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

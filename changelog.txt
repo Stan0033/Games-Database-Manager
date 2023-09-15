@@ -62,3 +62,7 @@
 - refresh list,delete disk and change disk number also refreshes the text in the groupbox of disks
 1.12   - 14/09/23
 - Added a button "search with google" on the context menu of the lsit of results. Now you can search a record  in google with one click.
+1.13
+- clicking copy in the result list will now not cause an exception if there are no selected items
+- loading the database will clear the result list
+- now in the search box, you can separate keywords with comma, each record that contains one of the keywords will be displayed

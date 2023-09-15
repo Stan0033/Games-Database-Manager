@@ -128,10 +128,10 @@ namespace Records_Manager
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAsTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchNameInGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.searchNameInGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -1293,6 +1293,14 @@ namespace Records_Manager
             this.toolStripMenuItem2.Text = "Copy Title/s as Text";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
+            // searchNameInGoogleToolStripMenuItem
+            // 
+            this.searchNameInGoogleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.searchNameInGoogleToolStripMenuItem.Name = "searchNameInGoogleToolStripMenuItem";
+            this.searchNameInGoogleToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
+            this.searchNameInGoogleToolStripMenuItem.Text = "Search Name In Google";
+            this.searchNameInGoogleToolStripMenuItem.Click += new System.EventHandler(this.searchNameInGoogleToolStripMenuItem_Click);
+            // 
             // pictureBox_Header
             // 
             this.pictureBox_Header.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1315,14 +1323,6 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
-            // searchNameInGoogleToolStripMenuItem
-            // 
-            this.searchNameInGoogleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.searchNameInGoogleToolStripMenuItem.Name = "searchNameInGoogleToolStripMenuItem";
-            this.searchNameInGoogleToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
-            this.searchNameInGoogleToolStripMenuItem.Text = "Search Name In Google";
-            this.searchNameInGoogleToolStripMenuItem.Click += new System.EventHandler(this.searchNameInGoogleToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1334,7 +1334,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.12";
+            this.Text = "Games Database Manager v1.13";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

@@ -20,8 +20,8 @@ namespace Records_Manager
         public string ImageURL { get; set; }
         public int ReleaseYear { get; set; }
         public string Platform { get; set; }
-        public string Link_Steam { get; set; }
-        public string Link_Wiki { get; set; }
+        public string Steam { get; set; }
+        public string Wiki { get; set; }
         public double SizeOnDisk { get; set; }
         
 
@@ -37,8 +37,8 @@ namespace Records_Manager
             ImageURL= url;
             ReleaseYear = releaseYear;
             Platform = platform;
-            Link_Steam = link_steam;
-            Link_Wiki = link_wiki;
+            Steam = link_steam;
+            Wiki = link_wiki;
             SizeOnDisk = sizeOnDisk;
         }
         public ListViewItem getRow()

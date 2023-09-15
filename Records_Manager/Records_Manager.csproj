@@ -54,6 +54,7 @@
     <Compile Include="changeValue.Designer.cs">
       <DependentUpon>changeValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Disk.cs" />
     <Compile Include="Existing Records.cs">
       <SubType>Form</SubType>
     </Compile>

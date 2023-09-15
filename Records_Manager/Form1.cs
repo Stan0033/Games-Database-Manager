@@ -14,6 +14,7 @@ namespace Records_Manager
     public partial class Form1 : Form
     {
         Dictionary<int, List<Record>> records = new Dictionary<int, List<Record>>();
+        List<Disk> Disks = new List<Disk>();
         bool SavedChanges;
         int CurrentlySelectedDiskInListView = 0;
         bool SelectedAllDisks = false;
@@ -115,6 +116,7 @@ namespace Records_Manager
                         if (!records.ContainsKey(currentDisk)) { records.Add(currentDisk, new List<Record>()); }
                         records[currentDisk].Add(r);
                         allLoadedRecords++;
+                       
                     }
                     catch { _ = new MessageForm("Error parsing the database file. Might be corrupted.", 2).ShowDialog(); return; }
 
@@ -135,6 +137,7 @@ namespace Records_Manager
                     SortListBoxItemsNumeric(list_disks);
                     RefreshDisksGRoupBoxName();
                     ChangeSavedChangesStatus(true);
+                    listView1.Items.Clear();
                 }
             }
             else
@@ -1029,6 +1032,7 @@ namespace Records_Manager
         {
             // get the searched name - if empty, it can be with any name, as long as there are other requirements
             string search = searchData.Title;
+           List<string> multiSearch = search.Split(',').Select(x=> x.Trim()).ToList();
              // prepare the list of results, for filling
             List<Record> results = new List<Record>();
             // the list of words that should not be containe in the string
@@ -1062,7 +1066,9 @@ namespace Records_Manager
                         searched_field = record.Series;
                     }
                     searched_field = searched_field.ToLower();
+
                     bool Contains_Name = search == string.Empty ? true : searched_field.Contains(search);
+                    if (multiSearch.Count > 1) { foreach (string keyword in multiSearch) { if (searched_field.Contains(keyword)) { Contains_Name = true; break; } } }
                     bool ContainsNOT = MustNotContain_List.Count == 0 ? true : StringContainsNOTstring(searched_field, MustNotContain_List);
                     bool ContainsTags = checkedTags.Count == 0 ? true : RecordTagsArePresent(record, checkedTags);
                     if (Contains_Name && ContainsNOT && ContainsTags) { results.Add(record); }
@@ -1144,6 +1150,7 @@ namespace Records_Manager
         {
             // Get selected items from the ListView
             var selectedItems = listView.SelectedItems.Cast<ListViewItem>();
+            if (selectedItems.Count() == 0) { return; }
 
             // Create a list to store the formatted strings
             List<string> formattedStrings = new List<string>();
