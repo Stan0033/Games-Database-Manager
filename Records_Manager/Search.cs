@@ -16,10 +16,11 @@ namespace Records_Manager
         public bool Search_BySeries { get; set; }
         public string ExcludedContents { get; set; }
         public string InDisks { get; set; }
+        public Search_Filter Filter { get; set; }
         public CheckedListBox Tags { get; set; }
         public Search(
        string title, bool byTitle, bool byDev, bool byPub, bool bySerie,
-       string excludedContents, string inDisks, CheckedListBox tags)
+       string excludedContents, string inDisks, CheckedListBox tags, Search_Filter filter)
         {
             Title = title;
             Search_ByTitle = byTitle;
@@ -29,6 +30,7 @@ namespace Records_Manager
             ExcludedContents = excludedContents;
             InDisks = inDisks;
             Tags = tags;
+            Filter = filter;
         }
     }
 }

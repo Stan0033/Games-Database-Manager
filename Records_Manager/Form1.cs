@@ -21,6 +21,8 @@ namespace Records_Manager
         const string saveFileName = "database.grecs";
         public Search lastSearch;
         string appName;
+        int Changes_Counter;
+        Search_Filter Filter;
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace Records_Manager
             CurrentlySelectedDiskInListView = 0;
             lastSearch = null;
             appName = Text;
+            Changes_Counter = 0;
+            Filter = new Search_Filter();
         }
         public void RefreshLastSearch()
         {
@@ -84,11 +88,12 @@ namespace Records_Manager
             {
                 SavedChanges = true;
                 Text = $"{appName} [saved]";
+                Changes_Counter= 0;
             }
             else
             {
                 SavedChanges = false;
-                Text = $"{appName} [unsaved]*";
+                Text = $"{appName} [unsaved]* - {Changes_Counter} unsaved changes";
             }
         }
 
@@ -138,6 +143,7 @@ namespace Records_Manager
                     RefreshDisksGRoupBoxName();
                     ChangeSavedChangesStatus(true);
                     listView1.Items.Clear();
+                    label_countResuults.Text = string.Empty;
                 }
             }
             else
@@ -472,6 +478,7 @@ namespace Records_Manager
         {
             if (list_disks.SelectedItems.Count > 0)
             {
+                label_countResuults.Text = string.Empty;
                 lastSearch = null;
                 listView1.Items.Clear();
                 int selected = int.Parse(list_disks.SelectedItems[0].ToString());
@@ -642,7 +649,7 @@ namespace Records_Manager
             if (e.KeyCode == Keys.Enter)
             {
                 lastSearch = null;
-                lastSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags);
+                lastSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags, Filter);
 
                 SearchInRecords(lastSearch);
             }
@@ -701,7 +708,7 @@ namespace Records_Manager
         private void DisplayResults(List<Record> results)
         {
 
-
+            int count = 0;
             listView1.Items.Clear();
 
             if (results.Count > 0)
@@ -710,8 +717,10 @@ namespace Records_Manager
                 {
                     ListViewItem temp = result.getRow();
                     listView1.Items.Add(temp);
+                    count++;
                 }
             }
+            label_countResuults.Text = $"Search results: {count}";
         }
 
         private List<int> GetSelectedDisks(string diskData)
@@ -984,6 +993,7 @@ namespace Records_Manager
                     ChangeSavedChangesStatus(false);
                     RefreshLastSearch();
                     ClearChangeFields();
+                    Changes_Counter++;
                 }
             }
         }
@@ -1071,7 +1081,25 @@ namespace Records_Manager
                     if (multiSearch.Count > 1) { foreach (string keyword in multiSearch) { if (searched_field.Contains(keyword)) { Contains_Name = true; break; } } }
                     bool ContainsNOT = MustNotContain_List.Count == 0 ? true : StringContainsNOTstring(searched_field, MustNotContain_List);
                     bool ContainsTags = checkedTags.Count == 0 ? true : RecordTagsArePresent(record, checkedTags);
-                    if (Contains_Name && ContainsNOT && ContainsTags) { results.Add(record); }
+                    bool SatisfiesFilters = true;
+                    if (searchData.Filter.Search_Dev == -1) { SatisfiesFilters = record.Developer.Trim().Length == 0 ? true : false;  } if (SatisfiesFilters == false) { goto final; }
+                    if (searchData.Filter.Search_Dev == 0) {  SatisfiesFilters = true;   }
+                    if (searchData.Filter.Search_Dev == 1) { SatisfiesFilters = record.Developer.Trim().Length > 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+
+                    if (searchData.Filter.Search_Series == -1) { SatisfiesFilters = record.Series.Trim().Length == 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+                    if (searchData.Filter.Search_Series == 0) { SatisfiesFilters = true; }
+                    if (searchData.Filter.Search_Series == 1) { SatisfiesFilters = record.Series.Trim().Length > 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+
+                    if (searchData.Filter.Search_Pub == -1) { SatisfiesFilters = record.Publisher.Trim().Length == 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+                    if (searchData.Filter.Search_Pub == 0) { SatisfiesFilters = true; }
+                    if (searchData.Filter.Search_Pub == 1) { SatisfiesFilters = record.Publisher.Trim().Length > 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+
+                    if (searchData.Filter.Search_Image == -1) { SatisfiesFilters = record.ImageURL.Trim().Length == 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+                    if (searchData.Filter.Search_Image == 0) { SatisfiesFilters = true; }
+                    if (searchData.Filter.Search_Image == 1) { SatisfiesFilters = record.ImageURL.Trim().Length > 0 ? true : false; }if (SatisfiesFilters == false) { goto final; }
+
+                    final:
+                    if (Contains_Name && ContainsNOT && ContainsTags && SatisfiesFilters) { results.Add(record); }
                 }
             }
              DisplayResults(results);
@@ -1079,7 +1107,7 @@ namespace Records_Manager
         private void searchButton_Click(object sender, EventArgs e)
         {
             lastSearch = null;
-            lastSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags);
+            lastSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags, Filter);
             SearchInRecords(lastSearch);
         }
 
@@ -1258,6 +1286,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1311,6 +1340,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1347,6 +1377,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1384,6 +1415,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1421,6 +1453,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1458,6 +1491,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1494,6 +1528,7 @@ namespace Records_Manager
 
             RefreshLastSearch();
             ClearChangeFields();
+            Changes_Counter++;
             ChangeSavedChangesStatus(false);
         }
 
@@ -1644,6 +1679,76 @@ namespace Records_Manager
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+        }
+
+        private void list_disks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggle1_Load(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void series_NO_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void series_PAS_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void series_YES_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void pub_NO_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void pub_PAS_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void pub_YES_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void dev_NO_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void dev_PAS_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void dev_YES_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void img_NO_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void img_PAS_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
+        }
+
+        private void img_YES_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES);
         }
     }
 

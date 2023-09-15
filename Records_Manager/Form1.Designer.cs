@@ -45,6 +45,8 @@ namespace Records_Manager
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label_countResuults = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.groupBox_tags_search = new System.Windows.Forms.GroupBox();
             this.search_tags = new System.Windows.Forms.CheckedListBox();
@@ -62,6 +64,7 @@ namespace Records_Manager
             this.search_byName = new System.Windows.Forms.RadioButton();
             this.search_byDev = new System.Windows.Forms.RadioButton();
             this.search_bySeries = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.search_name = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
@@ -132,16 +135,33 @@ namespace Records_Manager
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.series_NO = new System.Windows.Forms.RadioButton();
+            this.series_PAS = new System.Windows.Forms.RadioButton();
+            this.series_YES = new System.Windows.Forms.RadioButton();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.dev_YES = new System.Windows.Forms.RadioButton();
+            this.dev_PAS = new System.Windows.Forms.RadioButton();
+            this.dev_NO = new System.Windows.Forms.RadioButton();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.pub_YES = new System.Windows.Forms.RadioButton();
+            this.pub_PAS = new System.Windows.Forms.RadioButton();
+            this.pub_NO = new System.Windows.Forms.RadioButton();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.img_YES = new System.Windows.Forms.RadioButton();
+            this.img_PAS = new System.Windows.Forms.RadioButton();
+            this.img_NO = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox_tags_search.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menu_textb.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox19.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -166,7 +186,10 @@ namespace Records_Manager
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -306,6 +329,7 @@ namespace Records_Manager
             this.list_disks.Name = "list_disks";
             this.list_disks.Size = new System.Drawing.Size(446, 169);
             this.list_disks.TabIndex = 3;
+            this.list_disks.SelectedIndexChanged += new System.EventHandler(this.list_disks_SelectedIndexChanged);
             this.list_disks.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.list_disks_MouseDoubleClick);
             // 
             // button3
@@ -367,6 +391,8 @@ namespace Records_Manager
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage1.Controls.Add(this.button12);
+            this.tabPage1.Controls.Add(this.groupBox9);
+            this.tabPage1.Controls.Add(this.label_countResuults);
             this.tabPage1.Controls.Add(this.groupBox_tags_search);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -381,6 +407,31 @@ namespace Records_Manager
             this.tabPage1.Text = "Search";
             this.toolTip1.SetToolTip(this.tabPage1, "Alt+2");
             // 
+            // groupBox9
+            // 
+            this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox9.Controls.Add(this.groupBox23);
+            this.groupBox9.Controls.Add(this.groupBox20);
+            this.groupBox9.Controls.Add(this.groupBox17);
+            this.groupBox9.Controls.Add(this.groupBox15);
+            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox9.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox9.Location = new System.Drawing.Point(3, 434);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(446, 119);
+            this.groupBox9.TabIndex = 21;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Additional Filters (Must NOT Have, Neutral, Must Have)";
+            // 
+            // label_countResuults
+            // 
+            this.label_countResuults.AutoSize = true;
+            this.label_countResuults.Location = new System.Drawing.Point(8, 477);
+            this.label_countResuults.Name = "label_countResuults";
+            this.label_countResuults.Size = new System.Drawing.Size(0, 25);
+            this.label_countResuults.TabIndex = 20;
+            // 
             // button12
             // 
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -390,7 +441,7 @@ namespace Records_Manager
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(3, 434);
+            this.button12.Location = new System.Drawing.Point(3, 553);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(446, 40);
             this.button12.TabIndex = 18;
@@ -579,6 +630,20 @@ namespace Records_Manager
             this.search_bySeries.TabIndex = 4;
             this.search_bySeries.Text = "Series";
             this.search_bySeries.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Controls.Add(this.search_name);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(446, 49);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Keywords (OR)";
             // 
             // search_name
             // 
@@ -1326,19 +1391,189 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
-            // groupBox1
+            // groupBox15
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox1.Controls.Add(this.search_name);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(446, 49);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Keywords (OR)";
+            this.groupBox15.Controls.Add(this.series_YES);
+            this.groupBox15.Controls.Add(this.series_PAS);
+            this.groupBox15.Controls.Add(this.series_NO);
+            this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox15.ForeColor = System.Drawing.Color.White;
+            this.groupBox15.Location = new System.Drawing.Point(10, 21);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(76, 38);
+            this.groupBox15.TabIndex = 5;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Series";
+            // 
+            // series_NO
+            // 
+            this.series_NO.AutoSize = true;
+            this.series_NO.Location = new System.Drawing.Point(6, 19);
+            this.series_NO.Name = "series_NO";
+            this.series_NO.Size = new System.Drawing.Size(14, 13);
+            this.series_NO.TabIndex = 0;
+            this.series_NO.UseVisualStyleBackColor = true;
+            this.series_NO.CheckedChanged += new System.EventHandler(this.series_NO_CheckedChanged);
+            // 
+            // series_PAS
+            // 
+            this.series_PAS.AutoSize = true;
+            this.series_PAS.Checked = true;
+            this.series_PAS.Location = new System.Drawing.Point(26, 19);
+            this.series_PAS.Name = "series_PAS";
+            this.series_PAS.Size = new System.Drawing.Size(14, 13);
+            this.series_PAS.TabIndex = 1;
+            this.series_PAS.TabStop = true;
+            this.series_PAS.UseVisualStyleBackColor = true;
+            this.series_PAS.CheckedChanged += new System.EventHandler(this.series_PAS_CheckedChanged);
+            // 
+            // series_YES
+            // 
+            this.series_YES.AutoSize = true;
+            this.series_YES.Location = new System.Drawing.Point(46, 19);
+            this.series_YES.Name = "series_YES";
+            this.series_YES.Size = new System.Drawing.Size(14, 13);
+            this.series_YES.TabIndex = 2;
+            this.series_YES.UseVisualStyleBackColor = true;
+            this.series_YES.CheckedChanged += new System.EventHandler(this.series_YES_CheckedChanged);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.dev_YES);
+            this.groupBox17.Controls.Add(this.dev_PAS);
+            this.groupBox17.Controls.Add(this.dev_NO);
+            this.groupBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox17.ForeColor = System.Drawing.Color.White;
+            this.groupBox17.Location = new System.Drawing.Point(10, 65);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(76, 38);
+            this.groupBox17.TabIndex = 6;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Developer";
+            // 
+            // dev_YES
+            // 
+            this.dev_YES.AutoSize = true;
+            this.dev_YES.Location = new System.Drawing.Point(46, 19);
+            this.dev_YES.Name = "dev_YES";
+            this.dev_YES.Size = new System.Drawing.Size(14, 13);
+            this.dev_YES.TabIndex = 2;
+            this.dev_YES.UseVisualStyleBackColor = true;
+            this.dev_YES.CheckedChanged += new System.EventHandler(this.dev_YES_CheckedChanged);
+            // 
+            // dev_PAS
+            // 
+            this.dev_PAS.AutoSize = true;
+            this.dev_PAS.Checked = true;
+            this.dev_PAS.Location = new System.Drawing.Point(26, 19);
+            this.dev_PAS.Name = "dev_PAS";
+            this.dev_PAS.Size = new System.Drawing.Size(14, 13);
+            this.dev_PAS.TabIndex = 1;
+            this.dev_PAS.TabStop = true;
+            this.dev_PAS.UseVisualStyleBackColor = true;
+            this.dev_PAS.CheckedChanged += new System.EventHandler(this.dev_PAS_CheckedChanged);
+            // 
+            // dev_NO
+            // 
+            this.dev_NO.AutoSize = true;
+            this.dev_NO.Location = new System.Drawing.Point(6, 19);
+            this.dev_NO.Name = "dev_NO";
+            this.dev_NO.Size = new System.Drawing.Size(14, 13);
+            this.dev_NO.TabIndex = 0;
+            this.dev_NO.UseVisualStyleBackColor = true;
+            this.dev_NO.CheckedChanged += new System.EventHandler(this.dev_NO_CheckedChanged);
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.pub_YES);
+            this.groupBox20.Controls.Add(this.pub_PAS);
+            this.groupBox20.Controls.Add(this.pub_NO);
+            this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox20.ForeColor = System.Drawing.Color.White;
+            this.groupBox20.Location = new System.Drawing.Point(92, 21);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(76, 38);
+            this.groupBox20.TabIndex = 6;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Publisher";
+            // 
+            // pub_YES
+            // 
+            this.pub_YES.AutoSize = true;
+            this.pub_YES.Location = new System.Drawing.Point(46, 19);
+            this.pub_YES.Name = "pub_YES";
+            this.pub_YES.Size = new System.Drawing.Size(14, 13);
+            this.pub_YES.TabIndex = 2;
+            this.pub_YES.UseVisualStyleBackColor = true;
+            this.pub_YES.CheckedChanged += new System.EventHandler(this.pub_YES_CheckedChanged);
+            // 
+            // pub_PAS
+            // 
+            this.pub_PAS.AutoSize = true;
+            this.pub_PAS.Checked = true;
+            this.pub_PAS.Location = new System.Drawing.Point(26, 19);
+            this.pub_PAS.Name = "pub_PAS";
+            this.pub_PAS.Size = new System.Drawing.Size(14, 13);
+            this.pub_PAS.TabIndex = 1;
+            this.pub_PAS.TabStop = true;
+            this.pub_PAS.UseVisualStyleBackColor = true;
+            this.pub_PAS.CheckedChanged += new System.EventHandler(this.pub_PAS_CheckedChanged);
+            // 
+            // pub_NO
+            // 
+            this.pub_NO.AutoSize = true;
+            this.pub_NO.Location = new System.Drawing.Point(6, 19);
+            this.pub_NO.Name = "pub_NO";
+            this.pub_NO.Size = new System.Drawing.Size(14, 13);
+            this.pub_NO.TabIndex = 0;
+            this.pub_NO.UseVisualStyleBackColor = true;
+            this.pub_NO.CheckedChanged += new System.EventHandler(this.pub_NO_CheckedChanged);
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.img_YES);
+            this.groupBox23.Controls.Add(this.img_PAS);
+            this.groupBox23.Controls.Add(this.img_NO);
+            this.groupBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox23.ForeColor = System.Drawing.Color.White;
+            this.groupBox23.Location = new System.Drawing.Point(92, 65);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(76, 38);
+            this.groupBox23.TabIndex = 7;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Image";
+            // 
+            // img_YES
+            // 
+            this.img_YES.AutoSize = true;
+            this.img_YES.Location = new System.Drawing.Point(46, 19);
+            this.img_YES.Name = "img_YES";
+            this.img_YES.Size = new System.Drawing.Size(14, 13);
+            this.img_YES.TabIndex = 2;
+            this.img_YES.UseVisualStyleBackColor = true;
+            this.img_YES.CheckedChanged += new System.EventHandler(this.img_YES_CheckedChanged);
+            // 
+            // img_PAS
+            // 
+            this.img_PAS.AutoSize = true;
+            this.img_PAS.Checked = true;
+            this.img_PAS.Location = new System.Drawing.Point(26, 19);
+            this.img_PAS.Name = "img_PAS";
+            this.img_PAS.Size = new System.Drawing.Size(14, 13);
+            this.img_PAS.TabIndex = 1;
+            this.img_PAS.TabStop = true;
+            this.img_PAS.UseVisualStyleBackColor = true;
+            this.img_PAS.CheckedChanged += new System.EventHandler(this.img_PAS_CheckedChanged);
+            // 
+            // img_NO
+            // 
+            this.img_NO.AutoSize = true;
+            this.img_NO.Location = new System.Drawing.Point(6, 19);
+            this.img_NO.Name = "img_NO";
+            this.img_NO.Size = new System.Drawing.Size(14, 13);
+            this.img_NO.TabIndex = 0;
+            this.img_NO.UseVisualStyleBackColor = true;
+            this.img_NO.CheckedChanged += new System.EventHandler(this.img_NO_CheckedChanged);
             // 
             // Form1
             // 
@@ -1351,7 +1586,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.13";
+            this.Text = "Games Database Manager v1.14";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1359,6 +1594,8 @@ namespace Records_Manager
             this.tabPage3.ResumeLayout(false);
             this.groupBox_disks.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
             this.groupBox_tags_search.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1367,6 +1604,8 @@ namespace Records_Manager
             this.groupBox2.PerformLayout();
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
@@ -1400,8 +1639,14 @@ namespace Records_Manager
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1511,6 +1756,24 @@ namespace Records_Manager
         private ToolTip toolTip1;
         private ToolStripMenuItem searchNameInGoogleToolStripMenuItem;
         private GroupBox groupBox1;
+        private Label label_countResuults;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private GroupBox groupBox15;
+        private GroupBox groupBox23;
+        private RadioButton img_YES;
+        private RadioButton img_PAS;
+        private RadioButton img_NO;
+        private GroupBox groupBox20;
+        private RadioButton pub_YES;
+        private RadioButton pub_PAS;
+        private RadioButton pub_NO;
+        private GroupBox groupBox17;
+        private RadioButton dev_YES;
+        private RadioButton dev_PAS;
+        private RadioButton dev_NO;
+        private RadioButton series_YES;
+        private RadioButton series_PAS;
+        private RadioButton series_NO;
     }
 }
 
