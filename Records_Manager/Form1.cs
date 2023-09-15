@@ -720,7 +720,7 @@ namespace Records_Manager
                     count++;
                 }
             }
-            label_countResuults.Text = $"Search results: {count}";
+           
         }
 
         private List<int> GetSelectedDisks(string diskData)
@@ -1103,6 +1103,7 @@ namespace Records_Manager
                 }
             }
              DisplayResults(results);
+            label_countResuults.Text = $"Search results: {results.Count}";
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
