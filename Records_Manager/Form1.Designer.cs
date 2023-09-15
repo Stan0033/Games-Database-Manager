@@ -132,6 +132,7 @@ namespace Records_Manager
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -165,6 +166,7 @@ namespace Records_Manager
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -369,7 +371,7 @@ namespace Records_Manager
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox19);
-            this.tabPage1.Controls.Add(this.search_name);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.ForeColor = System.Drawing.Color.White;
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
@@ -388,7 +390,7 @@ namespace Records_Manager
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(3, 548);
+            this.button12.Location = new System.Drawing.Point(3, 434);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(446, 40);
             this.button12.TabIndex = 18;
@@ -403,9 +405,9 @@ namespace Records_Manager
             this.groupBox_tags_search.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_tags_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox_tags_search.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox_tags_search.Location = new System.Drawing.Point(3, 261);
+            this.groupBox_tags_search.Location = new System.Drawing.Point(3, 284);
             this.groupBox_tags_search.Name = "groupBox_tags_search";
-            this.groupBox_tags_search.Size = new System.Drawing.Size(446, 287);
+            this.groupBox_tags_search.Size = new System.Drawing.Size(446, 150);
             this.groupBox_tags_search.TabIndex = 17;
             this.groupBox_tags_search.TabStop = false;
             this.groupBox_tags_search.Text = "Tags";
@@ -416,7 +418,7 @@ namespace Records_Manager
             this.search_tags.FormattingEnabled = true;
             this.search_tags.Location = new System.Drawing.Point(3, 22);
             this.search_tags.Name = "search_tags";
-            this.search_tags.Size = new System.Drawing.Size(440, 262);
+            this.search_tags.Size = new System.Drawing.Size(440, 125);
             this.search_tags.TabIndex = 0;
             this.search_tags.SelectedIndexChanged += new System.EventHandler(this.search_tags_SelectedIndexChanged);
             // 
@@ -425,20 +427,21 @@ namespace Records_Manager
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox3.Controls.Add(this.search_indisks);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(3, 215);
+            this.groupBox3.Location = new System.Drawing.Point(3, 238);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(446, 46);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "In Disk/s";
+            this.groupBox3.Text = "In Disk/s (OR)";
             // 
             // search_indisks
             // 
             this.search_indisks.ContextMenuStrip = this.menu_textb;
             this.search_indisks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.search_indisks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.search_indisks.Location = new System.Drawing.Point(3, 27);
+            this.search_indisks.Location = new System.Drawing.Point(3, 25);
             this.search_indisks.Name = "search_indisks";
             this.search_indisks.Size = new System.Drawing.Size(440, 26);
             this.search_indisks.TabIndex = 0;
@@ -493,12 +496,12 @@ namespace Records_Manager
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(3, 166);
+            this.groupBox2.Location = new System.Drawing.Point(3, 189);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(446, 49);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Must NOT Contain";
+            this.groupBox2.Text = "Must NOT Contain (AND)";
             // 
             // search_mustnotcontain
             // 
@@ -520,12 +523,12 @@ namespace Records_Manager
             this.groupBox19.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox19.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox19.Location = new System.Drawing.Point(3, 29);
+            this.groupBox19.Location = new System.Drawing.Point(3, 52);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(446, 137);
             this.groupBox19.TabIndex = 9;
             this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Search by";
+            this.groupBox19.Text = "Search in";
             // 
             // search_byPublisher
             // 
@@ -534,9 +537,9 @@ namespace Records_Manager
             this.search_byPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byPublisher.Location = new System.Drawing.Point(6, 78);
             this.search_byPublisher.Name = "search_byPublisher";
-            this.search_byPublisher.Size = new System.Drawing.Size(114, 24);
+            this.search_byPublisher.Size = new System.Drawing.Size(92, 24);
             this.search_byPublisher.TabIndex = 3;
-            this.search_byPublisher.Text = "By Publisher";
+            this.search_byPublisher.Text = "Publisher";
             this.search_byPublisher.UseVisualStyleBackColor = true;
             // 
             // search_byName
@@ -547,10 +550,10 @@ namespace Records_Manager
             this.search_byName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byName.Location = new System.Drawing.Point(6, 18);
             this.search_byName.Name = "search_byName";
-            this.search_byName.Size = new System.Drawing.Size(91, 24);
+            this.search_byName.Size = new System.Drawing.Size(56, 24);
             this.search_byName.TabIndex = 1;
             this.search_byName.TabStop = true;
-            this.search_byName.Text = "By Name";
+            this.search_byName.Text = "Title";
             this.search_byName.UseVisualStyleBackColor = true;
             // 
             // search_byDev
@@ -560,9 +563,9 @@ namespace Records_Manager
             this.search_byDev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_byDev.Location = new System.Drawing.Point(6, 48);
             this.search_byDev.Name = "search_byDev";
-            this.search_byDev.Size = new System.Drawing.Size(121, 24);
+            this.search_byDev.Size = new System.Drawing.Size(99, 24);
             this.search_byDev.TabIndex = 2;
-            this.search_byDev.Text = "By Developer";
+            this.search_byDev.Text = "Developer";
             this.search_byDev.UseVisualStyleBackColor = true;
             // 
             // search_bySeries
@@ -572,19 +575,19 @@ namespace Records_Manager
             this.search_bySeries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.search_bySeries.Location = new System.Drawing.Point(6, 108);
             this.search_bySeries.Name = "search_bySeries";
-            this.search_bySeries.Size = new System.Drawing.Size(94, 24);
+            this.search_bySeries.Size = new System.Drawing.Size(72, 24);
             this.search_bySeries.TabIndex = 4;
-            this.search_bySeries.Text = "By Series";
+            this.search_bySeries.Text = "Series";
             this.search_bySeries.UseVisualStyleBackColor = true;
             // 
             // search_name
             // 
             this.search_name.ContextMenuStrip = this.menu_textb;
-            this.search_name.Dock = System.Windows.Forms.DockStyle.Top;
+            this.search_name.Dock = System.Windows.Forms.DockStyle.Fill;
             this.search_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.search_name.Location = new System.Drawing.Point(3, 3);
+            this.search_name.Location = new System.Drawing.Point(3, 22);
             this.search_name.Name = "search_name";
-            this.search_name.Size = new System.Drawing.Size(446, 26);
+            this.search_name.Size = new System.Drawing.Size(440, 26);
             this.search_name.TabIndex = 8;
             this.toolTip1.SetToolTip(this.search_name, "Enter");
             this.search_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchRecords_Enter);
@@ -1323,6 +1326,20 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Controls.Add(this.search_name);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(446, 49);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Keywords (OR)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1342,7 +1359,6 @@ namespace Records_Manager
             this.tabPage3.ResumeLayout(false);
             this.groupBox_disks.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.groupBox_tags_search.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1384,6 +1400,8 @@ namespace Records_Manager
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1492,6 +1510,7 @@ namespace Records_Manager
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolTip toolTip1;
         private ToolStripMenuItem searchNameInGoogleToolStripMenuItem;
+        private GroupBox groupBox1;
     }
 }
 
