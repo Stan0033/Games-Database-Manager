@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -478,21 +479,13 @@ namespace Records_Manager
         {
             if (list_disks.SelectedItems.Count > 0)
             {
-                label_countResuults.Text = string.Empty;
-                lastSearch = null;
-                listView1.Items.Clear();
-                int selected = int.Parse(list_disks.SelectedItems[0].ToString());
-                CurrentlySelectedDiskInListView = selected;
-                SelectedAllDisks = false;
-                foreach (Record r in records[selected])
-                {
-                    ListViewItem item = (new ListViewItem(new[] { r.Title, selected.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) }));
-                    if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
-                    listView1.Items.Add(item);
+                string searchedDisk = list_disks.SelectedItems[0].ToString().Trim();
+                 
+                 lastSearch = new Search("", true, false, false, false, "", searchedDisk, null, new Search_Filter());
 
-                }
+                SearchInRecords(lastSearch);
 
-
+                
             }
         }
         private void ViewDisk(object sender, EventArgs e)
@@ -502,23 +495,11 @@ namespace Records_Manager
 
         private void ViewDisks(object sender, EventArgs e)
         {
-            if (records.Count > 0)
-            {
-                lastSearch = null;
-                listView1.Items.Clear();
+            string allDisks =   string.Join(",", list_disks.Items.Cast<string>());
+            lastSearch = new Search("",true,false,false,false,"", allDisks, null,new Search_Filter());
+            SearchInRecords(lastSearch);
 
-                foreach (var record in records)
-                {
-                    foreach (Record r in record.Value)
-                    {
-                        ListViewItem item = new ListViewItem(new[] { r.Title, record.Key.ToString(), r.Series, r.Developer, r.Publisher, string.Join(",", r.Tags) });
-                        if (r.ImageURL.Length>3) { item.ForeColor = Color.Gold; }
-                        listView1.Items.Add(item);
-
-                    }
-                }
-                SelectedAllDisks = true;
-            }
+          
         }
         public void RefreshListView()
         {
@@ -655,16 +636,16 @@ namespace Records_Manager
             }
 
         }
-        public List<string> GetCheckedCheckboxNames(CheckedListBox listCheckBox1)
+        public List<string> GetCheckedCheckboxNames(CheckedListBox listCheckBox)
         {
-
+                if (listCheckBox == null) { return new List<string>(); } 
             List<string> checkedNames = new List<string>();
 
-            for (int i = 0; i < listCheckBox1.Items.Count; i++)
+            for (int i = 0; i < listCheckBox.Items.Count; i++)
             {
-                if (listCheckBox1.GetItemChecked(i))
+                if (listCheckBox.GetItemChecked(i))
                 {
-                    checkedNames.Add(listCheckBox1.Items[i].ToString());
+                    checkedNames.Add(listCheckBox.Items[i].ToString());
                 }
             }
 
@@ -705,22 +686,66 @@ namespace Records_Manager
 
         // Other parts of your code...
 
-        private void DisplayResults(List<Record> results)
+        private async Task DisplayResultsAsync(List<Record> results)
         {
-
+            int batchSize = 50; // Adjust the batch size as needed
             int count = 0;
             listView1.Items.Clear();
 
             if (results.Count > 0)
             {
-                foreach (Record result in results)
+                // Show the progress bar
+                progressBar1.Visible = true;
+
+                // Perform the time-consuming operation on a separate thread
+                await Task.Run(() =>
                 {
-                    ListViewItem temp = result.getRow();
-                    listView1.Items.Add(temp);
-                    count++;
-                }
+                    listView1.BeginInvoke(new Action(() =>
+                    {
+                        listView1.BeginUpdate(); // Suspend layout updates
+                    }));
+
+                    for (int i = 0; i < results.Count; i++)
+                    {
+                        ListViewItem temp = results[i].getRow();
+
+                        // Add the item to the ListView
+                        listView1.BeginInvoke(new Action(() =>
+                        {
+                            listView1.Items.Add(temp);
+                        }));
+
+                        count++;
+
+                        if (count % batchSize == 0 || i == results.Count - 1)
+                        {
+                            // Update progress after each batch or at the end
+                            int progress = (count * 100) / results.Count;
+                            UpdateProgressBar(progress);
+                        }
+                    }
+
+                    listView1.BeginInvoke(new Action(() =>
+                    {
+                        listView1.EndUpdate(); // Resume layout updates
+                    }));
+                });
+
+                // Hide the progress bar when done
+                progressBar1.Visible = false;
             }
-           
+        }
+
+        private void UpdateProgressBar(int value)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => progressBar1.Value = value));
+            }
+            else
+            {
+                progressBar1.Value = value;
+            }
         }
 
         private List<int> GetSelectedDisks(string diskData)
@@ -1040,6 +1065,7 @@ namespace Records_Manager
         }
         public void SearchInRecords(Search searchData)
         {
+            if (records.Count== 0) { _ = new MessageForm("Database is empty", 2).ShowDialog(); return; }
             // get the searched name - if empty, it can be with any name, as long as there are other requirements
             string search = searchData.Title;
            List<string> multiSearch = search.Split(',').Select(x=> x.Trim()).ToList();
@@ -1048,7 +1074,15 @@ namespace Records_Manager
             // the list of words that should not be containe in the string
             List<string> MustNotContain_List = searchData.ExcludedContents.Trim() == string.Empty ? new List<string>() : searchData.ExcludedContents.Split(',').ToList();
             // get the selected disks if any
-            List<int> selectedDisks = GetSelectedDisks(searchData.InDisks);
+            List<int> selectedDisks = searchData.Disks;
+            if (selectedDisks.Count == 0)
+            {
+                foreach (var v in records)
+                {
+                    selectedDisks.Add(v.Key);
+                }
+               
+            }
            // get the cheked tags
             List<string> checkedTags = GetCheckedCheckboxNames(searchData.Tags);
             //---------------------------------------------------------------------
@@ -1102,12 +1136,12 @@ namespace Records_Manager
                     if (Contains_Name && ContainsNOT && ContainsTags && SatisfiesFilters) { results.Add(record); }
                 }
             }
-             DisplayResults(results);
+             DisplayResultsAsync(results);
             label_countResuults.Text = $"Search results: {results.Count}";
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
-            lastSearch = null;
+             
             lastSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags, Filter);
             SearchInRecords(lastSearch);
         }

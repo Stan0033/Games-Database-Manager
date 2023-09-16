@@ -151,6 +151,8 @@ namespace Records_Manager
             this.pictureBox_Header = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel_search_results = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -190,6 +192,7 @@ namespace Records_Manager
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel_search_results.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1446,9 +1449,9 @@ namespace Records_Manager
             this.listView1.ForeColor = System.Drawing.Color.White;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(460, 0);
+            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(822, 854);
+            this.listView1.Size = new System.Drawing.Size(822, 831);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -1575,18 +1578,36 @@ namespace Records_Manager
             this.panel1.Size = new System.Drawing.Size(460, 854);
             this.panel1.TabIndex = 4;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 831);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(822, 23);
+            this.progressBar1.TabIndex = 5;
+            // 
+            // panel_search_results
+            // 
+            this.panel_search_results.Controls.Add(this.listView1);
+            this.panel_search_results.Controls.Add(this.progressBar1);
+            this.panel_search_results.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_search_results.Location = new System.Drawing.Point(460, 0);
+            this.panel_search_results.Name = "panel_search_results";
+            this.panel_search_results.Size = new System.Drawing.Size(822, 854);
+            this.panel_search_results.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 854);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.panel_search_results);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.14";
+            this.Text = "Games Database Manager v1.15";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1647,6 +1668,7 @@ namespace Records_Manager
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel_search_results.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1774,6 +1796,8 @@ namespace Records_Manager
         private RadioButton series_YES;
         private RadioButton series_PAS;
         private RadioButton series_NO;
+        private ProgressBar progressBar1;
+        private Panel panel_search_results;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,12 +16,13 @@ namespace Records_Manager
         public bool Search_ByPub { get; set; }
         public bool Search_BySeries { get; set; }
         public string ExcludedContents { get; set; }
-        public string InDisks { get; set; }
+       
+       public List<int> Disks { get; set; }
         public Search_Filter Filter { get; set; }
         public CheckedListBox Tags { get; set; }
         public Search(
        string title, bool byTitle, bool byDev, bool byPub, bool bySerie,
-       string excludedContents, string inDisks, CheckedListBox tags, Search_Filter filter)
+       string excludedContents, string indisks, CheckedListBox tags, Search_Filter filter)
         {
             Title = title;
             Search_ByTitle = byTitle;
@@ -28,9 +30,22 @@ namespace Records_Manager
             Search_ByPub = byPub;
             Search_BySeries = bySerie;
             ExcludedContents = excludedContents;
-            InDisks = inDisks;
+
+            // Disks =  indisks.Split(',').Select(i => int.Parse(i.Trim())).ToList();
+            Disks = new List<int>();
+            foreach (string disk in indisks.Split(','))
+            {
+                if (int.TryParse(disk.Trim(), out int result))
+                {
+                    Disks.Add(result);
+                }
+                else
+                {
+                    // Handle the case where parsing fails (e.g., log an error, display a message, or take appropriate action)
+                }
+            }
             Tags = tags;
-            Filter = filter;
+            Filter = filter == null? new Search_Filter() : filter;
         }
     }
 }

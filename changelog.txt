@@ -70,7 +70,7 @@
 - Now changes are counted in the title of the window
 - When you perform a search, the number of results will be displayed in a label under the button search
 - Added additional filters in the search
-
-
-
-
+1.15 - 16/09/23
+- improved the search speed when having more records as results
+- clicking on a View or View all is now also counted as a search, programatically. This means that it will be refreshed when you make a change in its results.
+- if you try to search in an empty databse, now an error message will popup
