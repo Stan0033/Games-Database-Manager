@@ -1,7 +1,7 @@
 # Games-Database-Manager
 
 * With this program you can keep track of games that you store on various storage devices.  
-* You only need the .exe file from the debug folder, to run the app.   
+* You only need the .exe file from the bin\debug folder, to run the app.   
 * Golden means that it has a picture preview    
 * The data is stored in the file "database.grecs" that must be inside the folder of the app.     
 * If you dont have a database, first fill your records and then click "save all changes".      
