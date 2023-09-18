@@ -74,3 +74,7 @@
 - improved the search speed when having more records as results
 - clicking on a View or View all is now also counted as a search, programatically. This means that it will be refreshed when you make a change in its results.
 - if you try to search in an empty databse, now an error message will popup
+1.16 - 18/09/23
+- You can now mark a record as missing or broken
+- in searach also added filters for those
+

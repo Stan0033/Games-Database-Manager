@@ -153,6 +153,20 @@ namespace Records_Manager
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel_search_results = new System.Windows.Forms.Panel();
+            this.markAsBrokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markAsMissingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markAsHealthyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.SEARCH_BROKEN_YES = new System.Windows.Forms.RadioButton();
+            this.SEARCH_BROKEN_PASS = new System.Windows.Forms.RadioButton();
+            this.SEARCH_BROKEN_NO = new System.Windows.Forms.RadioButton();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.SEARCH_MISSING_YES = new System.Windows.Forms.RadioButton();
+            this.SEARCH_MISSING_PASS = new System.Windows.Forms.RadioButton();
+            this.SEARCH_MISSING_NO = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -193,6 +207,8 @@ namespace Records_Manager
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_search_results.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox25.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -419,7 +435,7 @@ namespace Records_Manager
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(3, 504);
+            this.button12.Location = new System.Drawing.Point(3, 544);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(446, 40);
             this.button12.TabIndex = 18;
@@ -430,6 +446,8 @@ namespace Records_Manager
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox9.Controls.Add(this.groupBox25);
+            this.groupBox9.Controls.Add(this.groupBox24);
             this.groupBox9.Controls.Add(this.groupBox23);
             this.groupBox9.Controls.Add(this.groupBox20);
             this.groupBox9.Controls.Add(this.groupBox17);
@@ -439,7 +457,7 @@ namespace Records_Manager
             this.groupBox9.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox9.Location = new System.Drawing.Point(3, 434);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(446, 70);
+            this.groupBox9.Size = new System.Drawing.Size(446, 110);
             this.groupBox9.TabIndex = 21;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Additional Filters (Must NOT Have, Neutral, Must Have)";
@@ -631,7 +649,7 @@ namespace Records_Manager
             // label_countResuults
             // 
             this.label_countResuults.AutoSize = true;
-            this.label_countResuults.Location = new System.Drawing.Point(8, 551);
+            this.label_countResuults.Location = new System.Drawing.Point(8, 588);
             this.label_countResuults.Name = "label_countResuults";
             this.label_countResuults.Size = new System.Drawing.Size(0, 25);
             this.label_countResuults.TabIndex = 20;
@@ -1172,10 +1190,16 @@ namespace Records_Manager
             this.toolStripSeparator2,
             this.changeTagsOnlyToolStripMenuItem,
             this.toolStripSeparator1,
-            this.changeImageOnlyToolStripMenuItem});
+            this.changeImageOnlyToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.markAsBrokenToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.markAsMissingToolStripMenuItem,
+            this.toolStripSeparator9,
+            this.markAsHealthyToolStripMenuItem});
             this.menu_change.Name = "menu_change";
             this.menu_change.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_change.Size = new System.Drawing.Size(294, 278);
+            this.menu_change.Size = new System.Drawing.Size(294, 398);
             // 
             // toolStripMenuItem1
             // 
@@ -1456,6 +1480,7 @@ namespace Records_Manager
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -1596,6 +1621,138 @@ namespace Records_Manager
             this.panel_search_results.Size = new System.Drawing.Size(822, 854);
             this.panel_search_results.TabIndex = 6;
             // 
+            // markAsBrokenToolStripMenuItem
+            // 
+            this.markAsBrokenToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.markAsBrokenToolStripMenuItem.Name = "markAsBrokenToolStripMenuItem";
+            this.markAsBrokenToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsBrokenToolStripMenuItem.Text = "Mark as Broken";
+            this.markAsBrokenToolStripMenuItem.Click += new System.EventHandler(this.markAsBrokenToolStripMenuItem_Click);
+            // 
+            // markAsMissingToolStripMenuItem
+            // 
+            this.markAsMissingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.markAsMissingToolStripMenuItem.Name = "markAsMissingToolStripMenuItem";
+            this.markAsMissingToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsMissingToolStripMenuItem.Text = "Mark as Missing";
+            this.markAsMissingToolStripMenuItem.Click += new System.EventHandler(this.markAsMissingToolStripMenuItem_Click);
+            // 
+            // markAsHealthyToolStripMenuItem
+            // 
+            this.markAsHealthyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.markAsHealthyToolStripMenuItem.Name = "markAsHealthyToolStripMenuItem";
+            this.markAsHealthyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsHealthyToolStripMenuItem.Text = "Mark as Healthy";
+            this.markAsHealthyToolStripMenuItem.Click += new System.EventHandler(this.markAsHealthyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(290, 6);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(290, 6);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(290, 6);
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.SEARCH_BROKEN_YES);
+            this.groupBox24.Controls.Add(this.SEARCH_BROKEN_PASS);
+            this.groupBox24.Controls.Add(this.SEARCH_BROKEN_NO);
+            this.groupBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox24.ForeColor = System.Drawing.Color.White;
+            this.groupBox24.Location = new System.Drawing.Point(338, 21);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(76, 38);
+            this.groupBox24.TabIndex = 8;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Broken";
+            // 
+            // SEARCH_BROKEN_YES
+            // 
+            this.SEARCH_BROKEN_YES.AutoSize = true;
+            this.SEARCH_BROKEN_YES.Location = new System.Drawing.Point(46, 19);
+            this.SEARCH_BROKEN_YES.Name = "SEARCH_BROKEN_YES";
+            this.SEARCH_BROKEN_YES.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_BROKEN_YES.TabIndex = 2;
+            this.SEARCH_BROKEN_YES.UseVisualStyleBackColor = true;
+            this.SEARCH_BROKEN_YES.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // SEARCH_BROKEN_PASS
+            // 
+            this.SEARCH_BROKEN_PASS.AutoSize = true;
+            this.SEARCH_BROKEN_PASS.Checked = true;
+            this.SEARCH_BROKEN_PASS.Location = new System.Drawing.Point(26, 19);
+            this.SEARCH_BROKEN_PASS.Name = "SEARCH_BROKEN_PASS";
+            this.SEARCH_BROKEN_PASS.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_BROKEN_PASS.TabIndex = 1;
+            this.SEARCH_BROKEN_PASS.TabStop = true;
+            this.SEARCH_BROKEN_PASS.UseVisualStyleBackColor = true;
+            this.SEARCH_BROKEN_PASS.CheckedChanged += new System.EventHandler(this.SEARCH_BROKEN_PASS_CheckedChanged);
+            // 
+            // SEARCH_BROKEN_NO
+            // 
+            this.SEARCH_BROKEN_NO.AutoSize = true;
+            this.SEARCH_BROKEN_NO.Location = new System.Drawing.Point(6, 19);
+            this.SEARCH_BROKEN_NO.Name = "SEARCH_BROKEN_NO";
+            this.SEARCH_BROKEN_NO.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_BROKEN_NO.TabIndex = 0;
+            this.SEARCH_BROKEN_NO.UseVisualStyleBackColor = true;
+            this.SEARCH_BROKEN_NO.CheckedChanged += new System.EventHandler(this.SEARCH_BROKEN_NO_CheckedChanged);
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.SEARCH_MISSING_YES);
+            this.groupBox25.Controls.Add(this.SEARCH_MISSING_PASS);
+            this.groupBox25.Controls.Add(this.SEARCH_MISSING_NO);
+            this.groupBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox25.ForeColor = System.Drawing.Color.White;
+            this.groupBox25.Location = new System.Drawing.Point(10, 66);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(76, 38);
+            this.groupBox25.TabIndex = 9;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Missing";
+            this.groupBox25.Enter += new System.EventHandler(this.groupBox25_Enter);
+            // 
+            // SEARCH_MISSING_YES
+            // 
+            this.SEARCH_MISSING_YES.AutoSize = true;
+            this.SEARCH_MISSING_YES.Location = new System.Drawing.Point(46, 19);
+            this.SEARCH_MISSING_YES.Name = "SEARCH_MISSING_YES";
+            this.SEARCH_MISSING_YES.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_MISSING_YES.TabIndex = 2;
+            this.SEARCH_MISSING_YES.UseVisualStyleBackColor = true;
+            this.SEARCH_MISSING_YES.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // SEARCH_MISSING_PASS
+            // 
+            this.SEARCH_MISSING_PASS.AutoSize = true;
+            this.SEARCH_MISSING_PASS.Checked = true;
+            this.SEARCH_MISSING_PASS.Location = new System.Drawing.Point(26, 19);
+            this.SEARCH_MISSING_PASS.Name = "SEARCH_MISSING_PASS";
+            this.SEARCH_MISSING_PASS.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_MISSING_PASS.TabIndex = 1;
+            this.SEARCH_MISSING_PASS.TabStop = true;
+            this.SEARCH_MISSING_PASS.UseVisualStyleBackColor = true;
+            this.SEARCH_MISSING_PASS.CheckedChanged += new System.EventHandler(this.SEARCH_MISSING_PASS_CheckedChanged);
+            // 
+            // SEARCH_MISSING_NO
+            // 
+            this.SEARCH_MISSING_NO.AutoSize = true;
+            this.SEARCH_MISSING_NO.Location = new System.Drawing.Point(6, 19);
+            this.SEARCH_MISSING_NO.Name = "SEARCH_MISSING_NO";
+            this.SEARCH_MISSING_NO.Size = new System.Drawing.Size(14, 13);
+            this.SEARCH_MISSING_NO.TabIndex = 0;
+            this.SEARCH_MISSING_NO.UseVisualStyleBackColor = true;
+            this.SEARCH_MISSING_NO.CheckedChanged += new System.EventHandler(this.SEARCH_MISSING_NO_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1607,7 +1764,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.15";
+            this.Text = "Games Database Manager v1.16";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1669,6 +1826,10 @@ namespace Records_Manager
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Header)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel_search_results.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1798,6 +1959,20 @@ namespace Records_Manager
         private RadioButton series_NO;
         private ProgressBar progressBar1;
         private Panel panel_search_results;
+        private ToolStripSeparator toolStripSeparator7;
+        private ToolStripMenuItem markAsBrokenToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator8;
+        private ToolStripMenuItem markAsMissingToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator9;
+        private ToolStripMenuItem markAsHealthyToolStripMenuItem;
+        private GroupBox groupBox25;
+        private RadioButton SEARCH_MISSING_YES;
+        private RadioButton SEARCH_MISSING_PASS;
+        private RadioButton SEARCH_MISSING_NO;
+        private GroupBox groupBox24;
+        private RadioButton SEARCH_BROKEN_YES;
+        private RadioButton SEARCH_BROKEN_PASS;
+        private RadioButton SEARCH_BROKEN_NO;
     }
 }
 

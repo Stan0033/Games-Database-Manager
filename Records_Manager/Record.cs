@@ -23,10 +23,21 @@ namespace Records_Manager
         public string Steam { get; set; }
         public string Wiki { get; set; }
         public double SizeOnDisk { get; set; }
+        public bool Broken { get; set; }
+        public bool Missing { get; set; }
         
 
         // Constructor
-        public Record(string name,int disk, string series, string developer, string publisher, List<string> tags, string url, double sizeOnDisk= 0,string platform = "", string link_steam="", string link_wiki="",int releaseYear=0  )
+        public Record(string name,
+            int disk,
+            string series,
+            string developer, 
+            string publisher,
+            List<string> tags,
+            string url, 
+            bool broken=false,
+            bool missing=false
+            )
         {
             Title = name;
             Disk = disk;
@@ -35,11 +46,9 @@ namespace Records_Manager
             Publisher = publisher;
             Tags = tags;
             ImageURL= url;
-            ReleaseYear = releaseYear;
-            Platform = platform;
-            Steam = link_steam;
-            Wiki = link_wiki;
-            SizeOnDisk = sizeOnDisk;
+          
+            Broken = broken;
+            Missing = missing;
         }
         public ListViewItem getRow()
         {
@@ -56,6 +65,10 @@ namespace Records_Manager
             create.SubItems.Add(Publisher);
             create.SubItems.Add(string.Join(",", Tags));
             create.SubItems.Add(ImageURL);
+            if (ImageURL.Trim().Length > 3) { create.ForeColor = Color.Gold; }
+            if (Broken) { create.ForeColor =Color.OrangeRed; }
+            if (Missing) { create.ForeColor= Color.Red; }
+            
             
             
             return create;
@@ -66,13 +79,15 @@ namespace Records_Manager
             Developer = Developer == string.Empty ? " " : Developer;
             Publisher = Publisher == string.Empty ? " " : Publisher;
             ImageURL = ImageURL == string.Empty ? " " : ImageURL;
-
+            string missingOrBroken = string.Empty;
+            if (Broken) { missingOrBroken= "="; }
+            if (Missing) { missingOrBroken= "-"; }
             // Clean each tag to remove newline characters
             List<string> cleanedTags = Tags.Select(tag => tag.Replace("\n", "").Replace("\r", "")).ToList();
 
             string tagsJoined = string.Join(",", cleanedTags);
 
-            return $"[{Title}|{Disk}|{Series}|{Developer}|{Publisher}|{tagsJoined}|{ImageURL}]";
+            return $"[{Title}|{Disk}|{Series}|{Developer}|{Publisher}|{tagsJoined}|{ImageURL}]{missingOrBroken}";
         }
         
 

@@ -13,6 +13,8 @@ namespace Records_Manager
         public int Search_Pub { get; private set; }
         public int Search_Series { get; private set; }
         public int Search_Image { get; private set; }
+        public int Search_Missing { get; private set; }
+        public int Search_Broken { get; private set; }
         public Search_Filter()
         {
             Search_Dev = 0;
@@ -24,7 +26,10 @@ namespace Records_Manager
             RadioButton Search_Dev_NO, RadioButton Search_DEV_PASS, RadioButton Search_DEV_YES,
             RadioButton Search_Pub_NO, RadioButton Search_Pub_Pass, RadioButton Search_PUB_YES,
             RadioButton Search_SER_NO, RadioButton Search_SER_Pass, RadioButton Search_SER_YES,
-            RadioButton Search_IMG_NO, RadioButton Search_IMG_Pass, RadioButton Search_IMG_YES
+            RadioButton Search_IMG_NO, RadioButton Search_IMG_Pass, RadioButton Search_IMG_YES,
+            RadioButton SEARCH_BROKEN_NO, RadioButton SEARCH_BROKEN_PASS, RadioButton SEARCH_BROKEN_YES,
+            RadioButton SEARCH_MISSING_NO, RadioButton SEARCH_MISSING_PASS, RadioButton SEARCH_MISSING_YES
+
             )
         {
             if ( Search_Dev_NO.Checked ) { Search_Dev = -1; }
@@ -43,6 +48,15 @@ namespace Records_Manager
             if (Search_IMG_Pass.Checked) { Search_Image = 0; }
             if (Search_IMG_YES.Checked) { Search_Image = 1; }
             //------------------------------------------------
+             
+            if (SEARCH_BROKEN_NO.Checked) { Search_Broken = -1; }
+            if (SEARCH_BROKEN_PASS.Checked) { Search_Broken = 0; }
+            if (SEARCH_BROKEN_YES.Checked) { Search_Broken = 1; }
+            //------------------------------------------------
+
+            if (SEARCH_MISSING_NO.Checked) { Search_Missing = -1; }
+            if (SEARCH_MISSING_PASS.Checked) { Search_Missing = 0; }
+            if (SEARCH_MISSING_YES.Checked) { Search_Missing = 1; }
         }
     }
 }
