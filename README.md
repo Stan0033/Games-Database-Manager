@@ -10,5 +10,6 @@
 * Video how to use: https://www.youtube.com/watch?v=p_OqTdLt4F0
 * Програма за водене на списък и следене на записани игри върху различки типове съхраняващи устройста.  
 
-![pic](https://i.ibb.co/pr91SRx/ga.png)
+
 ![pic](https://i.ibb.co/PFvpSNz/daa.png)
+![pic](https://i.ibb.co/LJdn97j/1.png)
