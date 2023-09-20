@@ -58,5 +58,28 @@ namespace Records_Manager
             if (SEARCH_MISSING_PASS.Checked) { Search_Missing = 0; }
             if (SEARCH_MISSING_YES.Checked) { Search_Missing = 1; }
         }
+        public string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (Search_Dev == -1) { sb.AppendLine($"Must have developer: NO"); }
+            if (Search_Dev == 0) { sb.AppendLine($"Must have developer: PASS"); }
+            if (Search_Dev == 1) { sb.AppendLine($"Must have developer: YES"); }
+            if (Search_Pub == -1) { sb.AppendLine($"Must have publisher: NO"); }
+            if (Search_Pub == 0) { sb.AppendLine($"Must have publisher: PASS"); }
+            if (Search_Pub == 1) { sb.AppendLine($"Must have publisher: YES"); }
+            if (Search_Series == -1) { sb.AppendLine($"Must be part of series: NO"); }
+            if (Search_Series == 0) { sb.AppendLine($"Must be part of series: PASS"); }
+            if (Search_Series == 1) { sb.AppendLine($"Must be part of series: YES"); }
+            if (Search_Image == -1) { sb.AppendLine($"Must have preview image: NO"); }
+            if (Search_Image == 0) { sb.AppendLine($"Must have preview image: PASS"); }
+            if (Search_Image == 1) { sb.AppendLine($"Must have preview image: YES"); }
+            if (Search_Missing == -1) { sb.AppendLine($"Must be missing: NO"); }
+            if (Search_Missing == 0) { sb.AppendLine($"Must be missing: PASS"); }
+            if (Search_Missing == 1) { sb.AppendLine($"Must be missing: YES"); }
+            if (Search_Broken == -1) { sb.AppendLine($"Must be broken: NO"); }
+            if (Search_Broken == 0) { sb.AppendLine($"Must be broken: PASS"); }
+            if (Search_Broken == 1) { sb.AppendLine($"Must be broken: YES"); }
+            return sb.ToString();
+        }
     }
 }

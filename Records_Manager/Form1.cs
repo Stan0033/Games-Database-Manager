@@ -22,9 +22,12 @@ namespace Records_Manager
         bool SelectedAllDisks = false;
         const string saveFileName = "database.grecs";
         public Search lastSearch;
+        public Search tempSearch;
+        bool searched_count = false;
         string appName;
         int Changes_Counter;
         Search_Filter Filter;
+        List<Search> SearchHistory; 
         public Form1()
         {
             InitializeComponent();
@@ -34,6 +37,7 @@ namespace Records_Manager
             appName = Text;
             Changes_Counter = 0;
             Filter = new Search_Filter();
+            SearchHistory = new List<Search>();
         }
         public void RefreshLastSearch()
         {
@@ -43,14 +47,15 @@ namespace Records_Manager
         }
         public void SearchInRecords(Search searchData)
         {
+            if (searchData == null) { return; }
             if (records.Count == 0) { _ = new MessageForm("Database is empty", 2).ShowDialog(); return; }
             // get the searched name - if empty, it can be with any name, as long as there are other requirements
-            string search = searchData.Title;
+            string search = searchData.Keywords;
             List<string> multiSearch = search.Split(',').Select(x => x.Trim()).ToList();
             // prepare the list of results, for filling
             List<Record> results = new List<Record>();
             // the list of words that should not be containe in the string
-            List<string> MustNotContain_List = searchData.ExcludedContents.Trim() == string.Empty ? new List<string>() : searchData.ExcludedContents.Split(',').ToList();
+            List<string> MustNotContain_List = searchData.ExcludedKeywords.Trim() == string.Empty ? new List<string>() : searchData.ExcludedKeywords.Split(',').ToList();
             // get the selected disks if any
             List<int> selectedDisks = searchData.Disks;
             if (selectedDisks.Count == 0)
@@ -133,7 +138,19 @@ namespace Records_Manager
                     if (Contains_Name && ContainsNOT && ContainsTags && SatisfiesFilters) { results.Add(record); }
                 }
             }
-            DisplayResultsAsync(results);
+            if (searched_count==true)
+            {
+                searched_count = false;
+                label_countSearch.Text = $"Count search results: {results.Count}";
+                
+            }
+            else
+            {
+                label_countResuults.Text = $"Search results: {results.Count}";
+                lastSearch = searchData;
+                DisplayResultsAsync(results);
+            }
+           
            
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -531,6 +548,8 @@ namespace Records_Manager
             _ = new MessageForm($"Added {addedTitles}/{maxTitles} titles.", 1).ShowDialog();
 
             RefreshDisksGRoupBoxName();
+            Changes_Counter++;
+            ChangeSavedChangesStatus(false);
             if (addedTitles > 0)
             {
                 ChangeSavedChangesStatus(false);
@@ -544,6 +563,7 @@ namespace Records_Manager
                 }
                 v.ShowDialog();
             }
+            RefreshLastSearch();
         }
         private void UncheckAllCheckBoxes(CheckedListBox checkBoxList)
         {
@@ -562,8 +582,8 @@ namespace Records_Manager
             {
                 string searchedDisk = list_disks.SelectedItems[0].ToString().Trim();
                  
-                 lastSearch = new Search("", true, false, false, false, "", searchedDisk, null, new Search_Filter());
-
+                 lastSearch = new Search("", true, false, false, false, "", searchedDisk, null, new Search_Filter(),DateTime.Now.ToString());
+                SearchHistory.Add(lastSearch);
                 SearchInRecords(lastSearch);
 
                 
@@ -577,7 +597,8 @@ namespace Records_Manager
         private void ViewDisks(object sender, EventArgs e)
         {
             string allDisks =   string.Join(",", list_disks.Items.Cast<string>());
-            lastSearch = new Search("",true,false,false,false,"", allDisks, null,new Search_Filter());
+            lastSearch = new Search("",true,false,false,false,"", allDisks, null,new Search_Filter(), DateTime.Now.ToString());
+            SearchHistory.Add(lastSearch);
             SearchInRecords(lastSearch);
 
           
@@ -710,10 +731,10 @@ namespace Records_Manager
         {
             if (e.KeyCode == Keys.Enter)
             {
-                lastSearch = null;
-                lastSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags, Filter);
-
-                SearchInRecords(lastSearch);
+               
+                tempSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags, Filter, DateTime.Now.ToString());
+                SearchHistory.Add(tempSearch);
+                SearchInRecords(tempSearch);
             }
 
         }
@@ -814,7 +835,7 @@ namespace Records_Manager
 
                 // Hide the progress bar when done
                 progressBar1.Visible = false;
-                label_countResuults.Text = $"Search results: {results.Count}";
+               
             }
         }
 
@@ -958,7 +979,7 @@ namespace Records_Manager
                 change_dev.Text = SelectedRecordItemsData[3];
                 change_pub.Text = SelectedRecordItemsData[4];
                 // now the tags
-                PopulateChangeTagsCheckedListBox(SelectedRecordItemsData[5]);
+                PopulateTagsCheckedListBox(SelectedRecordItemsData[5], change_tags);
                 setTagsGroupBoxCount(change_tags, change_groupBox_tags);
                 // now the image
                 foreach (var item in records[int.Parse(SelectedRecordItemsData[1])])
@@ -1005,25 +1026,25 @@ namespace Records_Manager
                 change_pub.Text = string.Empty;
             }
         }
-        private void PopulateChangeTagsCheckedListBox(string inputString)
+        private void PopulateTagsCheckedListBox(string inputString, CheckedListBox whichCLB)
         {
             // Split the input string into individual items using the comma as a separator
             string[] items = inputString.Split(',');
 
             // Uncheck all checkboxes in change_tags
-            for (int i = 0; i < change_tags.Items.Count; i++)
+            for (int i = 0; i < whichCLB.Items.Count; i++)
             {
-                change_tags.SetItemChecked(i, false);
+                whichCLB.SetItemChecked(i, false);
             }
 
             // Iterate through the items and check the corresponding checkboxes in change_tags
             foreach (string item in items)
             {
-                int index = change_tags.FindStringExact(item); // Find the index of the item
+                int index = whichCLB.FindStringExact(item); // Find the index of the item
                 if (index != ListBox.NoMatches)
                 {
                     // If the item is found in change_tags, check it
-                    change_tags.SetItemChecked(index, true);
+                    whichCLB.SetItemChecked(index, true);
                 }
             }
         }
@@ -1096,11 +1117,11 @@ namespace Records_Manager
                     }
 
                     _ = new MessageForm($"Changes made", 1).ShowDialog();
-
+                    Changes_Counter++;
                     ChangeSavedChangesStatus(false);
                     RefreshLastSearch();
                     ClearChangeFields();
-                    Changes_Counter++;
+                  
                 }
             }
         }
@@ -1149,8 +1170,9 @@ namespace Records_Manager
         private void searchButton_Click(object sender, EventArgs e)
         {
              
-            lastSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags, Filter);
-            SearchInRecords(lastSearch);
+            tempSearch = new Search(search_name.Text,search_byName.Checked, search_byDev.Checked,search_byPublisher.Checked,search_bySeries.Checked,search_mustnotcontain.Text,search_indisks.Text,search_tags, Filter, DateTime.Now.ToString());
+            SearchHistory.Add(tempSearch);
+            SearchInRecords(tempSearch);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -1735,72 +1757,72 @@ namespace Records_Manager
         
         private void series_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
         }
 
         private void series_PAS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void series_YES_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void pub_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void pub_PAS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void pub_YES_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void dev_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void dev_PAS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void dev_YES_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void img_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void img_PAS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void img_YES_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
@@ -1936,26 +1958,26 @@ namespace Records_Manager
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             SEARCH_MISSING_PASS.Checked = true;
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             SEARCH_BROKEN_PASS.Checked=true;
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void SEARCH_BROKEN_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void SEARCH_BROKEN_PASS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
@@ -1966,16 +1988,88 @@ namespace Records_Manager
 
         private void SEARCH_MISSING_NO_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
 
         }
 
         private void SEARCH_MISSING_PASS_CheckedChanged(object sender, EventArgs e)
         {
-            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PAS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+            Filter.setFilter(dev_NO, dev_PAS, dev_YES, pub_NO, pub_PAS, pub_YES, series_NO, series_PASS, series_YES, img_NO, img_PAS, img_YES, SEARCH_BROKEN_NO, SEARCH_BROKEN_PASS, SEARCH_BROKEN_YES, SEARCH_MISSING_NO, SEARCH_MISSING_PASS, SEARCH_MISSING_YES);
+
+        }
+
+        private void Search_Count_Click(object sender, EventArgs e)
+        {
+            searched_count = true;
+
+            tempSearch = new Search(search_name.Text, search_byName.Checked, search_byDev.Checked, search_byPublisher.Checked, search_bySeries.Checked, search_mustnotcontain.Text, search_indisks.Text, search_tags, Filter, DateTime.Now.ToString());
+            SearchHistory.Add(tempSearch);
+            SearchInRecords(tempSearch);
+        }
+
+        private void label_countSearch_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label_countSearch_DoubleClick(object sender, EventArgs e)
+        {
+            label_countSearch.Text = string.Empty;
+        }
+        public void FillSearchFieldsFromSearch(Search search)
+        {
+            search_name.Text = search.Keywords;
+            search_mustnotcontain.Text = search.ExcludedKeywords;
+            search_indisks.Text = string.Join(",", search.Disks);
+            search_byName.Checked = search.Search_ByDev;
+            search_byDev.Checked = search.Search_ByDev;
+            search_byPublisher.Checked = search.Search_ByPub;
+            search_bySeries.Checked = search.Search_BySeries;
+            string taglist = string.Join( ",",search.TagsList);
+
+            PopulateTagsCheckedListBox(taglist, search_tags);
+            series_NO.Checked = search.Filter.Search_Series ==-1? true: false;  
+            series_PASS.Checked = search.Filter.Search_Series ==0? true: false;  
+            series_YES.Checked = search.Filter.Search_Series ==1? true: false;  
+            dev_NO.Checked = search.Filter.Search_Dev== -1? true: false;
+            dev_PAS.Checked = search.Filter.Search_Dev== 0? true: false;
+            dev_YES.Checked = search.Filter.Search_Dev== 1? true: false;
+            pub_NO.Checked = search.Filter.Search_Pub == -1 ? true : false;
+            pub_PAS.Checked = search.Filter.Search_Pub == 0 ? true : false;
+            pub_YES.Checked = search.Filter.Search_Pub == 1 ? true : false;
+            img_NO.Checked = search.Filter.Search_Image == -1 ? true : false;
+            img_PAS.Checked = search.Filter.Search_Image == 0 ? true : false;
+            img_YES.Checked = search.Filter.Search_Image == 1 ? true : false;
+
+            SEARCH_BROKEN_NO.Checked = search.Filter.Search_Broken == -1 ? true : false;
+            SEARCH_BROKEN_PASS.Checked = search.Filter.Search_Broken == 0 ? true : false;
+            SEARCH_BROKEN_YES.Checked = search.Filter.Search_Broken == 1 ? true : false;
+
+            SEARCH_MISSING_NO.Checked = search.Filter.Search_Missing == -1 ? true : false;
+            SEARCH_MISSING_PASS.Checked = search.Filter.Search_Missing == 0 ? true : false;
+            SEARCH_MISSING_YES.Checked = search.Filter.Search_Missing == 1 ? true : false;
+        }
+        private void button15_Click(object sender, EventArgs e)
+        {
+            using (var v = new Search_History(SearchHistory))
+            {
+                v.ShowDialog();
+                if ( v.DialogResult == DialogResult.OK )
+                {
+                    SearchHistory.Add(SearchHistory[v.SelectedSearchIndex]);
+                    lastSearch = SearchHistory[v.SelectedSearchIndex];
+                    FillSearchFieldsFromSearch(lastSearch);
+                    SearchInRecords(lastSearch);
+                }
+            }
+        }
+
+        private void button14_Click_1(object sender, EventArgs e)
+        {
 
         }
     }
+    
 
 }
 

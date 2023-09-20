@@ -18,6 +18,10 @@ namespace Records_Manager
         public string Publisher { get; set; }
         public List<string> Tags { get; set; }
         public string ImageURL { get; set; }
+
+        //---------------------------------------------
+        // Unused... yet
+        //---------------------------------------------
         public int ReleaseYear { get; set; }
         public string Platform { get; set; }
         public string Steam { get; set; }
@@ -25,7 +29,10 @@ namespace Records_Manager
         public double SizeOnDisk { get; set; }
         public bool Broken { get; set; }
         public bool Missing { get; set; }
-        
+        public string Version { get; set; }
+        public string CrackedBy { get; set; }
+        public string RepackBy { get; set; }
+        //---------------------------------------------
 
         // Constructor
         public Record(string name,
