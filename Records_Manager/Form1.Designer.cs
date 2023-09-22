@@ -175,6 +175,10 @@ namespace Records_Manager
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel_search_results = new System.Windows.Forms.Panel();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_disks.SuspendLayout();
@@ -1411,133 +1415,137 @@ namespace Records_Manager
             this.toolStripSeparator8,
             this.markAsMissingToolStripMenuItem,
             this.toolStripSeparator9,
-            this.markAsHealthyToolStripMenuItem});
+            this.markAsHealthyToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.toolStripMenuItem7,
+            this.toolStripSeparator11,
+            this.toolStripMenuItem8});
             this.menu_change.Name = "menu_change";
             this.menu_change.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_change.Size = new System.Drawing.Size(294, 398);
+            this.menu_change.Size = new System.Drawing.Size(294, 478);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(293, 34);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(312, 34);
             this.toolStripMenuItem1.Text = "Change name only";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(309, 6);
             // 
             // changeSeriesOnlyToolStripMenuItem
             // 
             this.changeSeriesOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeSeriesOnlyToolStripMenuItem.Name = "changeSeriesOnlyToolStripMenuItem";
-            this.changeSeriesOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeSeriesOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changeSeriesOnlyToolStripMenuItem.Text = "Change series only";
             this.changeSeriesOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeSeriesOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(309, 6);
             // 
             // changeDiskOnlyToolStripMenuItem
             // 
             this.changeDiskOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeDiskOnlyToolStripMenuItem.Name = "changeDiskOnlyToolStripMenuItem";
-            this.changeDiskOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeDiskOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changeDiskOnlyToolStripMenuItem.Text = "Change disk only";
             this.changeDiskOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeDiskOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(309, 6);
             // 
             // changeDeveloperOnlyToolStripMenuItem
             // 
             this.changeDeveloperOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeDeveloperOnlyToolStripMenuItem.Name = "changeDeveloperOnlyToolStripMenuItem";
-            this.changeDeveloperOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeDeveloperOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changeDeveloperOnlyToolStripMenuItem.Text = "Change developer only";
             this.changeDeveloperOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeDeveloperOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(309, 6);
             // 
             // changePublisherOnlyToolStripMenuItem
             // 
             this.changePublisherOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changePublisherOnlyToolStripMenuItem.Name = "changePublisherOnlyToolStripMenuItem";
-            this.changePublisherOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changePublisherOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changePublisherOnlyToolStripMenuItem.Text = "Change publisher only";
             this.changePublisherOnlyToolStripMenuItem.Click += new System.EventHandler(this.changePublisherOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(309, 6);
             // 
             // changeTagsOnlyToolStripMenuItem
             // 
             this.changeTagsOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeTagsOnlyToolStripMenuItem.Name = "changeTagsOnlyToolStripMenuItem";
-            this.changeTagsOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeTagsOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changeTagsOnlyToolStripMenuItem.Text = "Change tags only";
             this.changeTagsOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeTagsOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(309, 6);
             // 
             // changeImageOnlyToolStripMenuItem
             // 
             this.changeImageOnlyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeImageOnlyToolStripMenuItem.Name = "changeImageOnlyToolStripMenuItem";
-            this.changeImageOnlyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.changeImageOnlyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.changeImageOnlyToolStripMenuItem.Text = "Change image only";
             this.changeImageOnlyToolStripMenuItem.Click += new System.EventHandler(this.changeImageOnlyToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(309, 6);
             // 
             // markAsBrokenToolStripMenuItem
             // 
             this.markAsBrokenToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.markAsBrokenToolStripMenuItem.Name = "markAsBrokenToolStripMenuItem";
-            this.markAsBrokenToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsBrokenToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.markAsBrokenToolStripMenuItem.Text = "Mark as Broken";
             this.markAsBrokenToolStripMenuItem.Click += new System.EventHandler(this.markAsBrokenToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(309, 6);
             // 
             // markAsMissingToolStripMenuItem
             // 
             this.markAsMissingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.markAsMissingToolStripMenuItem.Name = "markAsMissingToolStripMenuItem";
-            this.markAsMissingToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsMissingToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.markAsMissingToolStripMenuItem.Text = "Mark as Missing";
             this.markAsMissingToolStripMenuItem.Click += new System.EventHandler(this.markAsMissingToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(290, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(309, 6);
             // 
             // markAsHealthyToolStripMenuItem
             // 
             this.markAsHealthyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.markAsHealthyToolStripMenuItem.Name = "markAsHealthyToolStripMenuItem";
-            this.markAsHealthyToolStripMenuItem.Size = new System.Drawing.Size(293, 34);
+            this.markAsHealthyToolStripMenuItem.Size = new System.Drawing.Size(312, 34);
             this.markAsHealthyToolStripMenuItem.Text = "Mark as Healthy";
             this.markAsHealthyToolStripMenuItem.Click += new System.EventHandler(this.markAsHealthyToolStripMenuItem_Click);
             // 
@@ -1875,6 +1883,32 @@ namespace Records_Manager
             this.panel_search_results.Size = new System.Drawing.Size(822, 1011);
             this.panel_search_results.TabIndex = 6;
             // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(309, 6);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(293, 34);
+            this.toolStripMenuItem7.Text = "Remove string in titles";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(290, 6);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(293, 34);
+            this.toolStripMenuItem8.Text = "Replace string in titles";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1886,7 +1920,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.17";
+            this.Text = "Games Database Manager v1.18";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -2108,6 +2142,10 @@ namespace Records_Manager
         private Label label_countSearch;
         private Button button14;
         private GroupBox groupBox26;
+        private ToolStripSeparator toolStripSeparator10;
+        private ToolStripMenuItem toolStripMenuItem7;
+        private ToolStripSeparator toolStripSeparator11;
+        private ToolStripMenuItem toolStripMenuItem8;
     }
 }
 

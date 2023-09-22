@@ -2068,6 +2068,115 @@ namespace Records_Manager
         {
 
         }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 1)
+            {
+                using (var v = new string_input())
+                {
+                    v.groupBox_newstring.Enabled = false;
+                    v.ShowDialog();
+                    int allSelected = listView1.SelectedItems.Count;
+                    int updateCount = 0;
+                    string updateWhat = "title";
+                    if (v.DialogResult == DialogResult.OK)
+                    {
+                        string change = v.textBox_string.Text.Trim();
+                        if (change.Length > 0)
+                        {
+
+                            foreach (int index in listView1.SelectedIndices)
+                            {
+                                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                                for (int i = 0; i < records[currentDisk].Count; i++)
+                                {
+                                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                                    {
+                                        string title = records[currentDisk][i].Title;
+                                        string newTitle = title.Replace(change, ""); ;
+                                        records[currentDisk][i].Title = newTitle;
+
+
+                                        updateCount++;
+                                    }
+
+                                }
+                            }
+
+                            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s as {updateWhat}.", 1).ShowDialog();
+
+                            RefreshLastSearch();
+                            ClearChangeFields();
+                            Changes_Counter++;
+                            ChangeSavedChangesStatus(false);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                _ = new MessageForm("At least 2 records must be selected for this command",2).ShowDialog();
+            }
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 1)
+            {
+                using (var v = new string_input())
+                {
+                    v.groupBox_newstring.Enabled = false;
+                    v.ShowDialog();
+                    int allSelected = listView1.SelectedItems.Count;
+                    int updateCount = 0;
+                    string updateWhat = "title";
+                    if (v.DialogResult == DialogResult.OK)
+                    {
+                        string oldString = v.textBox_string.Text.Trim();
+                        string newString = v.textBox_newstring.Text.Trim();
+                        if (oldString.Length > 0 && newString.Length>0)
+                        {
+
+                            foreach (int index in listView1.SelectedIndices)
+                            {
+                                string currrentName = listView1.Items[index].SubItems[0].Text;
+
+                                int currentDisk = Convert.ToInt32(listView1.Items[index].SubItems[1].Text);
+
+                                for (int i = 0; i < records[currentDisk].Count; i++)
+                                {
+                                    if (records[currentDisk][i].Title == currrentName) // if matching the name, found the record
+                                    {
+                                        string title = records[currentDisk][i].Title;
+                                        string newTitle = title.Replace(oldString, newString); ;
+                                        records[currentDisk][i].Title = newTitle;
+
+
+                                        updateCount++;
+                                    }
+
+                                }
+                            }
+
+                            _ = new MessageForm($"Updated {updateCount}/{allSelected} of the selected record/s as {updateWhat}.", 1).ShowDialog();
+
+                            RefreshLastSearch();
+                            ClearChangeFields();
+                            Changes_Counter++;
+                            ChangeSavedChangesStatus(false);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                _ = new MessageForm("At least 2 records must be selected for this command", 2).ShowDialog();
+            }
+        }
     }
     
 

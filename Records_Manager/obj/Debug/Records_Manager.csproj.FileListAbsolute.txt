@@ -21,6 +21,7 @@ H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.MessageForm.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Properties.Resources.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.Search_History.resources
+H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.string_input.resources
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.GenerateResource.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.csproj.CoreCompileInputs.cache
 H:\Projects\C#\Games-Database-Manager\Records_Manager\obj\Debug\Records_Manager.exe

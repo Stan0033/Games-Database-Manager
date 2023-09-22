@@ -85,6 +85,12 @@
     <Compile Include="Search_History.Designer.cs">
       <DependentUpon>Search_History.cs</DependentUpon>
     </Compile>
+    <Compile Include="string input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string input.Designer.cs">
+      <DependentUpon>string input.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tags.cs" />
     <EmbeddedResource Include="changeValue.resx">
       <DependentUpon>changeValue.cs</DependentUpon>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="Search_History.resx">
       <DependentUpon>Search_History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string input.resx">
+      <DependentUpon>string input.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
