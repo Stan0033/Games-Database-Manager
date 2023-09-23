@@ -510,7 +510,7 @@ namespace Records_Manager
 
             int addedTitles = 0;
             int maxTitles = listOfTitles.Count;
-            listOfTitles = RemoveDuplicates(listOfTitles);
+            //listOfTitles = RemoveDuplicates(listOfTitles);
             string dev = add_Developer.Text.Trim();
             string pub = add_Publisher.Text.Trim();
             string ser = add_Series.Text.Trim();
@@ -529,11 +529,11 @@ namespace Records_Manager
                         if (recordExists(name)) { ExistingRecords.Add(name + " -> " + disk.ToString()); continue; }
                     }
 
-                    Record n = new Record(name, disk, ser, dev, pub, checkedItems, url);
-                    if (records.ContainsKey(disk) == false) { records.Add(disk, new List<Record> { n }); addedTitles++; hasNewDisks = true; }
+                    Record newRecord = new Record(name, disk, ser, dev, pub, checkedItems, url);
+                    if (records.ContainsKey(disk) == false) { records.Add(disk, new List<Record> { newRecord }); addedTitles++; hasNewDisks = true; }
                     else
                     {
-                        records[disk].Add(n); addedTitles++;
+                        records[disk].Add(newRecord); addedTitles++;
                     }
                 }
             }
