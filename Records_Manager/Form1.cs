@@ -471,18 +471,14 @@ namespace Records_Manager
         {
             if (list.Count == 1) { return false; }
             //first lowrcase them to compare easier
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i] = list[i].ToLower();
-
-            }
+           
             bool thereAreDuplicates = false;
             for (int i = 0; i < list.Count; i++)
             {
                 for (int j = 0; j < list.Count; i++)
                 {
                     if (i == j) { continue; }
-                    if (list[i] == list[j])
+                    if (list[i].ToLower() == list[j])
                     thereAreDuplicates = true;
                     break;
                 }

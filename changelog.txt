@@ -85,3 +85,5 @@
 - now when a search doesnt have results, the label will say 0
 1.18 - 22/09/23
 - In the context menu of the list of records, added "remove string in titles" and "repalce string in titles"
+1.18a - 23/09/23
+- fixed a mistake where records added from list were generated as lowercase
