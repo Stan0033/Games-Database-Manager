@@ -478,7 +478,7 @@ namespace Records_Manager
                 for (int j = 0; j < list.Count; i++)
                 {
                     if (i == j) { continue; }
-                    if (list[i].ToLower() == list[j])
+                    if (list[i].ToLower() == list[j].ToLower())
                     thereAreDuplicates = true;
                     break;
                 }
