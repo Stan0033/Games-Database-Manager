@@ -18,6 +18,8 @@ namespace Records_Manager
         public string Publisher { get; set; }
         public List<string> Tags { get; set; }
         public string ImageURL { get; set; }
+        public bool Broken { get; set; }
+        public bool Missing { get; set; }
 
         //---------------------------------------------
         // Unused... yet
@@ -27,8 +29,7 @@ namespace Records_Manager
         public string Steam { get; set; }
         public string Wiki { get; set; }
         public double SizeOnDisk { get; set; }
-        public bool Broken { get; set; }
-        public bool Missing { get; set; }
+      
         public string Version { get; set; }
         public string CrackedBy { get; set; }
         public string RepackBy { get; set; }
@@ -80,7 +81,7 @@ namespace Records_Manager
             
             return create;
         }
-        public string ToString()
+        public override string ToString()
         {
             Series = Series == string.Empty ? " " : Series;
             Developer = Developer == string.Empty ? " " : Developer;

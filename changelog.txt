@@ -87,3 +87,12 @@
 - In the context menu of the list of records, added "remove string in titles" and "repalce string in titles"
 1.18a - 23/09/23
 - fixed a mistake where records added from list were generated as lowercase
+1.19
+- (FIX) Now when you change the disk number of a disk to be the same as an alredy existing one, the records will have their disk number properly set.
+- increased the font size of the buttons Delete Disk and Discard Database
+- Decresed the size of the window to 1200x850. It was too big.
+- renamed the button 'Get From Folder' to 'Get Multiple From Folder'
+- When you check an item in a taglist, the taglist's asterisk will remain now
+- the button 'Add' renamed to 'Add to Database'and moved below the groupbox 'Get Multiple From Folder'
+- refactored the code to reduce warnings and messages
+- The hotkeys for switching between tabs are now only 1,2,3,4 instead of alt+. This is changed for convinience of the user.

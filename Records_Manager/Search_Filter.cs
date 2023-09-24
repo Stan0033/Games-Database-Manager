@@ -22,7 +22,7 @@ namespace Records_Manager
             Search_Series = 0;
             Search_Image = 0;
         }
-        public void setFilter(
+        public void SetFilter(
             RadioButton Search_Dev_NO, RadioButton Search_DEV_PASS, RadioButton Search_DEV_YES,
             RadioButton Search_Pub_NO, RadioButton Search_Pub_Pass, RadioButton Search_PUB_YES,
             RadioButton Search_SER_NO, RadioButton Search_SER_Pass, RadioButton Search_SER_YES,
@@ -58,7 +58,7 @@ namespace Records_Manager
             if (SEARCH_MISSING_PASS.Checked) { Search_Missing = 0; }
             if (SEARCH_MISSING_YES.Checked) { Search_Missing = 1; }
         }
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             if (Search_Dev == -1) { sb.AppendLine($"Must have developer: NO"); }
