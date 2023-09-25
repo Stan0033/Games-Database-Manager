@@ -14,20 +14,20 @@ namespace Records_Manager
 {
     public partial class Form1 : Form
     {
-        Dictionary<int, List<Record>> records = new Dictionary<int, List<Record>>();
+        public Dictionary<int, List<Record>> records = new Dictionary<int, List<Record>>();
         
          
         bool SavedChanges;
-        int CurrentlySelectedDiskInListView;
+       public  int CurrentlySelectedDiskInListView;
        
         const string saveFileName = "database.grecs";
         public Search lastSearch;
         public Search tempSearch;
         bool searched_count = false;
-        string appName;
+        public string appName;
         int Changes_Counter;
-        Search_Filter Filter;
-        List<Search> SearchHistory; 
+       public  Search_Filter Filter;
+       public  List<Search> SearchHistory; 
         public Form1()
         {
             InitializeComponent();
@@ -162,7 +162,17 @@ namespace Records_Manager
                 search_tags.Items.Add(s);
                 change_tags.Items.Add(s);
             }
+            DisableTabStopRecursively(this);
         }
+        private void DisableTabStopRecursively(Control control)
+        {
+            control.TabStop = false;
+            foreach (Control childControl in control.Controls)
+            {
+                DisableTabStopRecursively(childControl);
+            }
+        }
+
         public void ChangeSavedChangesStatus(bool saved)
         {
             if (saved)
@@ -1565,7 +1575,7 @@ namespace Records_Manager
             { 
                 tabControl1.SelectedIndex = 3;
             }
-            if ((e.Alt && e.KeyCode == Keys.D) || e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DeleteRecord_Click(null,null);
             }
@@ -1577,7 +1587,41 @@ namespace Records_Manager
             {
                 AddRecords_Click(null, null);
             }
-             
+            if (e.KeyCode == Keys.Tab)
+            {
+                //tab1
+                if (search_name.Focused) { search_mustnotcontain.Focus(); return; }
+                if (search_mustnotcontain.Focused) { search_indisks.Focus(); return; }
+                if (search_indisks.Focused) { search_tags.Focus(); return; }
+                if (search_tags.Focused) { button_search.Focus(); return; }
+                if (button_search.Focused) { search_name.Focus(); return; }
+                //tab2
+                if (button_LoadDB.Focused) { button_SaveDB.Focus(); return; }
+                if (button_SaveDB.Focused) { list_disks.Focus(); return; }
+                if (list_disks.Focused) { button_viewDisk.Focus(); return; }
+                if (button_viewDisk.Focused) { button_viewAll.Focus(); return; }
+                if (button_viewAll.Focused) { button_changeDiskN.Focus(); return; }
+                if (button_changeDiskN.Focused) { button_deleteDisk.Focus(); return; }
+                if (button_deleteDisk.Focused) { button_DiscardDB.Focus(); return; }
+                if (button_DiscardDB.Focused) { button_LoadDB.Focus(); return; }
+                //tab3
+                if (add_Names.Focused) { add_Series.Focus(); return; }
+                if (add_Series.Focused) { add_Disk.Focus(); return; }
+                if (add_Disk.Focused) { add_Publisher.Focus(); return; }
+                if (add_Publisher.Focused) { add_tags.Focus(); return; }
+                if (add_tags.Focused) { add_url.Focus(); return; }
+                if (add_url.Focused) { button_addToDB.Focus(); return; }
+                if (button_addToDB.Focused) { add_Names.Focus(); return; }
+                //tab4
+                if (change_name.Focused) { change_series.Focus(); return; }
+                if (change_series.Focused) { change_disk.Focus(); return; }
+                if (change_series.Focused) { change_dev.Focus(); return; }
+                if (change_dev.Focused) { change_tags.Focus(); return; }
+                if (change_tags.Focused) { change_url.Focus(); return; }
+                if (change_url.Focused) { button_changeRecord.Focus(); return; }
+                if (button_changeRecord.Focused) { button_deleteRecord.Focus(); return; }
+                if (button_deleteRecord.Focused) { change_name.Focus(); return; }
+            }
            
         }
 

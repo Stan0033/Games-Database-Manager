@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Records_Manager
 {
@@ -56,15 +54,20 @@ Artificial Disaster
 Assassination
 Atmospherical
 Autumn
+Adaption
+Adoption
+Ambition
 Based on Anime
 Based on Book
 Based on Comics/Manga
+Based on Cartoon
 Based on Movie
 Based on Mythology/Legends
 Based on TV Series
 Based on True Story
 Battle Royale
 Battleships
+Balance
 Beauty
 Betrayal
 Betting
@@ -86,8 +89,10 @@ Casual
 Chase
 Chess
 Choices Matter
+Celebrity
 Co-Op
 Comedy
+Dark Comedy
 Cold War
 Colony
 Coming-of-age
@@ -111,12 +116,16 @@ Dragons
 Drama
 Drawing/Painting
 Dreams/Nightmares
+Dictatorship
 Duels
+Do-It-Yourself
 Dungeon Crawler
 Educational
 Expansion/Needs Base Game
 Expansion/Standalone
 Exploration
+Evolution
+Transformation
 Family
 Fantasy
 Fashion
@@ -145,7 +154,7 @@ Gothic
 Graphic Adventure
 Gym/Bodybuilding/Workout
 Hack And Slash
-Handcraft
+Crafting/Handcraft
 Happy
 Has AI/Bots
 Has Campaign
@@ -157,6 +166,7 @@ Has VR
 Has Voice acting
 Happy Ending
 Heist
+Hope
 Helicopters
 Hidden Objects
 Historical
@@ -168,6 +178,7 @@ Ice
 Is Narrated
 Immortality
 Indie
+Insulting/Vulgar
 Insects
 Intellectual
 Interactive Movie
@@ -200,6 +211,7 @@ Ninja
 No Blood
 Open World
 Open-source
+Oppression
 Other Dimentions
 Paid Subscription
 Parody
@@ -239,6 +251,8 @@ Rescue/Hostages
 Resource Management
 Resurrection
 Revenge
+Revolution
+Retro
 Rhytm
 Roguelike
 Riot/Revolt/Rebellion
@@ -261,10 +275,11 @@ Satire
 Sci Fi
 Sniper
 Science
+Scientific Discovery
 Scupture
 Shoot Em Up
 Shooter
-Spy
+Spy/Espionage
 Side-scroller
 Silent Protagonist
 Singing/Karaoke
@@ -289,6 +304,7 @@ Tactics
 Talk Bubbles
 Tanks
 Thriller
+Terrorism
 Time Manipulation
 Time Travel
 Tower Defense
@@ -317,6 +333,38 @@ Werewolves
 Western
 Winter
 Wrestling
-Zombies".Split('\n').ToList();
+Wisdom
+Zombies
+Shamanism
+Microscopic 
+Mind Games
+Alchemy
+Kingdom
+Discovery
+Memory Manipulation
+Infiltration
+Quantum 
+Protecting the Environment/Eco
+Trading/Econnomy
+Exoplanets
+Aftifacts
+Text-Based
+World War I
+World War II
+Farming 
+Civilization
+Biomechanical
+Existential Crisis
+Psychedelic 
+Hacker/Cheater
+Chaos
+Water/Ocean/Lake/River/Sea
+Tribe
+The Sun
+Noir
+Tactical
+Abstract
+Industrial
+Dystopian".Split('\n').ToList();
     }
 }

@@ -1,0 +1,9 @@
+1 = select tab 1
+2 = select tab 2
+3 = select tab 3
+4 = select tab 4
+Ctrl+S = Save DB
+Alt+A = add to DB
+Del = Delete selected record/s
+(double click on image to hide it)
+TAB = changes focus of controls from top to bottom in a selected tab

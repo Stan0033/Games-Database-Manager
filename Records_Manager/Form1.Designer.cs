@@ -34,27 +34,27 @@ namespace Records_Manager
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.button_changeDiskN = new System.Windows.Forms.Button();
+            this.button_deleteDisk = new System.Windows.Forms.Button();
+            this.button_refreshDisk = new System.Windows.Forms.Button();
+            this.button_viewAll = new System.Windows.Forms.Button();
+            this.button_viewDisk = new System.Windows.Forms.Button();
             this.groupBox_disks = new System.Windows.Forms.GroupBox();
             this.list_disks = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_DiscardDB = new System.Windows.Forms.Button();
+            this.button_SaveDB = new System.Windows.Forms.Button();
+            this.button_LoadDB = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.button_browseHistory = new System.Windows.Forms.Button();
             this.menu_search = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.label_countSearch = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
+            this.button_searchCount = new System.Windows.Forms.Button();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.label_countResuults = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
+            this.button_search = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.SEARCH_MISSING_YES = new System.Windows.Forms.RadioButton();
@@ -99,10 +99,10 @@ namespace Records_Manager
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.search_name = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
+            this.button_addToDB = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.add_action_options = new System.Windows.Forms.CheckedListBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button_getMultiple = new System.Windows.Forms.Button();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.add_url = new System.Windows.Forms.TextBox();
             this.groupBox_tags_add = new System.Windows.Forms.GroupBox();
@@ -119,8 +119,8 @@ namespace Records_Manager
             this.add_Names = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_deleteRecord = new System.Windows.Forms.Button();
+            this.button_changeRecord = new System.Windows.Forms.Button();
             this.menu_change = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -244,15 +244,15 @@ namespace Records_Manager
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage3.Controls.Add(this.button13);
-            this.tabPage3.Controls.Add(this.button11);
-            this.tabPage3.Controls.Add(this.button10);
-            this.tabPage3.Controls.Add(this.button9);
-            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.button_changeDiskN);
+            this.tabPage3.Controls.Add(this.button_deleteDisk);
+            this.tabPage3.Controls.Add(this.button_refreshDisk);
+            this.tabPage3.Controls.Add(this.button_viewAll);
+            this.tabPage3.Controls.Add(this.button_viewDisk);
             this.tabPage3.Controls.Add(this.groupBox_disks);
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.button_DiscardDB);
+            this.tabPage3.Controls.Add(this.button_SaveDB);
+            this.tabPage3.Controls.Add(this.button_LoadDB);
             this.tabPage3.ForeColor = System.Drawing.Color.White;
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
@@ -261,86 +261,86 @@ namespace Records_Manager
             this.tabPage3.Text = "Database";
             this.toolTip1.SetToolTip(this.tabPage3, "Alt+1");
             // 
-            // button13
+            // button_changeDiskN
             // 
-            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(0, 444);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(452, 49);
-            this.button13.TabIndex = 9;
-            this.button13.Text = "Change disk number";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.ChangeDiskNumber_Click);
+            this.button_changeDiskN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_changeDiskN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_changeDiskN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_changeDiskN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_changeDiskN.Image = ((System.Drawing.Image)(resources.GetObject("button_changeDiskN.Image")));
+            this.button_changeDiskN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_changeDiskN.Location = new System.Drawing.Point(0, 444);
+            this.button_changeDiskN.Name = "button_changeDiskN";
+            this.button_changeDiskN.Size = new System.Drawing.Size(452, 49);
+            this.button_changeDiskN.TabIndex = 9;
+            this.button_changeDiskN.Text = "Change disk number";
+            this.button_changeDiskN.UseVisualStyleBackColor = true;
+            this.button_changeDiskN.Click += new System.EventHandler(this.ChangeDiskNumber_Click);
             // 
-            // button11
+            // button_deleteDisk
             // 
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button11.ForeColor = System.Drawing.Color.Red;
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(0, 458);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(452, 50);
-            this.button11.TabIndex = 8;
-            this.button11.Text = "Delete Disk";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.DeleteDisk);
+            this.button_deleteDisk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_deleteDisk.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button_deleteDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_deleteDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_deleteDisk.ForeColor = System.Drawing.Color.Red;
+            this.button_deleteDisk.Image = ((System.Drawing.Image)(resources.GetObject("button_deleteDisk.Image")));
+            this.button_deleteDisk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_deleteDisk.Location = new System.Drawing.Point(0, 458);
+            this.button_deleteDisk.Name = "button_deleteDisk";
+            this.button_deleteDisk.Size = new System.Drawing.Size(452, 50);
+            this.button_deleteDisk.TabIndex = 8;
+            this.button_deleteDisk.Text = "Delete Disk";
+            this.button_deleteDisk.UseVisualStyleBackColor = true;
+            this.button_deleteDisk.Click += new System.EventHandler(this.DeleteDisk);
             // 
-            // button10
+            // button_refreshDisk
             // 
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(0, 395);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(452, 49);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "Refresh List";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.RefreshDatabase_ListOfDisks);
+            this.button_refreshDisk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_refreshDisk.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_refreshDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_refreshDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_refreshDisk.Image = ((System.Drawing.Image)(resources.GetObject("button_refreshDisk.Image")));
+            this.button_refreshDisk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_refreshDisk.Location = new System.Drawing.Point(0, 395);
+            this.button_refreshDisk.Name = "button_refreshDisk";
+            this.button_refreshDisk.Size = new System.Drawing.Size(452, 49);
+            this.button_refreshDisk.TabIndex = 7;
+            this.button_refreshDisk.Text = "Refresh List";
+            this.button_refreshDisk.UseVisualStyleBackColor = true;
+            this.button_refreshDisk.Click += new System.EventHandler(this.RefreshDatabase_ListOfDisks);
             // 
-            // button9
+            // button_viewAll
             // 
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(0, 346);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(452, 49);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "View All";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.ViewDisks);
+            this.button_viewAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_viewAll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_viewAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_viewAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_viewAll.Image = ((System.Drawing.Image)(resources.GetObject("button_viewAll.Image")));
+            this.button_viewAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_viewAll.Location = new System.Drawing.Point(0, 346);
+            this.button_viewAll.Name = "button_viewAll";
+            this.button_viewAll.Size = new System.Drawing.Size(452, 49);
+            this.button_viewAll.TabIndex = 6;
+            this.button_viewAll.Text = "View All";
+            this.button_viewAll.UseVisualStyleBackColor = true;
+            this.button_viewAll.Click += new System.EventHandler(this.ViewDisks);
             // 
-            // button8
+            // button_viewDisk
             // 
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(0, 297);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(452, 49);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "View";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.ViewDisk);
+            this.button_viewDisk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_viewDisk.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_viewDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_viewDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_viewDisk.Image = ((System.Drawing.Image)(resources.GetObject("button_viewDisk.Image")));
+            this.button_viewDisk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_viewDisk.Location = new System.Drawing.Point(0, 297);
+            this.button_viewDisk.Name = "button_viewDisk";
+            this.button_viewDisk.Size = new System.Drawing.Size(452, 49);
+            this.button_viewDisk.TabIndex = 5;
+            this.button_viewDisk.Text = "View";
+            this.button_viewDisk.UseVisualStyleBackColor = true;
+            this.button_viewDisk.Click += new System.EventHandler(this.ViewDisk);
             // 
             // groupBox_disks
             // 
@@ -367,60 +367,60 @@ namespace Records_Manager
             this.list_disks.SelectedIndexChanged += new System.EventHandler(this.List_disks_SelectedIndexChanged);
             this.list_disks.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.List_disks_MouseDoubleClick);
             // 
-            // button3
+            // button_DiscardDB
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 508);
-            this.button3.Margin = new System.Windows.Forms.Padding(10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(452, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Discard Database";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.DiscardDatabase);
+            this.button_DiscardDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_DiscardDB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button_DiscardDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_DiscardDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_DiscardDB.ForeColor = System.Drawing.Color.Red;
+            this.button_DiscardDB.Image = ((System.Drawing.Image)(resources.GetObject("button_DiscardDB.Image")));
+            this.button_DiscardDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_DiscardDB.Location = new System.Drawing.Point(0, 508);
+            this.button_DiscardDB.Margin = new System.Windows.Forms.Padding(10);
+            this.button_DiscardDB.Name = "button_DiscardDB";
+            this.button_DiscardDB.Size = new System.Drawing.Size(452, 50);
+            this.button_DiscardDB.TabIndex = 2;
+            this.button_DiscardDB.Text = "Discard Database";
+            this.button_DiscardDB.UseVisualStyleBackColor = true;
+            this.button_DiscardDB.Click += new System.EventHandler(this.DiscardDatabase);
             // 
-            // button2
+            // button_SaveDB
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.Cyan;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 49);
-            this.button2.Margin = new System.Windows.Forms.Padding(10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(452, 49);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Save All Changes";
-            this.toolTip1.SetToolTip(this.button2, "Ctrl+S");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.SaveAllChanges);
+            this.button_SaveDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_SaveDB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_SaveDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SaveDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_SaveDB.ForeColor = System.Drawing.Color.Cyan;
+            this.button_SaveDB.Image = ((System.Drawing.Image)(resources.GetObject("button_SaveDB.Image")));
+            this.button_SaveDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_SaveDB.Location = new System.Drawing.Point(0, 49);
+            this.button_SaveDB.Margin = new System.Windows.Forms.Padding(10);
+            this.button_SaveDB.Name = "button_SaveDB";
+            this.button_SaveDB.Size = new System.Drawing.Size(452, 49);
+            this.button_SaveDB.TabIndex = 1;
+            this.button_SaveDB.Text = "Save All Changes";
+            this.toolTip1.SetToolTip(this.button_SaveDB, "Ctrl+S");
+            this.button_SaveDB.UseVisualStyleBackColor = true;
+            this.button_SaveDB.Click += new System.EventHandler(this.SaveAllChanges);
             // 
-            // button1
+            // button_LoadDB
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(452, 49);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Load Database";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.LoadDatabase);
+            this.button_LoadDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_LoadDB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_LoadDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_LoadDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_LoadDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_LoadDB.Image = ((System.Drawing.Image)(resources.GetObject("button_LoadDB.Image")));
+            this.button_LoadDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_LoadDB.Location = new System.Drawing.Point(0, 0);
+            this.button_LoadDB.Margin = new System.Windows.Forms.Padding(10);
+            this.button_LoadDB.Name = "button_LoadDB";
+            this.button_LoadDB.Size = new System.Drawing.Size(452, 49);
+            this.button_LoadDB.TabIndex = 0;
+            this.button_LoadDB.Text = "Load Database";
+            this.button_LoadDB.UseVisualStyleBackColor = true;
+            this.button_LoadDB.Click += new System.EventHandler(this.LoadDatabase);
             // 
             // tabPage1
             // 
@@ -445,7 +445,7 @@ namespace Records_Manager
             // 
             // groupBox28
             // 
-            this.groupBox28.Controls.Add(this.button15);
+            this.groupBox28.Controls.Add(this.button_browseHistory);
             this.groupBox28.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox28.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -456,23 +456,23 @@ namespace Records_Manager
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Search History";
             // 
-            // button15
+            // button_browseHistory
             // 
-            this.button15.ContextMenuStrip = this.menu_search;
-            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button15.ForeColor = System.Drawing.Color.Silver;
-            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(3, 22);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(440, 40);
-            this.button15.TabIndex = 18;
-            this.button15.Text = "Browse";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.Button15_Click);
+            this.button_browseHistory.ContextMenuStrip = this.menu_search;
+            this.button_browseHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_browseHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_browseHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_browseHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_browseHistory.ForeColor = System.Drawing.Color.Silver;
+            this.button_browseHistory.Image = ((System.Drawing.Image)(resources.GetObject("button_browseHistory.Image")));
+            this.button_browseHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_browseHistory.Location = new System.Drawing.Point(3, 22);
+            this.button_browseHistory.Name = "button_browseHistory";
+            this.button_browseHistory.Size = new System.Drawing.Size(440, 40);
+            this.button_browseHistory.TabIndex = 18;
+            this.button_browseHistory.Text = "Browse";
+            this.button_browseHistory.UseVisualStyleBackColor = true;
+            this.button_browseHistory.Click += new System.EventHandler(this.Button15_Click);
             // 
             // menu_search
             // 
@@ -493,7 +493,7 @@ namespace Records_Manager
             // groupBox27
             // 
             this.groupBox27.Controls.Add(this.label_countSearch);
-            this.groupBox27.Controls.Add(this.button14);
+            this.groupBox27.Controls.Add(this.button_searchCount);
             this.groupBox27.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox27.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -514,28 +514,28 @@ namespace Records_Manager
             this.label_countSearch.TabIndex = 20;
             this.label_countSearch.Text = "_";
             // 
-            // button14
+            // button_searchCount
             // 
-            this.button14.ContextMenuStrip = this.menu_search;
-            this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button14.ForeColor = System.Drawing.Color.Silver;
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 22);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(440, 40);
-            this.button14.TabIndex = 18;
-            this.button14.Text = "Search Count";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.Search_Count_Click);
+            this.button_searchCount.ContextMenuStrip = this.menu_search;
+            this.button_searchCount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_searchCount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_searchCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_searchCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_searchCount.ForeColor = System.Drawing.Color.Silver;
+            this.button_searchCount.Image = ((System.Drawing.Image)(resources.GetObject("button_searchCount.Image")));
+            this.button_searchCount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_searchCount.Location = new System.Drawing.Point(3, 22);
+            this.button_searchCount.Name = "button_searchCount";
+            this.button_searchCount.Size = new System.Drawing.Size(440, 40);
+            this.button_searchCount.TabIndex = 18;
+            this.button_searchCount.Text = "Search Count";
+            this.button_searchCount.UseVisualStyleBackColor = true;
+            this.button_searchCount.Click += new System.EventHandler(this.Search_Count_Click);
             // 
             // groupBox26
             // 
             this.groupBox26.Controls.Add(this.label_countResuults);
-            this.groupBox26.Controls.Add(this.button12);
+            this.groupBox26.Controls.Add(this.button_search);
             this.groupBox26.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox26.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -556,23 +556,24 @@ namespace Records_Manager
             this.label_countResuults.TabIndex = 20;
             this.label_countResuults.Text = "_";
             // 
-            // button12
+            // button_search
             // 
-            this.button12.ContextMenuStrip = this.menu_search;
-            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(3, 22);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(440, 40);
-            this.button12.TabIndex = 18;
-            this.button12.Text = "Search";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.SearchButton_Click);
+            this.button_search.ContextMenuStrip = this.menu_search;
+            this.button_search.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button_search.Image = ((System.Drawing.Image)(resources.GetObject("button_search.Image")));
+            this.button_search.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_search.Location = new System.Drawing.Point(3, 22);
+            this.button_search.Name = "button_search";
+            this.button_search.Size = new System.Drawing.Size(440, 40);
+            this.button_search.TabIndex = 5;
+            this.button_search.TabStop = false;
+            this.button_search.Text = "Search";
+            this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // groupBox9
             // 
@@ -589,7 +590,7 @@ namespace Records_Manager
             this.groupBox9.Location = new System.Drawing.Point(3, 382);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(446, 110);
-            this.groupBox9.TabIndex = 21;
+            this.groupBox9.TabIndex = 999;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Additional Filters (Must NOT Have, Neutral, Must Have)";
             // 
@@ -650,7 +651,7 @@ namespace Records_Manager
             this.groupBox24.Location = new System.Drawing.Point(338, 21);
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.Size = new System.Drawing.Size(76, 38);
-            this.groupBox24.TabIndex = 8;
+            this.groupBox24.TabIndex = 999;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Broken";
             // 
@@ -660,7 +661,7 @@ namespace Records_Manager
             this.SEARCH_BROKEN_YES.Location = new System.Drawing.Point(46, 19);
             this.SEARCH_BROKEN_YES.Name = "SEARCH_BROKEN_YES";
             this.SEARCH_BROKEN_YES.Size = new System.Drawing.Size(14, 13);
-            this.SEARCH_BROKEN_YES.TabIndex = 2;
+            this.SEARCH_BROKEN_YES.TabIndex = 999;
             this.SEARCH_BROKEN_YES.UseVisualStyleBackColor = true;
             this.SEARCH_BROKEN_YES.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
             // 
@@ -671,7 +672,7 @@ namespace Records_Manager
             this.SEARCH_BROKEN_PASS.Location = new System.Drawing.Point(26, 19);
             this.SEARCH_BROKEN_PASS.Name = "SEARCH_BROKEN_PASS";
             this.SEARCH_BROKEN_PASS.Size = new System.Drawing.Size(14, 13);
-            this.SEARCH_BROKEN_PASS.TabIndex = 1;
+            this.SEARCH_BROKEN_PASS.TabIndex = 999;
             this.SEARCH_BROKEN_PASS.TabStop = true;
             this.SEARCH_BROKEN_PASS.UseVisualStyleBackColor = true;
             this.SEARCH_BROKEN_PASS.CheckedChanged += new System.EventHandler(this.SEARCH_BROKEN_PASS_CheckedChanged);
@@ -682,7 +683,7 @@ namespace Records_Manager
             this.SEARCH_BROKEN_NO.Location = new System.Drawing.Point(6, 19);
             this.SEARCH_BROKEN_NO.Name = "SEARCH_BROKEN_NO";
             this.SEARCH_BROKEN_NO.Size = new System.Drawing.Size(14, 13);
-            this.SEARCH_BROKEN_NO.TabIndex = 0;
+            this.SEARCH_BROKEN_NO.TabIndex = 999;
             this.SEARCH_BROKEN_NO.UseVisualStyleBackColor = true;
             this.SEARCH_BROKEN_NO.CheckedChanged += new System.EventHandler(this.SEARCH_BROKEN_NO_CheckedChanged);
             // 
@@ -696,7 +697,7 @@ namespace Records_Manager
             this.groupBox23.Location = new System.Drawing.Point(256, 21);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(76, 38);
-            this.groupBox23.TabIndex = 7;
+            this.groupBox23.TabIndex = 999;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Image";
             // 
@@ -742,7 +743,7 @@ namespace Records_Manager
             this.groupBox20.Location = new System.Drawing.Point(92, 21);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(76, 38);
-            this.groupBox20.TabIndex = 6;
+            this.groupBox20.TabIndex = 999;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Publisher";
             // 
@@ -752,7 +753,7 @@ namespace Records_Manager
             this.pub_YES.Location = new System.Drawing.Point(46, 19);
             this.pub_YES.Name = "pub_YES";
             this.pub_YES.Size = new System.Drawing.Size(14, 13);
-            this.pub_YES.TabIndex = 2;
+            this.pub_YES.TabIndex = 999;
             this.pub_YES.UseVisualStyleBackColor = true;
             this.pub_YES.CheckedChanged += new System.EventHandler(this.Pub_YES_CheckedChanged);
             // 
@@ -763,7 +764,7 @@ namespace Records_Manager
             this.pub_PAS.Location = new System.Drawing.Point(26, 19);
             this.pub_PAS.Name = "pub_PAS";
             this.pub_PAS.Size = new System.Drawing.Size(14, 13);
-            this.pub_PAS.TabIndex = 1;
+            this.pub_PAS.TabIndex = 999;
             this.pub_PAS.TabStop = true;
             this.pub_PAS.UseVisualStyleBackColor = true;
             this.pub_PAS.CheckedChanged += new System.EventHandler(this.Pub_PAS_CheckedChanged);
@@ -774,7 +775,7 @@ namespace Records_Manager
             this.pub_NO.Location = new System.Drawing.Point(6, 19);
             this.pub_NO.Name = "pub_NO";
             this.pub_NO.Size = new System.Drawing.Size(14, 13);
-            this.pub_NO.TabIndex = 0;
+            this.pub_NO.TabIndex = 999;
             this.pub_NO.UseVisualStyleBackColor = true;
             this.pub_NO.CheckedChanged += new System.EventHandler(this.Pub_NO_CheckedChanged);
             // 
@@ -788,7 +789,7 @@ namespace Records_Manager
             this.groupBox17.Location = new System.Drawing.Point(174, 21);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(76, 38);
-            this.groupBox17.TabIndex = 6;
+            this.groupBox17.TabIndex = 999;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Developer";
             // 
@@ -798,7 +799,7 @@ namespace Records_Manager
             this.dev_YES.Location = new System.Drawing.Point(46, 19);
             this.dev_YES.Name = "dev_YES";
             this.dev_YES.Size = new System.Drawing.Size(14, 13);
-            this.dev_YES.TabIndex = 2;
+            this.dev_YES.TabIndex = 999;
             this.dev_YES.UseVisualStyleBackColor = true;
             this.dev_YES.CheckedChanged += new System.EventHandler(this.Dev_YES_CheckedChanged);
             // 
@@ -809,7 +810,7 @@ namespace Records_Manager
             this.dev_PAS.Location = new System.Drawing.Point(26, 19);
             this.dev_PAS.Name = "dev_PAS";
             this.dev_PAS.Size = new System.Drawing.Size(14, 13);
-            this.dev_PAS.TabIndex = 1;
+            this.dev_PAS.TabIndex = 999;
             this.dev_PAS.TabStop = true;
             this.dev_PAS.UseVisualStyleBackColor = true;
             this.dev_PAS.CheckedChanged += new System.EventHandler(this.Dev_PAS_CheckedChanged);
@@ -820,7 +821,7 @@ namespace Records_Manager
             this.dev_NO.Location = new System.Drawing.Point(6, 19);
             this.dev_NO.Name = "dev_NO";
             this.dev_NO.Size = new System.Drawing.Size(14, 13);
-            this.dev_NO.TabIndex = 0;
+            this.dev_NO.TabIndex = 999;
             this.dev_NO.UseVisualStyleBackColor = true;
             this.dev_NO.CheckedChanged += new System.EventHandler(this.Dev_NO_CheckedChanged);
             // 
@@ -834,7 +835,7 @@ namespace Records_Manager
             this.groupBox15.Location = new System.Drawing.Point(10, 21);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(76, 38);
-            this.groupBox15.TabIndex = 5;
+            this.groupBox15.TabIndex = 999;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Series";
             // 
@@ -844,7 +845,7 @@ namespace Records_Manager
             this.series_YES.Location = new System.Drawing.Point(46, 19);
             this.series_YES.Name = "series_YES";
             this.series_YES.Size = new System.Drawing.Size(14, 13);
-            this.series_YES.TabIndex = 2;
+            this.series_YES.TabIndex = 999;
             this.series_YES.UseVisualStyleBackColor = true;
             this.series_YES.CheckedChanged += new System.EventHandler(this.Series_YES_CheckedChanged);
             // 
@@ -855,7 +856,7 @@ namespace Records_Manager
             this.series_PASS.Location = new System.Drawing.Point(26, 19);
             this.series_PASS.Name = "series_PASS";
             this.series_PASS.Size = new System.Drawing.Size(14, 13);
-            this.series_PASS.TabIndex = 1;
+            this.series_PASS.TabIndex = 999;
             this.series_PASS.TabStop = true;
             this.series_PASS.UseVisualStyleBackColor = true;
             this.series_PASS.CheckedChanged += new System.EventHandler(this.Series_PAS_CheckedChanged);
@@ -866,7 +867,7 @@ namespace Records_Manager
             this.series_NO.Location = new System.Drawing.Point(6, 19);
             this.series_NO.Name = "series_NO";
             this.series_NO.Size = new System.Drawing.Size(14, 13);
-            this.series_NO.TabIndex = 0;
+            this.series_NO.TabIndex = 999;
             this.series_NO.UseVisualStyleBackColor = true;
             this.series_NO.CheckedChanged += new System.EventHandler(this.Series_NO_CheckedChanged);
             // 
@@ -891,7 +892,7 @@ namespace Records_Manager
             this.search_tags.Location = new System.Drawing.Point(3, 22);
             this.search_tags.Name = "search_tags";
             this.search_tags.Size = new System.Drawing.Size(440, 73);
-            this.search_tags.TabIndex = 0;
+            this.search_tags.TabIndex = 4;
             this.search_tags.SelectedIndexChanged += new System.EventHandler(this.Search_tags_SelectedIndexChanged);
             // 
             // groupBox3
@@ -917,7 +918,7 @@ namespace Records_Manager
             this.search_indisks.MaxLength = 150;
             this.search_indisks.Name = "search_indisks";
             this.search_indisks.Size = new System.Drawing.Size(440, 26);
-            this.search_indisks.TabIndex = 0;
+            this.search_indisks.TabIndex = 3;
             // 
             // menu_textb
             // 
@@ -985,7 +986,7 @@ namespace Records_Manager
             this.search_mustnotcontain.MaxLength = 150;
             this.search_mustnotcontain.Name = "search_mustnotcontain";
             this.search_mustnotcontain.Size = new System.Drawing.Size(440, 26);
-            this.search_mustnotcontain.TabIndex = 1;
+            this.search_mustnotcontain.TabIndex = 2;
             // 
             // groupBox19
             // 
@@ -1077,14 +1078,14 @@ namespace Records_Manager
             this.search_name.MaxLength = 150;
             this.search_name.Name = "search_name";
             this.search_name.Size = new System.Drawing.Size(440, 26);
-            this.search_name.TabIndex = 8;
+            this.search_name.TabIndex = 1;
             this.toolTip1.SetToolTip(this.search_name, "Enter");
             this.search_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchRecords_Enter);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage2.Controls.Add(this.button7);
+            this.tabPage2.Controls.Add(this.button_addToDB);
             this.tabPage2.Controls.Add(this.groupBox16);
             this.tabPage2.Controls.Add(this.groupBox21);
             this.tabPage2.Controls.Add(this.groupBox_tags_add);
@@ -1102,28 +1103,28 @@ namespace Records_Manager
             this.tabPage2.Text = "Add New";
             this.toolTip1.SetToolTip(this.tabPage2, "Alt+3");
             // 
-            // button7
+            // button_addToDB
             // 
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(3, 579);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(446, 41);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Add to Database";
-            this.toolTip1.SetToolTip(this.button7, "Alt+A");
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.AddRecords_Click);
+            this.button_addToDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_addToDB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_addToDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_addToDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_addToDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button_addToDB.Image = ((System.Drawing.Image)(resources.GetObject("button_addToDB.Image")));
+            this.button_addToDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_addToDB.Location = new System.Drawing.Point(3, 579);
+            this.button_addToDB.Name = "button_addToDB";
+            this.button_addToDB.Size = new System.Drawing.Size(446, 41);
+            this.button_addToDB.TabIndex = 1;
+            this.button_addToDB.Text = "Add to Database";
+            this.toolTip1.SetToolTip(this.button_addToDB, "Alt+A");
+            this.button_addToDB.UseVisualStyleBackColor = true;
+            this.button_addToDB.Click += new System.EventHandler(this.AddRecords_Click);
             // 
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.add_action_options);
-            this.groupBox16.Controls.Add(this.button6);
+            this.groupBox16.Controls.Add(this.button_getMultiple);
             this.groupBox16.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox16.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -1147,24 +1148,24 @@ namespace Records_Manager
             this.add_action_options.Location = new System.Drawing.Point(3, 63);
             this.add_action_options.Name = "add_action_options";
             this.add_action_options.Size = new System.Drawing.Size(440, 114);
-            this.add_action_options.TabIndex = 2;
+            this.add_action_options.TabIndex = 999;
             // 
-            // button6
+            // button_getMultiple
             // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(3, 22);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(440, 41);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Get Multiple from Folder";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.BrowseFolder_Click);
+            this.button_getMultiple.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_getMultiple.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_getMultiple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_getMultiple.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_getMultiple.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_getMultiple.Image = ((System.Drawing.Image)(resources.GetObject("button_getMultiple.Image")));
+            this.button_getMultiple.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_getMultiple.Location = new System.Drawing.Point(3, 22);
+            this.button_getMultiple.Name = "button_getMultiple";
+            this.button_getMultiple.Size = new System.Drawing.Size(440, 41);
+            this.button_getMultiple.TabIndex = 999;
+            this.button_getMultiple.Text = "Get Multiple from Folder";
+            this.button_getMultiple.UseVisualStyleBackColor = true;
+            this.button_getMultiple.Click += new System.EventHandler(this.BrowseFolder_Click);
             // 
             // groupBox21
             // 
@@ -1187,7 +1188,7 @@ namespace Records_Manager
             this.add_url.Location = new System.Drawing.Point(3, 22);
             this.add_url.Name = "add_url";
             this.add_url.Size = new System.Drawing.Size(440, 26);
-            this.add_url.TabIndex = 1;
+            this.add_url.TabIndex = 6;
             // 
             // groupBox_tags_add
             // 
@@ -1209,7 +1210,7 @@ namespace Records_Manager
             this.add_tags.Location = new System.Drawing.Point(3, 22);
             this.add_tags.Name = "add_tags";
             this.add_tags.Size = new System.Drawing.Size(440, 69);
-            this.add_tags.TabIndex = 0;
+            this.add_tags.TabIndex = 5;
             this.add_tags.SelectedIndexChanged += new System.EventHandler(this.Add_tags_SelectedIndexChanged);
             // 
             // groupBox10
@@ -1256,7 +1257,7 @@ namespace Records_Manager
             this.add_Developer.Location = new System.Drawing.Point(3, 22);
             this.add_Developer.Name = "add_Developer";
             this.add_Developer.Size = new System.Drawing.Size(440, 26);
-            this.add_Developer.TabIndex = 1;
+            this.add_Developer.TabIndex = 4;
             // 
             // groupBox12
             // 
@@ -1278,7 +1279,7 @@ namespace Records_Manager
             this.add_Disk.Location = new System.Drawing.Point(3, 22);
             this.add_Disk.Name = "add_Disk";
             this.add_Disk.Size = new System.Drawing.Size(440, 26);
-            this.add_Disk.TabIndex = 0;
+            this.add_Disk.TabIndex = 3;
             // 
             // groupBox13
             // 
@@ -1289,7 +1290,7 @@ namespace Records_Manager
             this.groupBox13.Location = new System.Drawing.Point(3, 75);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(446, 46);
-            this.groupBox13.TabIndex = 12;
+            this.groupBox13.TabIndex = 2;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Series";
             // 
@@ -1323,7 +1324,7 @@ namespace Records_Manager
             this.add_Names.Location = new System.Drawing.Point(3, 22);
             this.add_Names.Name = "add_Names";
             this.add_Names.Size = new System.Drawing.Size(440, 47);
-            this.add_Names.TabIndex = 0;
+            this.add_Names.TabIndex = 1;
             this.add_Names.Text = "";
             // 
             // tabPage4
@@ -1348,8 +1349,8 @@ namespace Records_Manager
             // groupBox18
             // 
             this.groupBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox18.Controls.Add(this.button5);
-            this.groupBox18.Controls.Add(this.button4);
+            this.groupBox18.Controls.Add(this.button_deleteRecord);
+            this.groupBox18.Controls.Add(this.button_changeRecord);
             this.groupBox18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox18.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox18.Location = new System.Drawing.Point(0, 386);
@@ -1359,40 +1360,40 @@ namespace Records_Manager
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Actions";
             // 
-            // button5
+            // button_deleteRecord
             // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 118);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(446, 51);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Delete Record";
-            this.toolTip1.SetToolTip(this.button5, "D");
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.DeleteRecord_Click);
+            this.button_deleteRecord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_deleteRecord.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button_deleteRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_deleteRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_deleteRecord.ForeColor = System.Drawing.Color.Red;
+            this.button_deleteRecord.Image = ((System.Drawing.Image)(resources.GetObject("button_deleteRecord.Image")));
+            this.button_deleteRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_deleteRecord.Location = new System.Drawing.Point(3, 118);
+            this.button_deleteRecord.Name = "button_deleteRecord";
+            this.button_deleteRecord.Size = new System.Drawing.Size(446, 51);
+            this.button_deleteRecord.TabIndex = 12;
+            this.button_deleteRecord.Text = "Delete Record";
+            this.toolTip1.SetToolTip(this.button_deleteRecord, "Del");
+            this.button_deleteRecord.UseVisualStyleBackColor = true;
+            this.button_deleteRecord.Click += new System.EventHandler(this.DeleteRecord_Click);
             // 
-            // button4
+            // button_changeRecord
             // 
-            this.button4.ContextMenuStrip = this.menu_change;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 27);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(446, 48);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Change";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.ChangeRecord_Click);
+            this.button_changeRecord.ContextMenuStrip = this.menu_change;
+            this.button_changeRecord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_changeRecord.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_changeRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_changeRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_changeRecord.Image = ((System.Drawing.Image)(resources.GetObject("button_changeRecord.Image")));
+            this.button_changeRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_changeRecord.Location = new System.Drawing.Point(3, 27);
+            this.button_changeRecord.Name = "button_changeRecord";
+            this.button_changeRecord.Size = new System.Drawing.Size(446, 48);
+            this.button_changeRecord.TabIndex = 11;
+            this.button_changeRecord.Text = "Change";
+            this.button_changeRecord.UseVisualStyleBackColor = true;
+            this.button_changeRecord.Click += new System.EventHandler(this.ChangeRecord_Click);
             // 
             // menu_change
             // 
@@ -1596,7 +1597,7 @@ namespace Records_Manager
             this.change_url.Location = new System.Drawing.Point(3, 22);
             this.change_url.Name = "change_url";
             this.change_url.Size = new System.Drawing.Size(446, 26);
-            this.change_url.TabIndex = 1;
+            this.change_url.TabIndex = 7;
             // 
             // change_groupBox_tags
             // 
@@ -1619,7 +1620,7 @@ namespace Records_Manager
             this.change_tags.Location = new System.Drawing.Point(3, 22);
             this.change_tags.Name = "change_tags";
             this.change_tags.Size = new System.Drawing.Size(446, 85);
-            this.change_tags.TabIndex = 0;
+            this.change_tags.TabIndex = 6;
             this.change_tags.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox3_SelectedIndexChanged);
             // 
             // groupBox8
@@ -1644,7 +1645,7 @@ namespace Records_Manager
             this.change_pub.Location = new System.Drawing.Point(3, 22);
             this.change_pub.Name = "change_pub";
             this.change_pub.Size = new System.Drawing.Size(446, 26);
-            this.change_pub.TabIndex = 1;
+            this.change_pub.TabIndex = 5;
             // 
             // groupBox7
             // 
@@ -1668,7 +1669,7 @@ namespace Records_Manager
             this.change_dev.Location = new System.Drawing.Point(3, 22);
             this.change_dev.Name = "change_dev";
             this.change_dev.Size = new System.Drawing.Size(446, 26);
-            this.change_dev.TabIndex = 1;
+            this.change_dev.TabIndex = 4;
             // 
             // groupBox6
             // 
@@ -1691,7 +1692,7 @@ namespace Records_Manager
             this.change_disk.Location = new System.Drawing.Point(3, 22);
             this.change_disk.Name = "change_disk";
             this.change_disk.Size = new System.Drawing.Size(446, 26);
-            this.change_disk.TabIndex = 1;
+            this.change_disk.TabIndex = 3;
             // 
             // groupBox5
             // 
@@ -1717,7 +1718,7 @@ namespace Records_Manager
             this.change_series.Margin = new System.Windows.Forms.Padding(0);
             this.change_series.Name = "change_series";
             this.change_series.Size = new System.Drawing.Size(446, 26);
-            this.change_series.TabIndex = 1;
+            this.change_series.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -1918,7 +1919,7 @@ namespace Records_Manager
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games Database Manager v1.19";
+            this.Text = "Games Database Manager v1.20";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -2010,9 +2011,9 @@ namespace Records_Manager
         private TextBox search_indisks;
         private TextBox search_mustnotcontain;
         private TabPage tabPage3;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button button_DiscardDB;
+        private Button button_SaveDB;
+        private Button button_LoadDB;
         private ListView listView1;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
@@ -2045,36 +2046,36 @@ namespace Records_Manager
         private RichTextBox add_Names;
         private GroupBox change_groupBox_tags;
         private CheckedListBox change_tags;
-        private Button button10;
-        private Button button9;
-        private Button button8;
+        private Button button_refreshDisk;
+        private Button button_viewAll;
+        private Button button_viewDisk;
         private GroupBox groupBox19;
-        private Button button11;
+        private Button button_deleteDisk;
         private NumericUpDown add_Disk;
         private GroupBox groupBox_tags_search;
         private CheckedListBox search_tags;
         private GroupBox groupBox16;
         private CheckedListBox add_action_options;
-        private Button button7;
-        private Button button6;
+        private Button button_addToDB;
+        private Button button_getMultiple;
         private GroupBox groupBox21;
         private TextBox add_url;
         private PictureBox pictureBox_Header;
         private GroupBox groupBox18;
-        private Button button5;
-        private Button button4;
+        private Button button_deleteRecord;
+        private Button button_changeRecord;
         private GroupBox groupBox22;
         private TextBox change_url;
         private Panel panel1;
         private NumericUpDown change_disk;
-        private Button button12;
+        private Button button_search;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem selectAllToolStripMenuItem;
         private ToolStripMenuItem selectNoneToolStripMenuItem;
         private ToolStripMenuItem selectInverseToolStripMenuItem;
         private ToolStripMenuItem clearToolStripMenuItem;
         private ToolStripMenuItem copyAsTextToolStripMenuItem;
-        private Button button13;
+        private Button button_changeDiskN;
         private ContextMenuStrip menu_change;
         private ToolStripMenuItem changeSeriesOnlyToolStripMenuItem;
         private ToolStripMenuItem changeDiskOnlyToolStripMenuItem;
@@ -2135,10 +2136,10 @@ namespace Records_Manager
         private ContextMenuStrip menu_search;
         private ToolStripMenuItem toolStripMenuItem10;
         private GroupBox groupBox28;
-        private Button button15;
+        private Button button_browseHistory;
         private GroupBox groupBox27;
         private Label label_countSearch;
-        private Button button14;
+        private Button button_searchCount;
         private GroupBox groupBox26;
         private ToolStripSeparator toolStripSeparator10;
         private ToolStripMenuItem toolStripMenuItem7;

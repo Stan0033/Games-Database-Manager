@@ -87,7 +87,7 @@
 - In the context menu of the list of records, added "remove string in titles" and "repalce string in titles"
 1.18a - 23/09/23
 - fixed a mistake where records added from list were generated as lowercase
-1.19
+1.19 - 24/09/23
 - (FIX) Now when you change the disk number of a disk to be the same as an alredy existing one, the records will have their disk number properly set.
 - increased the font size of the buttons Delete Disk and Discard Database
 - Decresed the size of the window to 1200x850. It was too big.
@@ -96,3 +96,9 @@
 - the button 'Add' renamed to 'Add to Database'and moved below the groupbox 'Get Multiple From Folder'
 - refactored the code to reduce warnings and messages
 - The hotkeys for switching between tabs are now only 1,2,3,4 instead of alt+. This is changed for convinience of the user.
+1.20 - 26/09/23
+- added 65 more tags
+- (FIX) Fixed the mistake where when you browse search history, a search will show that has the keyword/s and exluded keyword/s  the same
+- In search history, increased the height of a richtextbox to fit all content without scrolling
+- changed the icons of all other forms to be the same
+- disabled tabstop and instead made custom, to be esier for users to change focus on controls by pressing TAB

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(string_input));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox_string = new System.Windows.Forms.GroupBox();
@@ -125,6 +126,7 @@
             this.Controls.Add(this.groupBox_newstring);
             this.Controls.Add(this.groupBox_string);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "string_input";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "String input";

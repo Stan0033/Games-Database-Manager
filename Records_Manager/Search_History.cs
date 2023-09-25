@@ -26,7 +26,7 @@ namespace Records_Manager
             {
                 count++;    
                 RichTextBox t = new RichTextBox();
-                t.Size = new Size(225, 120);
+                t.Size = new Size(225, 190);
                 int HPos = (225 * count + gap*count) - 220;
                 t.Location = new Point(HPos, 10);
                 t.ReadOnly = true;
@@ -50,7 +50,7 @@ namespace Records_Manager
             string result = string.Empty;
             StringBuilder b = new StringBuilder();
             b.AppendLine("Keyword/s (OR): "+ s.Keywords);
-            b.AppendLine("Excluded Keyword/s (AND): "+ s.Keywords);
+            b.AppendLine("Excluded Keyword/s (AND): "+ s.ExcludedKeywords);
             b.AppendLine("Search in: " + s.SearchByWhat());
             b.AppendLine(s.Filter.ToString());
             b.AppendLine("Disk/s (OR): "+string.Join(",",s.Disks));
