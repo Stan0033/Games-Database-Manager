@@ -7,3 +7,4 @@ Alt+A = add to DB
 Del = Delete selected record/s
 (double click on image to hide it)
 TAB = changes focus of controls from top to bottom in a selected tab
+

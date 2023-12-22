@@ -1556,22 +1556,22 @@ namespace Records_Manager
         {
             // here the hotkeys
             // Check for the key combination
-            if ( e.KeyCode == Keys.D1)
+            if (e.Alt && e.KeyCode == Keys.D1)
             {
                
                tabControl1.SelectedIndex= 0;
             }
-            if ( e.KeyCode == Keys.D2)
+            if (e.Alt && e.KeyCode == Keys.D2)
             {
                  
                 tabControl1.SelectedIndex = 1;
             }
-            if ( e.KeyCode == Keys.D3)
+            if (e.Alt && e.KeyCode == Keys.D3)
             {
-               
+
                 tabControl1.SelectedIndex = 2;
             }
-            if ( e.KeyCode == Keys.D4)
+            if (e.Alt && e.KeyCode == Keys.D4)
             { 
                 tabControl1.SelectedIndex = 3;
             }
